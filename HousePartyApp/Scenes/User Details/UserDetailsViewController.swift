@@ -1,24 +1,30 @@
 
 import Foundation
 import RxSwift
+import SnapKit
 
-class UserDetailsViewController: UIViewController, BindableType {
+class UserDetailsViewController: UIViewController, KeyboardAvoidable, BindableType {
     
     let disposeBag = DisposeBag()
     var viewModel: UserDetailsViewModel!
     
+    private var containerView: UIView!
     private var onboardingView: OnboardingView!
-    fileprivate var firstNameTextField: PaddedTextField!
-    fileprivate var lastNameTextField: PaddedTextField!
-    fileprivate var nextButton: UIButton!
+    private var firstNameTextField: PaddedTextField!
+    private var lastNameTextField: PaddedTextField!
+    private var nextButton: UIButton!
+    var bottomConstraint: Constraint!
+    var latestKeyboardHeight: CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
-        setupOnboardingView()
-        setupTitleTextView()
-        setupBodyTextView()
         setupNextButton()
+        setupBodyTextView()
+        setupTitleTextView()
+        setupOnboardingView()
+        bindKeyboardNotifications(bottomOffset: 100)
+        resignKeyboardOnViewTouch()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -26,8 +32,13 @@ class UserDetailsViewController: UIViewController, BindableType {
         firstNameTextField.becomeFirstResponder()
     }
     
-    override var inputAccessoryView: UIView? { get { return nextButton } }
-    override var canBecomeFirstResponder: Bool { return true }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        firstNameTextField.resignFirstResponder()
+    }
+    
+//    override var inputAccessoryView: UIView? { get { return nextButton } }
+//    override var canBecomeFirstResponder: Bool { return true }
     deinit { print("Create prompt deint") }
     
     func bindViewModel() {
@@ -71,12 +82,12 @@ extension UserDetailsViewController {
     
     private func setupOnboardingView() {
         onboardingView = OnboardingView(numberOfButtons: 0)
- 
+        
         view.addSubview(onboardingView)
         onboardingView.snp.makeConstraints { (make) in
             make.width.equalTo(view).multipliedBy(0.74)
             make.centerX.equalTo(view)
-            make.top.equalTo(view.snp.top).offset(160)
+            make.bottom.equalTo(firstNameTextField.snp.top).offset(-20)
         }
     }
     
@@ -95,7 +106,7 @@ extension UserDetailsViewController {
             make.width.equalTo(view).multipliedBy(0.74)
             make.centerX.equalTo(view)
             make.height.equalTo(50)
-            make.top.equalTo(onboardingView.snp.bottom).offset(10)
+            make.bottom.equalTo(lastNameTextField.snp.top).offset(-10)
         }
     }
     
@@ -113,7 +124,8 @@ extension UserDetailsViewController {
             make.width.equalTo(view).multipliedBy(0.74)
             make.centerX.equalTo(view)
             make.height.equalTo(50)
-            make.top.equalTo(firstNameTextField.snp.bottom).offset(10)
+            make.bottom.equalTo(nextButton.snp.top).offset(-10)
+            //self.bottomConstraint = make.bottom.equalTo(view).offset(-60).constraint
         }
     }
     
@@ -123,7 +135,16 @@ extension UserDetailsViewController {
         nextButton.setTitle("Next", for: .normal)
         nextButton.setTitleColor(Palette.darkYellow.color, for: .normal)
         nextButton.titleLabel?.font = FontBook.AvenirHeavy.of(size: 13)
-        nextButton.frame.size.height = 50
+        //nextButton.frame.size.height = 50
+        
+        view.addSubview(nextButton)
+        nextButton.snp.makeConstraints { (make) in
+            make.width.equalTo(view).multipliedBy(0.74)
+            make.centerX.equalTo(view)
+            make.height.equalTo(50)
+            //make.top.equalTo(firstNameTextField.snp.bottom).offset(10)
+            self.bottomConstraint = make.bottom.equalTo(view).offset(-60).constraint
+        }
     }
     
 }

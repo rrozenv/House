@@ -37,7 +37,7 @@ final class SignupLoginViewModel: SignupLoginViewModelType, SignupLoginViewModel
     let welcomeText: Driver<(header: String, body: String)>
     
 //MARK: - Init
-    init(router: SignUpFlowCoordinator) {
+    init(router: SignUpFlowCoordinator, userService: UserService = UserService()) {
     
 //MARK: - Subjects
         let _viewDidLoadInput = PublishSubject<Void>()
@@ -59,9 +59,18 @@ final class SignupLoginViewModel: SignupLoginViewModelType, SignupLoginViewModel
         self.welcomeText = Driver.of((header: headerText, body: bodyText))
         
         router.didFinishSignup
-            .subscribe(onNext: {
-                print("\($0.fullName!) signed up with \($0.phoneNumber!)")
+            .map {
+                User(fullName: $0.fullName!,
+                     birthDate: "TesDate",
+                     phoneNumber: $0.phoneNumber!)
+            }
+            .flatMapLatest { userService.create(user: $0) }
+            .do(onNext: { (newUser) in
+                AppController.shared.currentUser = newUser
+                NotificationCenter.default
+                    .post(name: Notification.Name.createHomeVc, object: nil)
             })
+            .subscribe()
             .disposed(by: disposeBag)
         
 //MARK: - Routing

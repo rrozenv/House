@@ -34,6 +34,15 @@ extension User {
         self.phonenumber = phonenumber
     }
     
+    init(fullName: String,
+         birthDate: String,
+         phoneNumber: String) {
+        self._id = "\(0)"
+        self.fullName = fullName
+        self.birthDate = birthDate
+        self.phonenumber = phoneNumber
+    }
+    
 }
 
 extension User {
@@ -46,11 +55,4 @@ extension User {
         ]
     }
 }
-
-//"created": "2018-05-06T17:04:55.259Z",
-//"_id": "5aef35b7a8111b16558e7efb",
-//"fullName": "Robert Roz",
-//"birthDate": "2018-05-06T17:04:55.266Z",
-//"phonenumber": "2018354011",
-//"__v": 0
 

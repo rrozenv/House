@@ -20,6 +20,12 @@ struct UserService {
             .map(UserList.self)
             .map { $0.users }
     }
+    
+    func create(user: User) -> Observable<User> {
+        return provider.rx
+            .request(.createUser(user)).asObservable()
+            .map(User.self)
+    }
 
 }
 

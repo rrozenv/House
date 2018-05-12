@@ -41,6 +41,13 @@ final class SignUpFlowCoordinator {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    func toPhoneEntry() {
+        var vc = PhoneEntryViewController()
+        let viewModel = PhoneEntryViewModel(router: self)
+        vc.setViewModelBinding(model: viewModel)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func toOnboardingFlow() {
         let vcs = OnboardingInfo.initalOnboardingInfo.map { OnboardingViewController.configuredWith(info: $0)
         }
@@ -50,7 +57,7 @@ final class SignUpFlowCoordinator {
     
     func didSaveName(_ fullName: String) {
         signupInfo.fullName = fullName
-        print("To phone")
+        toPhoneEntry()
     }
     
     func didSavePhoneNumber(_ number: String) {

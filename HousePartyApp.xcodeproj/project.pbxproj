@@ -53,6 +53,10 @@
 		98F241E520A68892001FD887 /* UserDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241E220A68891001FD887 /* UserDetailsViewModel.swift */; };
 		98F241E720A68892001FD887 /* UserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241E420A68892001FD887 /* UserDetailsViewController.swift */; };
 		98F241E920A688E0001FD887 /* UITextField+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241E820A688E0001FD887 /* UITextField+Ext.swift */; };
+		98F241EB20A698A1001FD887 /* PhoneEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241EA20A698A1001FD887 /* PhoneEntryViewController.swift */; };
+		98F241ED20A698AC001FD887 /* PhoneEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241EC20A698AB001FD887 /* PhoneEntryViewModel.swift */; };
+		98F241F020A6AC2C001FD887 /* KeyboardAvoidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241EF20A6AC2C001FD887 /* KeyboardAvoidable.swift */; };
+		98F241F220A6AC63001FD887 /* UIDevice+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241F120A6AC63001FD887 /* UIDevice+Ext.swift */; };
 		9ADD7D59C4DFAA71449DC559 /* Pods_HousePartyApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA79EDC36E0EAD4BE61BACD1 /* Pods_HousePartyApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -126,6 +130,10 @@
 		98F241E220A68891001FD887 /* UserDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailsViewModel.swift; sourceTree = "<group>"; };
 		98F241E420A68892001FD887 /* UserDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailsViewController.swift; sourceTree = "<group>"; };
 		98F241E820A688E0001FD887 /* UITextField+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Ext.swift"; sourceTree = "<group>"; };
+		98F241EA20A698A1001FD887 /* PhoneEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneEntryViewController.swift; sourceTree = "<group>"; };
+		98F241EC20A698AB001FD887 /* PhoneEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneEntryViewModel.swift; sourceTree = "<group>"; };
+		98F241EF20A6AC2C001FD887 /* KeyboardAvoidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAvoidable.swift; sourceTree = "<group>"; };
+		98F241F120A6AC63001FD887 /* UIDevice+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Ext.swift"; sourceTree = "<group>"; };
 		A226A5CED91DC43A90E55F0F /* Pods-HousePartyApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HousePartyApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HousePartyApp/Pods-HousePartyApp.debug.xcconfig"; sourceTree = "<group>"; };
 		EA79EDC36E0EAD4BE61BACD1 /* Pods_HousePartyApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HousePartyApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD3281CCEC9649C04993F9B9 /* Pods-HousePartyApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HousePartyApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-HousePartyApp/Pods-HousePartyApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -268,6 +276,7 @@
 				98F241A320A67F3B001FD887 /* List Users */,
 				98F241A420A67F48001FD887 /* Create User */,
 				98F241E120A6884B001FD887 /* User Details */,
+				98F241EE20A6AB43001FD887 /* Phone Entry */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -318,6 +327,7 @@
 				98A50CEB209FCE3E0090FC8E /* UIViewController+Ext.swift */,
 				98F241CE20A682FA001FD887 /* UIStackView+Ext.swift */,
 				98F241E820A688E0001FD887 /* UITextField+Ext.swift */,
+				98F241F120A6AC63001FD887 /* UIDevice+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -326,6 +336,7 @@
 			isa = PBXGroup;
 			children = (
 				98A50CDF209FCD060090FC8E /* BindableType.swift */,
+				98F241EF20A6AC2C001FD887 /* KeyboardAvoidable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -392,6 +403,15 @@
 				98F241E220A68891001FD887 /* UserDetailsViewModel.swift */,
 			);
 			path = "User Details";
+			sourceTree = "<group>";
+		};
+		98F241EE20A6AB43001FD887 /* Phone Entry */ = {
+			isa = PBXGroup;
+			children = (
+				98F241EA20A698A1001FD887 /* PhoneEntryViewController.swift */,
+				98F241EC20A698AB001FD887 /* PhoneEntryViewModel.swift */,
+			);
+			path = "Phone Entry";
 			sourceTree = "<group>";
 		};
 		A2839440271D307CD985D30D /* Pods */ = {
@@ -601,6 +621,7 @@
 				98F241A820A67F85001FD887 /* CreateUserViewModel.swift in Sources */,
 				98F241BB20A680ED001FD887 /* OnboardingViewModel.swift in Sources */,
 				98A50CEC209FCE3E0090FC8E /* UIViewController+Ext.swift in Sources */,
+				98F241ED20A698AC001FD887 /* PhoneEntryViewModel.swift in Sources */,
 				98A50CE0209FCD060090FC8E /* BindableType.swift in Sources */,
 				98F241C820A68194001FD887 /* CustomPageViewController.swift in Sources */,
 				98A50CA4209F7B7F0090FC8E /* AppDelegate.swift in Sources */,
@@ -609,6 +630,7 @@
 				98F241D720A68506001FD887 /* OnboardingInfo.swift in Sources */,
 				98A50CF9209FCF7A0090FC8E /* ValueCellDataSource.swift in Sources */,
 				98F241E020A68708001FD887 /* SignUpFlowCoordinator.swift in Sources */,
+				98F241F220A6AC63001FD887 /* UIDevice+Ext.swift in Sources */,
 				98F241D120A683D1001FD887 /* OnboardingView.swift in Sources */,
 				98F241BC20A680ED001FD887 /* OnboardingViewController.swift in Sources */,
 				98A50CEE209FCF000090FC8E /* Constants.swift in Sources */,
@@ -626,6 +648,8 @@
 				98A50CD8209F81840090FC8E /* User.swift in Sources */,
 				98A50CDE209FCBD40090FC8E /* UsersViewModel.swift in Sources */,
 				98A50CF7209FCF7A0090FC8E /* ErrorTracker.swift in Sources */,
+				98F241F020A6AC2C001FD887 /* KeyboardAvoidable.swift in Sources */,
+				98F241EB20A698A1001FD887 /* PhoneEntryViewController.swift in Sources */,
 				98F241E920A688E0001FD887 /* UITextField+Ext.swift in Sources */,
 				98F241CB20A681C3001FD887 /* PageReferenceView.swift in Sources */,
 				98A50CD2209F7CA90090FC8E /* AppController.swift in Sources */,
