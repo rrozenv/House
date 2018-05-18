@@ -22,15 +22,14 @@ final class SignupInfo {
 
 final class SignUpFlowCoordinator {
     
+    private let disposeBag = DisposeBag()
     private weak var navigationController: UINavigationController?
     private var signupInfo = SignupInfo(fullName: nil, phoneNumber: nil)
-    private let finalSignupInfo = PublishSubject<SignupInfo>()
-    var didFinishSignup: Observable<SignupInfo> {
-        return finalSignupInfo.asObservable()
-    }
+    private var userService: UserService
     
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
+    init(navVc: UINavigationController, userService: UserService = UserService()) {
+        self.navigationController = navVc
+        self.userService = userService
     }
     
     func toUserDetails() {
@@ -62,11 +61,27 @@ final class SignUpFlowCoordinator {
     
     func didSavePhoneNumber(_ number: String) {
         signupInfo.phoneNumber = number
-        finalSignupInfo.onNext(signupInfo)
+        createUser()
     }
     
-    func dismiss() {
-        navigationController?.dismiss(animated: true, completion: nil)
+    private func createUser() {
+        guard let name = signupInfo.fullName,
+             let phone = signupInfo.phoneNumber else {
+                print("Missing user creds!") ; return
+        }
+        let user = User(fullName: name,
+                        birthDate: "Test Birthday",
+                        phoneNumber: phone)
+        
+        userService.create(user: user.toJSON())
+            .subscribe(onNext: {
+                print("Created user: \($0.fullName)")
+            })
+            .disposed(by: disposeBag)
     }
+    
+//    func dismiss() {
+//        navigationController?.dismiss(animated: true, completion: nil)
+//    }
     
 }

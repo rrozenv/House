@@ -14,8 +14,8 @@ final class OnboardingView: UIView {
     var headerLabel: UILabel!
     var bodyLabel: UILabel!
     
+    var dividerView: UIView!
     private var buttonStackView: UIStackView!
-    private var dividerView: UIView!
     private var labelsStackView: UIStackView!
     private var buttons = [UIButton]()
     
@@ -114,7 +114,7 @@ extension OnboardingView {
         headerLabel.font = FontBook.AvenirBlack.of(size: 14)
         
         bodyLabel = UILabel()
-        bodyLabel.textColor = Palette.lightGrey.color
+        //bodyLabel.textColor = Palette.lightGrey.color
         bodyLabel.numberOfLines = 0
         bodyLabel.font = FontBook.AvenirMedium.of(size: 14)
         

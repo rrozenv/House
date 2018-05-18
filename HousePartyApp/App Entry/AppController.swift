@@ -17,6 +17,7 @@ final class AppController: UIViewController {
     private let userService: UserService
     private var actingVC: UIViewController!
     var currentUser: User?
+    var signupFlowCoordinator: SignUpFlowCoordinator!
     
     private init(userService: UserService) {
         self.userService = userService
@@ -52,18 +53,14 @@ extension AppController {
     
     private func loadInitialViewController() {
         self.actingVC = (currentUser != nil) ?
-            createHomeViewController() : createSignupLoginViewController()
+            createHomeViewController() : toOnboardingFlow()
         self.addChild(actingVC, frame: view.frame, animated: true)
     }
 
-    private func createSignupLoginViewController() -> UINavigationController {
-        let navVc = UINavigationController()
-        var vc = SignupLoginViewController()
-        let router = SignUpFlowCoordinator(navigationController: navVc)
-        let vm = SignupLoginViewModel(router: router)
-        vc.setViewModelBinding(model: vm)
-        navVc.pushViewController(vc, animated: false)
-        return navVc
+    private func toOnboardingFlow() -> UIViewController {
+        let vcs = OnboardingInfo.initalOnboardingInfo
+            .map { OnboardingViewController.configuredWith(info: $0) }
+        return OnboardingPageViewController(viewControllers: vcs)
     }
 
     private func createHomeViewController() -> UINavigationController {
@@ -81,7 +78,7 @@ extension AppController {
         case Notification.Name.createHomeVc:
             switchToViewController(self.createHomeViewController())
         case Notification.Name.logout:
-            switchToViewController(self.createSignupLoginViewController())
+            switchToViewController(self.toOnboardingFlow())
         default:
             fatalError("\(#function) - Unable to match notficiation name.")
         }

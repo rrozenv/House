@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		987648BD20AE6094004FF205 /* ValueCellDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987648BC20AE6094004FF205 /* ValueCellDataSource.swift */; };
 		98A50CA4209F7B7F0090FC8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A50CA3209F7B7F0090FC8E /* AppDelegate.swift */; };
 		98A50CAB209F7B7F0090FC8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98A50CAA209F7B7F0090FC8E /* Assets.xcassets */; };
 		98A50CAE209F7B7F0090FC8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98A50CAC209F7B7F0090FC8E /* LaunchScreen.storyboard */; };
@@ -31,9 +32,9 @@
 		98A50CF6209FCF7A0090FC8E /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A50CF1209FCF7A0090FC8E /* Defaults.swift */; };
 		98A50CF7209FCF7A0090FC8E /* ErrorTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A50CF2209FCF7A0090FC8E /* ErrorTracker.swift */; };
 		98A50CF8209FCF7A0090FC8E /* FontBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A50CF3209FCF7A0090FC8E /* FontBook.swift */; };
-		98A50CF9209FCF7A0090FC8E /* ValueCellDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A50CF4209FCF7A0090FC8E /* ValueCellDataSource.swift */; };
 		98A50CFB209FCFFC0090FC8E /* UIButton+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A50CFA209FCFFC0090FC8E /* UIButton+Ext.swift */; };
 		98A50CFD209FD0740090FC8E /* Observable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A50CFC209FD0740090FC8E /* Observable+Ext.swift */; };
+		98EE833420AD204D00EDEBFF /* UITextView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EE833320AD204D00EDEBFF /* UITextView+Ext.swift */; };
 		98F241A620A67F78001FD887 /* CreateUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241A520A67F78001FD887 /* CreateUserViewController.swift */; };
 		98F241A820A67F85001FD887 /* CreateUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241A720A67F85001FD887 /* CreateUserViewModel.swift */; };
 		98F241BA20A680ED001FD887 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241B620A680EC001FD887 /* OnboardingPageViewController.swift */; };
@@ -78,6 +79,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		987648BC20AE6094004FF205 /* ValueCellDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueCellDataSource.swift; sourceTree = "<group>"; };
 		98A50CA0209F7B7F0090FC8E /* HousePartyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HousePartyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98A50CA3209F7B7F0090FC8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		98A50CAA209F7B7F0090FC8E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -108,9 +110,9 @@
 		98A50CF1209FCF7A0090FC8E /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		98A50CF2209FCF7A0090FC8E /* ErrorTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorTracker.swift; sourceTree = "<group>"; };
 		98A50CF3209FCF7A0090FC8E /* FontBook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontBook.swift; sourceTree = "<group>"; };
-		98A50CF4209FCF7A0090FC8E /* ValueCellDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueCellDataSource.swift; sourceTree = "<group>"; };
 		98A50CFA209FCFFC0090FC8E /* UIButton+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIButton+Ext.swift"; path = "../Extensions/UIButton+Ext.swift"; sourceTree = "<group>"; };
 		98A50CFC209FD0740090FC8E /* Observable+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Observable+Ext.swift"; path = "../Extensions/Observable+Ext.swift"; sourceTree = "<group>"; };
+		98EE833320AD204D00EDEBFF /* UITextView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Ext.swift"; sourceTree = "<group>"; };
 		98F241A520A67F78001FD887 /* CreateUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserViewController.swift; sourceTree = "<group>"; };
 		98F241A720A67F85001FD887 /* CreateUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserViewModel.swift; sourceTree = "<group>"; };
 		98F241B620A680EC001FD887 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnboardingPageViewController.swift; path = ../../../../../.Trash/OnboardingPageViewController.swift; sourceTree = "<group>"; };
@@ -243,8 +245,8 @@
 				98A50CF1209FCF7A0090FC8E /* Defaults.swift */,
 				98A50CF2209FCF7A0090FC8E /* ErrorTracker.swift */,
 				98A50CF3209FCF7A0090FC8E /* FontBook.swift */,
-				98A50CF4209FCF7A0090FC8E /* ValueCellDataSource.swift */,
 				98F241D220A6843B001FD887 /* Palette.swift */,
+				987648BC20AE6094004FF205 /* ValueCellDataSource.swift */,
 			);
 			name = Utilities;
 			path = "../../Designated Hitter/designated-hitter/DesignatedHitter/Utilities";
@@ -328,6 +330,7 @@
 				98F241CE20A682FA001FD887 /* UIStackView+Ext.swift */,
 				98F241E820A688E0001FD887 /* UITextField+Ext.swift */,
 				98F241F120A6AC63001FD887 /* UIDevice+Ext.swift */,
+				98EE833320AD204D00EDEBFF /* UITextView+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -628,12 +631,12 @@
 				98A50CE2209FCD110090FC8E /* NotificationName+Ext.swift in Sources */,
 				98A50CD4209F80DB0090FC8E /* API.swift in Sources */,
 				98F241D720A68506001FD887 /* OnboardingInfo.swift in Sources */,
-				98A50CF9209FCF7A0090FC8E /* ValueCellDataSource.swift in Sources */,
 				98F241E020A68708001FD887 /* SignUpFlowCoordinator.swift in Sources */,
 				98F241F220A6AC63001FD887 /* UIDevice+Ext.swift in Sources */,
 				98F241D120A683D1001FD887 /* OnboardingView.swift in Sources */,
 				98F241BC20A680ED001FD887 /* OnboardingViewController.swift in Sources */,
 				98A50CEE209FCF000090FC8E /* Constants.swift in Sources */,
+				98EE833420AD204D00EDEBFF /* UITextView+Ext.swift in Sources */,
 				98F241E520A68892001FD887 /* UserDetailsViewModel.swift in Sources */,
 				98A50CFD209FD0740090FC8E /* Observable+Ext.swift in Sources */,
 				98A50CFB209FCFFC0090FC8E /* UIButton+Ext.swift in Sources */,
@@ -655,6 +658,7 @@
 				98A50CD2209F7CA90090FC8E /* AppController.swift in Sources */,
 				98A50CDA209FCB050090FC8E /* HomeViewController.swift in Sources */,
 				98F241C920A68194001FD887 /* CustomPageControllerDataSource.swift in Sources */,
+				987648BD20AE6094004FF205 /* ValueCellDataSource.swift in Sources */,
 				98A50CEA209FCDA70090FC8E /* LineupPlayerCell.swift in Sources */,
 				98A50CF5209FCF7A0090FC8E /* ActivityIndicator.swift in Sources */,
 				98A50CF8209FCF7A0090FC8E /* FontBook.swift in Sources */,

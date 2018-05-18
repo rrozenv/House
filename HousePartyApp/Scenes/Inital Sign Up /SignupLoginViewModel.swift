@@ -13,11 +13,16 @@ protocol SignupLoginViewModelInputs {
 }
 
 protocol SignupLoginViewModelOutputs {
-    var welcomeText: Driver<(header: String, body: String)> { get }
+    var welcomeText: Driver<(header: FontMixer, body: String)> { get }
 }
 
 protocol SignupLoginViewModelType {
     var inputs: SignupLoginViewModelInputs { get }
+}
+
+struct FontMixer {
+    let originalText: String
+    let fontDict: [String: UIFont]
 }
 
 final class SignupLoginViewModel: SignupLoginViewModelType, SignupLoginViewModelInputs, SignupLoginViewModelOutputs {
@@ -34,7 +39,7 @@ final class SignupLoginViewModel: SignupLoginViewModelType, SignupLoginViewModel
 
 //MARK: - Outputs
     var outputs: SignupLoginViewModelOutputs { return self }
-    let welcomeText: Driver<(header: String, body: String)>
+    let welcomeText: Driver<(header: FontMixer, body: String)>
     
 //MARK: - Init
     init(router: SignUpFlowCoordinator, userService: UserService = UserService()) {
@@ -54,24 +59,14 @@ final class SignupLoginViewModel: SignupLoginViewModelType, SignupLoginViewModel
         self.quickLoginTappedInput = _quickLoginTappedInput.asObserver()
         
 //MARK: - Outputs
-        let headerText = "Welcome to Outpost!"
-        let bodyText = "The year is 2075…You are the commander of an outpost on an alien planet. Do you have what it takes to build a thriving democracy?"
+        let headerTextDict: [String: UIFont] = [
+            "Ready to": FontBook.AvenirMedium.of(size: 14),
+            "PARTY?": FontBook.AvenirBlack.of(size: 18),
+        ]
+        let bodyText = "You will bring your friends. \n She will bring her friends. \n We will plan the time & place for you. \n Ready to party?"
+        let headerText = FontMixer(originalText: "Ready to PARTY?",
+                                   fontDict: headerTextDict)
         self.welcomeText = Driver.of((header: headerText, body: bodyText))
-        
-        router.didFinishSignup
-            .map {
-                User(fullName: $0.fullName!,
-                     birthDate: "TesDate",
-                     phoneNumber: $0.phoneNumber!)
-            }
-            .flatMapLatest { userService.create(user: $0) }
-            .do(onNext: { (newUser) in
-                AppController.shared.currentUser = newUser
-                NotificationCenter.default
-                    .post(name: Notification.Name.createHomeVc, object: nil)
-            })
-            .subscribe()
-            .disposed(by: disposeBag)
         
 //MARK: - Routing
         _signupTappedInput.asObservable()

@@ -19,22 +19,22 @@ class UserDetailsViewController: UIViewController, KeyboardAvoidable, BindableTy
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
+        resignKeyboardOnViewTouch()
         setupNextButton()
         setupBodyTextView()
         setupTitleTextView()
         setupOnboardingView()
         bindKeyboardNotifications(bottomOffset: 100)
-        resignKeyboardOnViewTouch()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        firstNameTextField.becomeFirstResponder()
+        //firstNameTextField.becomeFirstResponder()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        firstNameTextField.resignFirstResponder()
+        //firstNameTextField.resignFirstResponder()
     }
     
 //    override var inputAccessoryView: UIView? { get { return nextButton } }
@@ -64,8 +64,8 @@ class UserDetailsViewController: UIViewController, KeyboardAvoidable, BindableTy
             .disposed(by: disposeBag)
         
         viewModel.outputs.inputIsValid
-            .drive(onNext: { [weak self] in
-                self?.nextButton.isHidden = $0 ? false : true
+            .drive(onNext: { [weak self] _ in
+                self?.nextButton.isHidden = false
             })
             .disposed(by: disposeBag)
     }

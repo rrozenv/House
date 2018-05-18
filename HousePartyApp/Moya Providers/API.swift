@@ -11,7 +11,7 @@ import Moya
 
 enum API {
     case allUsers
-    case createUser(User)
+    case createUser(JSONDictionary)
 }
 
 extension API: TargetType {
@@ -44,7 +44,7 @@ extension API: TargetType {
     var parameters: [String: Any] {
         switch self {
         case .allUsers: return [:]
-        case .createUser(let user): return user.JSON()
+        case .createUser(let body): return body
         }
     }
     

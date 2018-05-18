@@ -19,6 +19,7 @@ struct User: Codable {
     let fullName: String
     let birthDate: String
     let phonenumber: String
+    //let submissons: [Submission]
 }
 
 extension User {
@@ -43,15 +44,24 @@ extension User {
         self.phonenumber = phoneNumber
     }
     
+    func toJSON() -> JSONDictionary {
+        return [
+            "fullName": fullName,
+            "birthDate": birthDate,
+            "phoneNumber": phonenumber
+        ]
+    }
+    
 }
 
 extension User {
-    func JSON() -> [String: Any] {
+    static func JSON(fullName: String,
+                     birthDate: String,
+                     phoneNumber: String) -> [String: Any] {
         return [
-            "_id": _id,
             "fullName": fullName,
-            "birthDate": birthDate.description,
-            "phoneNumber": phonenumber
+            "birthDate": birthDate,
+            "phoneNumber": phoneNumber
         ]
     }
 }

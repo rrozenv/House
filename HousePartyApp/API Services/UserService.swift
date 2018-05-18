@@ -21,7 +21,7 @@ struct UserService {
             .map { $0.users }
     }
     
-    func create(user: User) -> Observable<User> {
+    func create(user: JSONDictionary) -> Observable<User> {
         return provider.rx
             .request(.createUser(user)).asObservable()
             .map(User.self)

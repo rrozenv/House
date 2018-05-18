@@ -12,6 +12,30 @@ import RxCocoa
 import RxSwift
 import SnapKit
 
+protocol CoreUser {
+    var fullName: String { get }
+    var phoneNumber: String { get }
+}
+
+enum SubmissonStatus {
+    case pending, accepted, expired
+}
+
+struct Submission {
+    let leader: User
+    let friends: [CoreUser]
+    let createdAt: Date
+    let status: SubmissonStatus
+    let eventId: Int?
+}
+
+struct Event {
+    let _id: Int
+    let venueName: String
+    let date: Date
+    let attendees: [Submission]
+}
+
 final class HomeViewController: UIViewController, CustomNavBarViewable {
     
     let disposeBag = DisposeBag()
