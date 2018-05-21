@@ -48,9 +48,9 @@ final class SignUpFlowCoordinator {
     }
     
     func toOnboardingFlow() {
-        let vcs = OnboardingInfo.initalOnboardingInfo.map { OnboardingViewController.configuredWith(info: $0)
+        let vcs = OnboardingInfo.initalOnboardingInfo.map { InitialViewController.configuredWith(info: $0)
         }
-        let pageVc = OnboardingPageViewController(viewControllers: vcs)
+        let pageVc = InitialPagingViewController(viewControllers: vcs)
         navigationController?.pushViewController(pageVc, animated: true)
     }
     

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		981B664220B293870089CD96 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981B664120B293870089CD96 /* InitialViewController.swift */; };
+		981B664420B293920089CD96 /* InitialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981B664320B293920089CD96 /* InitialViewModel.swift */; };
 		987648BD20AE6094004FF205 /* ValueCellDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987648BC20AE6094004FF205 /* ValueCellDataSource.swift */; };
 		98A50CA4209F7B7F0090FC8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A50CA3209F7B7F0090FC8E /* AppDelegate.swift */; };
 		98A50CAB209F7B7F0090FC8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98A50CAA209F7B7F0090FC8E /* Assets.xcassets */; };
@@ -37,9 +39,6 @@
 		98EE833420AD204D00EDEBFF /* UITextView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EE833320AD204D00EDEBFF /* UITextView+Ext.swift */; };
 		98F241A620A67F78001FD887 /* CreateUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241A520A67F78001FD887 /* CreateUserViewController.swift */; };
 		98F241A820A67F85001FD887 /* CreateUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241A720A67F85001FD887 /* CreateUserViewModel.swift */; };
-		98F241BA20A680ED001FD887 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241B620A680EC001FD887 /* OnboardingPageViewController.swift */; };
-		98F241BB20A680ED001FD887 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241B720A680ED001FD887 /* OnboardingViewModel.swift */; };
-		98F241BC20A680ED001FD887 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241B820A680ED001FD887 /* OnboardingViewController.swift */; };
 		98F241C820A68194001FD887 /* CustomPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241C620A68193001FD887 /* CustomPageViewController.swift */; };
 		98F241C920A68194001FD887 /* CustomPageControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241C720A68193001FD887 /* CustomPageControllerDataSource.swift */; };
 		98F241CB20A681C3001FD887 /* PageReferenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241CA20A681C3001FD887 /* PageReferenceView.swift */; };
@@ -58,6 +57,7 @@
 		98F241ED20A698AC001FD887 /* PhoneEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241EC20A698AB001FD887 /* PhoneEntryViewModel.swift */; };
 		98F241F020A6AC2C001FD887 /* KeyboardAvoidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241EF20A6AC2C001FD887 /* KeyboardAvoidable.swift */; };
 		98F241F220A6AC63001FD887 /* UIDevice+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241F120A6AC63001FD887 /* UIDevice+Ext.swift */; };
+		98F75F6E20B2903B00B6AA7D /* InitialPagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F75F6D20B2903B00B6AA7D /* InitialPagingViewController.swift */; };
 		9ADD7D59C4DFAA71449DC559 /* Pods_HousePartyApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA79EDC36E0EAD4BE61BACD1 /* Pods_HousePartyApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +79,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		981B664120B293870089CD96 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		981B664320B293920089CD96 /* InitialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewModel.swift; sourceTree = "<group>"; };
 		987648BC20AE6094004FF205 /* ValueCellDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueCellDataSource.swift; sourceTree = "<group>"; };
 		98A50CA0209F7B7F0090FC8E /* HousePartyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HousePartyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98A50CA3209F7B7F0090FC8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -115,9 +117,6 @@
 		98EE833320AD204D00EDEBFF /* UITextView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Ext.swift"; sourceTree = "<group>"; };
 		98F241A520A67F78001FD887 /* CreateUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserViewController.swift; sourceTree = "<group>"; };
 		98F241A720A67F85001FD887 /* CreateUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserViewModel.swift; sourceTree = "<group>"; };
-		98F241B620A680EC001FD887 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnboardingPageViewController.swift; path = ../../../../../.Trash/OnboardingPageViewController.swift; sourceTree = "<group>"; };
-		98F241B720A680ED001FD887 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnboardingViewModel.swift; path = ../../../../../.Trash/OnboardingViewModel.swift; sourceTree = "<group>"; };
-		98F241B820A680ED001FD887 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnboardingViewController.swift; path = ../../../../../.Trash/OnboardingViewController.swift; sourceTree = "<group>"; };
 		98F241C620A68193001FD887 /* CustomPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPageViewController.swift; sourceTree = "<group>"; };
 		98F241C720A68193001FD887 /* CustomPageControllerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPageControllerDataSource.swift; sourceTree = "<group>"; };
 		98F241CA20A681C3001FD887 /* PageReferenceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageReferenceView.swift; sourceTree = "<group>"; };
@@ -136,6 +135,7 @@
 		98F241EC20A698AB001FD887 /* PhoneEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneEntryViewModel.swift; sourceTree = "<group>"; };
 		98F241EF20A6AC2C001FD887 /* KeyboardAvoidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAvoidable.swift; sourceTree = "<group>"; };
 		98F241F120A6AC63001FD887 /* UIDevice+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Ext.swift"; sourceTree = "<group>"; };
+		98F75F6D20B2903B00B6AA7D /* InitialPagingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialPagingViewController.swift; sourceTree = "<group>"; };
 		A226A5CED91DC43A90E55F0F /* Pods-HousePartyApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HousePartyApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HousePartyApp/Pods-HousePartyApp.debug.xcconfig"; sourceTree = "<group>"; };
 		EA79EDC36E0EAD4BE61BACD1 /* Pods_HousePartyApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HousePartyApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD3281CCEC9649C04993F9B9 /* Pods-HousePartyApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HousePartyApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-HousePartyApp/Pods-HousePartyApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -365,9 +365,9 @@
 		98F241B120A680A8001FD887 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				98F241B620A680EC001FD887 /* OnboardingPageViewController.swift */,
-				98F241B820A680ED001FD887 /* OnboardingViewController.swift */,
-				98F241B720A680ED001FD887 /* OnboardingViewModel.swift */,
+				98F75F6D20B2903B00B6AA7D /* InitialPagingViewController.swift */,
+				981B664120B293870089CD96 /* InitialViewController.swift */,
+				981B664320B293920089CD96 /* InitialViewModel.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -617,12 +617,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				98F241DC20A68625001FD887 /* SignupLoginViewController.swift in Sources */,
-				98F241BA20A680ED001FD887 /* OnboardingPageViewController.swift in Sources */,
+				98F75F6E20B2903B00B6AA7D /* InitialPagingViewController.swift in Sources */,
 				98A50CD6209F81240090FC8E /* UserService.swift in Sources */,
 				98A50CE6209FCD4B0090FC8E /* CustomNavViewable.swift in Sources */,
 				98F241D320A6843B001FD887 /* Palette.swift in Sources */,
 				98F241A820A67F85001FD887 /* CreateUserViewModel.swift in Sources */,
-				98F241BB20A680ED001FD887 /* OnboardingViewModel.swift in Sources */,
 				98A50CEC209FCE3E0090FC8E /* UIViewController+Ext.swift in Sources */,
 				98F241ED20A698AC001FD887 /* PhoneEntryViewModel.swift in Sources */,
 				98A50CE0209FCD060090FC8E /* BindableType.swift in Sources */,
@@ -630,11 +629,11 @@
 				98A50CA4209F7B7F0090FC8E /* AppDelegate.swift in Sources */,
 				98A50CE2209FCD110090FC8E /* NotificationName+Ext.swift in Sources */,
 				98A50CD4209F80DB0090FC8E /* API.swift in Sources */,
+				981B664220B293870089CD96 /* InitialViewController.swift in Sources */,
 				98F241D720A68506001FD887 /* OnboardingInfo.swift in Sources */,
 				98F241E020A68708001FD887 /* SignUpFlowCoordinator.swift in Sources */,
 				98F241F220A6AC63001FD887 /* UIDevice+Ext.swift in Sources */,
 				98F241D120A683D1001FD887 /* OnboardingView.swift in Sources */,
-				98F241BC20A680ED001FD887 /* OnboardingViewController.swift in Sources */,
 				98A50CEE209FCF000090FC8E /* Constants.swift in Sources */,
 				98EE833420AD204D00EDEBFF /* UITextView+Ext.swift in Sources */,
 				98F241E520A68892001FD887 /* UserDetailsViewModel.swift in Sources */,
@@ -654,6 +653,7 @@
 				98F241F020A6AC2C001FD887 /* KeyboardAvoidable.swift in Sources */,
 				98F241EB20A698A1001FD887 /* PhoneEntryViewController.swift in Sources */,
 				98F241E920A688E0001FD887 /* UITextField+Ext.swift in Sources */,
+				981B664420B293920089CD96 /* InitialViewModel.swift in Sources */,
 				98F241CB20A681C3001FD887 /* PageReferenceView.swift in Sources */,
 				98A50CD2209F7CA90090FC8E /* AppController.swift in Sources */,
 				98A50CDA209FCB050090FC8E /* HomeViewController.swift in Sources */,

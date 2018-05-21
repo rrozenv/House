@@ -57,10 +57,11 @@ extension AppController {
         self.addChild(actingVC, frame: view.frame, animated: true)
     }
 
-    private func toOnboardingFlow() -> UIViewController {
+    private func toOnboardingFlow() -> UINavigationController {
         let vcs = OnboardingInfo.initalOnboardingInfo
-            .map { OnboardingViewController.configuredWith(info: $0) }
-        return OnboardingPageViewController(viewControllers: vcs)
+            .map { InitialViewController.configuredWith(info: $0) }
+        let pagingVc = InitialPagingViewController(viewControllers: vcs)
+        return UINavigationController(rootViewController: pagingVc)
     }
 
     private func createHomeViewController() -> UINavigationController {
