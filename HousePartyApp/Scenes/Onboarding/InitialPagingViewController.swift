@@ -17,6 +17,7 @@ final class InitialPagingViewController: CustomPageViewController {
     private let disposeBag = DisposeBag()
     private var pageIndicatorView: PageIndicatorView!
     private var continueButton: UIButton!
+    private var coordinator: SignUpFlowCoordinator!
     
     override func loadView() {
         super.loadView()
@@ -31,8 +32,9 @@ final class InitialPagingViewController: CustomPageViewController {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
-    init(viewControllers: [UIViewController]) {
+    init(viewControllers: [UIViewController], coordinator: SignUpFlowCoordinator) {
         super.init(nibName: nil, bundle: nil)
+        self.coordinator = coordinator
         self.dataSource = CustomPageControllerDataSource(viewControllers: viewControllers)
     }
     
@@ -41,9 +43,8 @@ final class InitialPagingViewController: CustomPageViewController {
         self.navigationController?.navigationBar.isHidden = true
         configurePagerDataSource()
         continueButton.rx.tap.asObservable()
-            .subscribe(onNext: {
-                let coordinator = SignUpFlowCoordinator(navVc: self.navigationController!)
-                coordinator.toUserDetails()
+            .subscribe(onNext: { [unowned self] in
+                self.coordinator.toSelectCity()
             })
             .disposed(by: disposeBag)
     }

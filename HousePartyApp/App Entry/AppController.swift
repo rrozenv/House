@@ -58,10 +58,10 @@ extension AppController {
     }
 
     private func toOnboardingFlow() -> UINavigationController {
-        let vcs = OnboardingInfo.initalOnboardingInfo
-            .map { InitialViewController.configuredWith(info: $0) }
-        let pagingVc = InitialPagingViewController(viewControllers: vcs)
-        return UINavigationController(rootViewController: pagingVc)
+        let navVc = UINavigationController()
+        let coordinator = SignUpFlowCoordinator(navVc: navVc)
+        coordinator.toOnboardingFlow()
+        return navVc
     }
 
     private func createHomeViewController() -> UINavigationController {

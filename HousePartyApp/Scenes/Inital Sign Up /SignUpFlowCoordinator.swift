@@ -12,10 +12,12 @@ import RxSwift
 
 final class SignupInfo {
     var fullName: String?
+    var city: String?
     var phoneNumber: String?
     
-    init(fullName: String?, phoneNumber: String?) {
+    init(fullName: String?, city: String?, phoneNumber: String?) {
         self.fullName = fullName
+        self.city = city
         self.phoneNumber = phoneNumber
     }
 }
@@ -24,7 +26,7 @@ final class SignUpFlowCoordinator {
     
     private let disposeBag = DisposeBag()
     private weak var navigationController: UINavigationController?
-    private var signupInfo = SignupInfo(fullName: nil, phoneNumber: nil)
+    private var signupInfo = SignupInfo(fullName: nil, city: nil, phoneNumber: nil)
     private var userService: UserService
     
     init(navVc: UINavigationController, userService: UserService = UserService()) {
@@ -32,6 +34,27 @@ final class SignUpFlowCoordinator {
         self.userService = userService
     }
     
+    //MARK: - Onboarding
+    func toOnboardingFlow() {
+        let vcs = OnboardingInfo.initalOnboardingInfo.map { InitialViewController.configuredWith(info: $0)
+        }
+        let pageVc = InitialPagingViewController(viewControllers: vcs, coordinator: self)
+        navigationController?.pushViewController(pageVc, animated: true)
+    }
+    
+    func toSelectCity() {
+        var vc = SelectCityViewController()
+        let viewModel = SelectCityViewModel(coordinator: self)
+        vc.setViewModelBinding(model: viewModel)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func saveCity(_ city: String) {
+        signupInfo.city = city
+        toUserDetails()
+    }
+    
+    //MARK: - First/Last Name
     func toUserDetails() {
         var vc = UserDetailsViewController()
         let viewModel = UserDetailsViewModel(router: self)
@@ -40,6 +63,12 @@ final class SignUpFlowCoordinator {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    func didSaveName(_ fullName: String) {
+        signupInfo.fullName = fullName
+        toPhoneEntry()
+    }
+    
+    //MARK: - Phone
     func toPhoneEntry() {
         var vc = PhoneEntryViewController()
         let viewModel = PhoneEntryViewModel(router: self)
@@ -47,21 +76,13 @@ final class SignUpFlowCoordinator {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    func toOnboardingFlow() {
-        let vcs = OnboardingInfo.initalOnboardingInfo.map { InitialViewController.configuredWith(info: $0)
-        }
-        let pageVc = InitialPagingViewController(viewControllers: vcs)
-        navigationController?.pushViewController(pageVc, animated: true)
-    }
-    
-    func didSaveName(_ fullName: String) {
-        signupInfo.fullName = fullName
-        toPhoneEntry()
-    }
-    
     func didSavePhoneNumber(_ number: String) {
         signupInfo.phoneNumber = number
         createUser()
+    }
+    
+    func toPreviousVC() {
+        navigationController?.popViewController(animated: true)
     }
     
     private func createUser() {
@@ -79,9 +100,5 @@ final class SignUpFlowCoordinator {
             })
             .disposed(by: disposeBag)
     }
-    
-//    func dismiss() {
-//        navigationController?.dismiss(animated: true, completion: nil)
-//    }
-    
+
 }
