@@ -54,6 +54,10 @@ class SelectCityViewController: UIViewController, BindableType, CustomNavBarView
             .filter { [unowned self] _ in self.searchBarView.searchTextField.isFirstResponder }
         viewModel.bindSearchText(searchText$)
         
+        let clearSearchTapped$ = searchBarView.clearButton.rx.tap.asObservable()
+            .do(onNext: { [unowned self] in self.searchBarView.searchTextField.text = nil })
+        viewModel.bindClearSearch(clearSearchTapped$)
+        
         //MARK: - Outputs
         viewModel.displayedCities
             .observeOn(MainScheduler.instance)

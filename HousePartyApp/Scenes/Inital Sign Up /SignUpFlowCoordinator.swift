@@ -11,12 +11,21 @@ import UIKit
 import RxSwift
 
 final class SignupInfo {
-    var fullName: String?
+    var firstName: String?
+    var lastName: String?
     var city: String?
     var phoneNumber: String?
     
-    init(fullName: String?, city: String?, phoneNumber: String?) {
-        self.fullName = fullName
+    init() {
+        self.firstName = nil
+        self.lastName = nil
+        self.city = nil
+        self.phoneNumber = nil
+    }
+    
+    init(firstName: String?, lastName: String, city: String?, phoneNumber: String?) {
+        self.firstName = firstName
+        self.lastName = lastName
         self.city = city
         self.phoneNumber = phoneNumber
     }
@@ -24,56 +33,65 @@ final class SignupInfo {
 
 final class SignUpFlowCoordinator {
     
+    enum Screen: Int {
+        case inital
+        case selectCity
+        case firstName
+        case lastName
+    }
+    
     private let disposeBag = DisposeBag()
     private weak var navigationController: UINavigationController?
-    private var signupInfo = SignupInfo(fullName: nil, city: nil, phoneNumber: nil)
+    private var signupInfo = SignupInfo()
     private var userService: UserService
+    private let screenOrder: [Screen]
+    private var screenIndex = -1
     
-    init(navVc: UINavigationController, userService: UserService = UserService()) {
+    init(navVc: UINavigationController,
+         screenOrder: [Screen],
+         userService: UserService = UserService()) {
         self.navigationController = navVc
+        self.screenOrder = screenOrder
         self.userService = userService
     }
     
-    //MARK: - Onboarding
-    func toOnboardingFlow() {
-        let vcs = OnboardingInfo.initalOnboardingInfo.map { InitialViewController.configuredWith(info: $0)
+    func toNextScreen() {
+        guard screenIndex < screenOrder.count - 1 else {
+            print("No more screens") ; return
         }
-        let pageVc = InitialPagingViewController(viewControllers: vcs, coordinator: self)
-        navigationController?.pushViewController(pageVc, animated: true)
+        screenIndex += 1
+        navigateTo(screen: screenOrder[screenIndex])
     }
     
-    func toSelectCity() {
-        var vc = SelectCityViewController()
-        let viewModel = SelectCityViewModel(coordinator: self)
-        vc.setViewModelBinding(model: viewModel)
-        navigationController?.pushViewController(vc, animated: true)
+    func toPreviousScreen() {
+        guard screenIndex != 0 else {
+            print("This is the first screen") ; return
+        }
+        screenIndex -= 1
+        navigationController?.popViewController(animated: true)
     }
     
+    private func navigateTo(screen: Screen) {
+        switch screen {
+        case .inital: toOnboardingFlow()
+        case .selectCity: toSelectCity()
+        case .firstName: toNameEntry(nameType: .first)
+        case .lastName: toNameEntry(nameType: .last)
+        }
+    }
+    
+    //MARK: - Saving Functions
     func saveCity(_ city: String) {
         signupInfo.city = city
-        toUserDetails()
+        toNextScreen()
     }
     
-    //MARK: - First/Last Name
-    func toUserDetails() {
-        var vc = UserDetailsViewController()
-        let viewModel = UserDetailsViewModel(router: self)
-        vc.setViewModelBinding(model: viewModel)
-        viewModel.inputs.viewDidLoadInput.onNext(())
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func didSaveName(_ fullName: String) {
-        signupInfo.fullName = fullName
-        toPhoneEntry()
-    }
-    
-    //MARK: - Phone
-    func toPhoneEntry() {
-        var vc = PhoneEntryViewController()
-        let viewModel = PhoneEntryViewModel(router: self)
-        vc.setViewModelBinding(model: viewModel)
-        navigationController?.pushViewController(vc, animated: true)
+    func didSaveName(_ name: String, nameType: EnterNameViewModel.NameType) {
+        switch nameType {
+        case .first: signupInfo.firstName = name
+        case .last: signupInfo.lastName = name
+        }
+        toNextScreen()
     }
     
     func didSavePhoneNumber(_ number: String) {
@@ -81,12 +99,37 @@ final class SignUpFlowCoordinator {
         createUser()
     }
     
-    func toPreviousVC() {
-        navigationController?.popViewController(animated: true)
+    //MARK: - Navigating
+    private func toOnboardingFlow() {
+        let vcs = OnboardingInfo.initalOnboardingInfo.map { InitialViewController.configuredWith(info: $0)
+        }
+        let pageVc = InitialPagingViewController(viewControllers: vcs, coordinator: self)
+        navigationController?.pushViewController(pageVc, animated: true)
+    }
+    
+    private func toSelectCity() {
+        var vc = SelectCityViewController()
+        let viewModel = SelectCityViewModel(coordinator: self)
+        vc.setViewModelBinding(model: viewModel)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func toNameEntry(nameType: EnterNameViewModel.NameType) {
+        var vc = EnterNameViewController()
+        let viewModel = EnterNameViewModel(coordinator: self, nameType: nameType)
+        vc.setViewModelBinding(model: viewModel)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+
+    func toPhoneEntry() {
+        var vc = PhoneEntryViewController()
+        let viewModel = PhoneEntryViewModel(router: self)
+        vc.setViewModelBinding(model: viewModel)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     private func createUser() {
-        guard let name = signupInfo.fullName,
+        guard let name = signupInfo.firstName,
              let phone = signupInfo.phoneNumber else {
                 print("Missing user creds!") ; return
         }

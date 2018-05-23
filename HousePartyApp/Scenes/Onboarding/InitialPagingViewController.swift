@@ -44,7 +44,7 @@ final class InitialPagingViewController: CustomPageViewController {
         configurePagerDataSource()
         continueButton.rx.tap.asObservable()
             .subscribe(onNext: { [unowned self] in
-                self.coordinator.toSelectCity()
+                self.coordinator.toNextScreen()
             })
             .disposed(by: disposeBag)
     }

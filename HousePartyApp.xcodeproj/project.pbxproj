@@ -41,6 +41,8 @@
 		98A7691620B319C0007FA2DA /* TitleSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A7691520B319C0007FA2DA /* TitleSelectionCell.swift */; };
 		98A7691820B31FFB007FA2DA /* TitleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A7691720B31FFB007FA2DA /* TitleHeaderView.swift */; };
 		98A7691A20B326F0007FA2DA /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A7691920B326F0007FA2DA /* SearchBarView.swift */; };
+		98C8359320B5C90E003BB2C7 /* EnterNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C8359220B5C90E003BB2C7 /* EnterNameViewController.swift */; };
+		98C8359520B5C91B003BB2C7 /* EnterNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C8359420B5C91B003BB2C7 /* EnterNameViewModel.swift */; };
 		98EE833420AD204D00EDEBFF /* UITextView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EE833320AD204D00EDEBFF /* UITextView+Ext.swift */; };
 		98F241A620A67F78001FD887 /* CreateUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241A520A67F78001FD887 /* CreateUserViewController.swift */; };
 		98F241A820A67F85001FD887 /* CreateUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241A720A67F85001FD887 /* CreateUserViewModel.swift */; };
@@ -53,8 +55,6 @@
 		98F241D320A6843B001FD887 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241D220A6843B001FD887 /* Palette.swift */; };
 		98F241D720A68506001FD887 /* OnboardingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241D620A68506001FD887 /* OnboardingInfo.swift */; };
 		98F241E020A68708001FD887 /* SignUpFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241DF20A68708001FD887 /* SignUpFlowCoordinator.swift */; };
-		98F241E520A68892001FD887 /* UserDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241E220A68891001FD887 /* UserDetailsViewModel.swift */; };
-		98F241E720A68892001FD887 /* UserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241E420A68892001FD887 /* UserDetailsViewController.swift */; };
 		98F241E920A688E0001FD887 /* UITextField+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241E820A688E0001FD887 /* UITextField+Ext.swift */; };
 		98F241EB20A698A1001FD887 /* PhoneEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241EA20A698A1001FD887 /* PhoneEntryViewController.swift */; };
 		98F241ED20A698AC001FD887 /* PhoneEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241EC20A698AB001FD887 /* PhoneEntryViewModel.swift */; };
@@ -122,6 +122,8 @@
 		98A7691520B319C0007FA2DA /* TitleSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSelectionCell.swift; sourceTree = "<group>"; };
 		98A7691720B31FFB007FA2DA /* TitleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleHeaderView.swift; sourceTree = "<group>"; };
 		98A7691920B326F0007FA2DA /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		98C8359220B5C90E003BB2C7 /* EnterNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNameViewController.swift; sourceTree = "<group>"; };
+		98C8359420B5C91B003BB2C7 /* EnterNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNameViewModel.swift; sourceTree = "<group>"; };
 		98EE833320AD204D00EDEBFF /* UITextView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Ext.swift"; sourceTree = "<group>"; };
 		98F241A520A67F78001FD887 /* CreateUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserViewController.swift; sourceTree = "<group>"; };
 		98F241A720A67F85001FD887 /* CreateUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserViewModel.swift; sourceTree = "<group>"; };
@@ -134,8 +136,6 @@
 		98F241D220A6843B001FD887 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		98F241D620A68506001FD887 /* OnboardingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingInfo.swift; sourceTree = "<group>"; };
 		98F241DF20A68708001FD887 /* SignUpFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpFlowCoordinator.swift; sourceTree = "<group>"; };
-		98F241E220A68891001FD887 /* UserDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailsViewModel.swift; sourceTree = "<group>"; };
-		98F241E420A68892001FD887 /* UserDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailsViewController.swift; sourceTree = "<group>"; };
 		98F241E820A688E0001FD887 /* UITextField+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Ext.swift"; sourceTree = "<group>"; };
 		98F241EA20A698A1001FD887 /* PhoneEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneEntryViewController.swift; sourceTree = "<group>"; };
 		98F241EC20A698AB001FD887 /* PhoneEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneEntryViewModel.swift; sourceTree = "<group>"; };
@@ -276,6 +276,15 @@
 			path = "Table Cells";
 			sourceTree = "<group>";
 		};
+		98C8359120B5C8E5003BB2C7 /* Select Name */ = {
+			isa = PBXGroup;
+			children = (
+				98C8359220B5C90E003BB2C7 /* EnterNameViewController.swift */,
+				98C8359420B5C91B003BB2C7 /* EnterNameViewModel.swift */,
+			);
+			path = "Select Name";
+			sourceTree = "<group>";
+		};
 		98F2419A20A67DF3001FD887 /* App Entry */ = {
 			isa = PBXGroup;
 			children = (
@@ -300,6 +309,7 @@
 				98F241D820A685F0001FD887 /* Inital Sign Up  */,
 				98F241B120A680A8001FD887 /* Onboarding */,
 				98A7690F20B314D5007FA2DA /* Select City */,
+				98C8359120B5C8E5003BB2C7 /* Select Name */,
 				98F241E120A6884B001FD887 /* User Details */,
 				98F241EE20A6AB43001FD887 /* Phone Entry */,
 				98F241A320A67F3B001FD887 /* List Users */,
@@ -427,8 +437,6 @@
 		98F241E120A6884B001FD887 /* User Details */ = {
 			isa = PBXGroup;
 			children = (
-				98F241E420A68892001FD887 /* UserDetailsViewController.swift */,
-				98F241E220A68891001FD887 /* UserDetailsViewModel.swift */,
 			);
 			path = "User Details";
 			sourceTree = "<group>";
@@ -641,6 +649,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98C8359320B5C90E003BB2C7 /* EnterNameViewController.swift in Sources */,
 				98F75F6E20B2903B00B6AA7D /* InitialPagingViewController.swift in Sources */,
 				98A50CD6209F81240090FC8E /* UserService.swift in Sources */,
 				98A50CE6209FCD4B0090FC8E /* CustomNavViewable.swift in Sources */,
@@ -654,6 +663,7 @@
 				98F241C820A68194001FD887 /* CustomPageViewController.swift in Sources */,
 				98A50CA4209F7B7F0090FC8E /* AppDelegate.swift in Sources */,
 				98A50CE2209FCD110090FC8E /* NotificationName+Ext.swift in Sources */,
+				98C8359520B5C91B003BB2C7 /* EnterNameViewModel.swift in Sources */,
 				98A50CD4209F80DB0090FC8E /* API.swift in Sources */,
 				981B664220B293870089CD96 /* InitialViewController.swift in Sources */,
 				98F241D720A68506001FD887 /* OnboardingInfo.swift in Sources */,
@@ -662,10 +672,8 @@
 				98F241D120A683D1001FD887 /* OnboardingView.swift in Sources */,
 				98A50CEE209FCF000090FC8E /* Constants.swift in Sources */,
 				98EE833420AD204D00EDEBFF /* UITextView+Ext.swift in Sources */,
-				98F241E520A68892001FD887 /* UserDetailsViewModel.swift in Sources */,
 				98A50CFD209FD0740090FC8E /* Observable+Ext.swift in Sources */,
 				98A50CFB209FCFFC0090FC8E /* UIButton+Ext.swift in Sources */,
-				98F241E720A68892001FD887 /* UserDetailsViewController.swift in Sources */,
 				98F241A620A67F78001FD887 /* CreateUserViewController.swift in Sources */,
 				98F241CD20A68252001FD887 /* BackButtonNavView.swift in Sources */,
 				98A50CDC209FCBC00090FC8E /* UsersViewController.swift in Sources */,

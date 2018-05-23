@@ -59,8 +59,10 @@ extension AppController {
 
     private func toOnboardingFlow() -> UINavigationController {
         let navVc = UINavigationController()
-        let coordinator = SignUpFlowCoordinator(navVc: navVc)
-        coordinator.toOnboardingFlow()
+        let coordinator =
+            SignUpFlowCoordinator(navVc: navVc,
+                                  screenOrder: [.inital, .selectCity, .firstName, .lastName])
+        coordinator.toNextScreen()
         return navVc
     }
 

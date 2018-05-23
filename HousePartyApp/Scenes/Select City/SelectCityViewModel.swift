@@ -39,6 +39,14 @@ struct SelectCityViewModel {
             .disposed(by: disposeBag)
     }
     
+    func bindClearSearch(_ observable: Observable<Void>) {
+        observable
+            .subscribe(onNext: {
+                self.cities.value = Constants.availableCities
+            })
+            .disposed(by: disposeBag)
+    }
+    
     func bindDidSelectCity(_ observable: Observable<String>) {
         observable
             .subscribe(onNext: { self.coordinator.saveCity($0) })
@@ -47,7 +55,7 @@ struct SelectCityViewModel {
     
     func bindBackButton(_ observable: Observable<Void>) {
         observable
-            .subscribe(onNext: { self.coordinator.toPreviousVC() })
+            .subscribe(onNext: { self.coordinator.toPreviousScreen() })
             .disposed(by: disposeBag)
     }
 }
