@@ -38,6 +38,8 @@ final class SignUpFlowCoordinator {
         case selectCity
         case firstName
         case lastName
+        case phoneNumber
+        case phoneVerification
     }
     
     private let disposeBag = DisposeBag()
@@ -77,6 +79,8 @@ final class SignUpFlowCoordinator {
         case .selectCity: toSelectCity()
         case .firstName: toNameEntry(nameType: .first)
         case .lastName: toNameEntry(nameType: .last)
+        case .phoneNumber: toPhoneEntry()
+        case .phoneVerification: toPhoneVerification()
         }
     }
     
@@ -96,7 +100,12 @@ final class SignUpFlowCoordinator {
     
     func didSavePhoneNumber(_ number: String) {
         signupInfo.phoneNumber = number
-        createUser()
+        toNextScreen()
+    }
+    
+    func didVerifyPhoneNumberCode() {
+        NotificationCenter.default.post(name: Notification.Name.createHomeVc, object: nil)
+        //createUser()
     }
     
     //MARK: - Navigating
@@ -121,9 +130,16 @@ final class SignUpFlowCoordinator {
         navigationController?.pushViewController(vc, animated: true)
     }
 
-    func toPhoneEntry() {
+    private func toPhoneEntry() {
         var vc = PhoneEntryViewController()
-        let viewModel = PhoneEntryViewModel(router: self)
+        let viewModel = PhoneEntryViewModel(coordinator: self)
+        vc.setViewModelBinding(model: viewModel)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func toPhoneVerification() {
+        var vc = PhoneVerificationViewController()
+        let viewModel = PhoneVerificationViewModel(coordinator: self)
         vc.setViewModelBinding(model: viewModel)
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -136,7 +152,6 @@ final class SignUpFlowCoordinator {
         let user = User(fullName: name,
                         birthDate: "Test Birthday",
                         phoneNumber: phone)
-        
         userService.create(user: user.toJSON())
             .subscribe(onNext: {
                 print("Created user: \($0.fullName)")

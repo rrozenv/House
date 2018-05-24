@@ -43,7 +43,6 @@ extension AppController {
     fileprivate func addNotificationObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(switchViewController(with:)), name: .createHomeVc, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(switchViewController(with:)), name: .logout, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(switchViewController(with:)), name: .startGame, object: nil)
     }
     
 }
@@ -61,7 +60,7 @@ extension AppController {
         let navVc = UINavigationController()
         let coordinator =
             SignUpFlowCoordinator(navVc: navVc,
-                                  screenOrder: [.inital, .selectCity, .firstName, .lastName])
+                                  screenOrder: [.inital, .selectCity, .firstName, .lastName, .phoneNumber, .phoneVerification])
         coordinator.toNextScreen()
         return navVc
     }

@@ -12,11 +12,17 @@ import RxSwift
 import RxCocoa
 import SnapKit
 
+struct ViewConst {
+    static let inset: CGFloat = 24.0
+    static let rectButtonHeight: CGFloat = 56.0
+    static let regularTFPadding: CGFloat = 15.0
+}
+
 final class InitialPagingViewController: CustomPageViewController {
     
     private let disposeBag = DisposeBag()
     private var pageIndicatorView: PageIndicatorView!
-    private var continueButton: UIButton!
+    private var continueButton: ShadowButton!
     private var coordinator: SignUpFlowCoordinator!
     
     override func loadView() {
@@ -66,8 +72,8 @@ final class InitialPagingViewController: CustomPageViewController {
 extension InitialPagingViewController {
     
     private func setupContinueButton() {
-        continueButton = UIButton()
-        continueButton.style(title: "Create Account", font: FontBook.AvenirHeavy.of(size: 14), backColor: Palette.aqua.color, titleColor: .white)
+        continueButton = ShadowButton()
+        continueButton.style(title: "Create Account")
         
         view.addSubview(continueButton)
         continueButton.snp.makeConstraints { (make) in

@@ -1,22 +1,21 @@
 //
-//  EnterNameViewController.swift
+//  PhoneVerificationViewController.swift
 //  HousePartyApp
 //
-//  Created by Robert Rozenvasser on 5/23/18.
+//  Created by Robert Rozenvasser on 5/24/18.
 //  Copyright © 2018 Cluk Labs. All rights reserved.
 //
 
 import Foundation
-import UIKit
 import RxSwift
 import RxCocoa
 import SnapKit
 
-class EnterNameViewController: UIViewController, BindableType, CustomNavBarViewable, KeyboardAvoidable {
+class PhoneVerificationViewController: UIViewController, BindableType, CustomNavBarViewable, KeyboardAvoidable {
     
     private var titleHeaderView: TitleHeaderView!
     private var textField: StyledTextField!
-    private var nextButton: UIButton!
+    private var nextButton: ShadowButton!
     private var containerStackView: UIStackView!
     var navView: BackButtonNavView = BackButtonNavView.blackArrow
     var navBackgroundView: UIView = UIView()
@@ -24,12 +23,11 @@ class EnterNameViewController: UIViewController, BindableType, CustomNavBarViewa
     var latestKeyboardHeight: CGFloat = 0
     
     let disposeBag = DisposeBag()
-    var viewModel: EnterNameViewModel!
+    var viewModel: PhoneVerificationViewModel!
     
     override func loadView() {
         super.loadView()
         self.view.backgroundColor = .white
-        //resignKeyboardOnViewTouch()
         setupNavBar()
         navView.containerView.backgroundColor = Palette.lightGrey.color
         navBackgroundView.backgroundColor = Palette.lightGrey.color
@@ -45,7 +43,7 @@ class EnterNameViewController: UIViewController, BindableType, CustomNavBarViewa
         textField.textField.becomeFirstResponder()
     }
     
-    deinit { print("EnterNameViewController deinit") }
+    deinit { print("PhoneVerificationViewController deinit") }
     
     func bindViewModel() {
         let backTapped$ = navView.backButton.rx.tap.asObservable()
@@ -61,7 +59,7 @@ class EnterNameViewController: UIViewController, BindableType, CustomNavBarViewa
             .do(onNext: { [unowned self] in self.textField.textField.text = nil })
         viewModel.bindClearButton(clearTapped$)
         
-        viewModel.isNextButtonEnabled
+        viewModel.isCodeValid
             .drive(onNext: { [unowned self] in
                 self.textField.clearButton.isHidden = $0 ? false : true
                 self.nextButton.isEnabled = $0
@@ -79,36 +77,33 @@ class EnterNameViewController: UIViewController, BindableType, CustomNavBarViewa
     
     private func setupTitleHeaderView() {
         titleHeaderView = TitleHeaderView()
-        
-        self.view.addSubview(titleHeaderView)
-        titleHeaderView.snp.makeConstraints { (make) in
-            make.height.equalTo(60)
-            make.left.right.equalTo(view)
-            make.top.equalTo(navView.snp.bottom)
-        }
+        titleHeaderView.snp.makeConstraints { $0.height.equalTo(TitleHeaderView.height) }
     }
     
     private func setupTextField() {
-        textField = StyledTextField(style: .underline)
-        textField.textField.style(placeHolder: "Enter Name", font: FontBook.AvenirMedium.of(size: 14), backColor: .white, titleColor: .black)
+        textField = StyledTextField(style: .underline,
+                                    inputType: .regularText,
+                                    alignment: .center,
+                                    padding: 0)
+        textField.textField.style(placeHolder: "Enter Phone Number", font: FontBook.AvenirMedium.of(size: 14), backColor: .white, titleColor: .black)
     }
     
     private func setupNextButton() {
-        nextButton = UIButton()
-        nextButton.style(title: "Next", font: FontBook.buttonTitle, backColor: .yellow, titleColor: .white)
-        nextButton.snp.makeConstraints { $0.height.equalTo(50) }
+        nextButton = ShadowButton()
+        nextButton.style(title: "Next")
+        nextButton.snp.makeConstraints { $0.height.equalTo(ViewConst.rectButtonHeight) }
     }
     
     private func setupContainerStackView() {
-        containerStackView = UIStackView(arrangedSubviews: [textField, nextButton])
+        containerStackView = UIStackView(arrangedSubviews: [titleHeaderView, textField, nextButton])
         containerStackView.axis = .vertical
         containerStackView.distribution = .equalSpacing
         containerStackView.spacing = 30.0
         
         self.view.addSubview(containerStackView)
         containerStackView.snp.makeConstraints { (make) in
-            make.left.equalTo(view).offset(20)
-            make.right.equalTo(view).offset(-20)
+            make.left.equalTo(view).offset(ViewConst.inset)
+            make.right.equalTo(view).offset(-ViewConst.inset)
             self.bottomConstraint = make.bottom.equalTo(view).offset(-100).constraint
         }
     }

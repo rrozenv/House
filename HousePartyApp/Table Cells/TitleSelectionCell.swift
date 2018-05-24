@@ -12,7 +12,8 @@ import UIKit
 final class TitleSelectionCell: UITableViewCell {
     
     // MARK: - Properties
-    static var defaultReusableId: String = "UserContactTableCell"
+    static let defaultReusableId: String = "UserContactTableCell"
+    static let height: CGFloat = 60.0
     private var containerView: UIView!
     private var mainLabel: UILabel!
     private var circleBorderView: UIView!

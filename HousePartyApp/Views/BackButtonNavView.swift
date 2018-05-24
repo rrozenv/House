@@ -60,7 +60,7 @@ extension BackButtonNavView {
     static var blackArrow: BackButtonNavView {
         return BackButtonNavView(backButtonImage: #imageLiteral(resourceName: "IC_BackArrow_Black"),
                                  imageSize: CGSize(width: 9, height: 17),
-                                 leftMargin: 20)
+                                 leftMargin: ViewConst.inset)
     }
     
 //    static var blackX: BackButtonNavView {

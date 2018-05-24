@@ -10,8 +10,6 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-
-
 struct EnterNameViewModel {
     
     enum NameType {

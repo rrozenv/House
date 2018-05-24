@@ -9,6 +9,42 @@
 import Foundation
 import UIKit
 
+final class ShadowButton: UIButton {
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    init() {
+        super.init(frame: .zero)
+        self.layer.cornerRadius = 5.0
+        self.layer.masksToBounds = true
+        self.dropShadow()
+    }
+    
+}
+
+final class ButtonLabel: UIButton {
+    
+    var label: UILabel!
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    init() {
+        super.init(frame: .zero)
+        self.setupLabel()
+    }
+    
+    private func setupLabel() {
+        label = UILabel()
+        self.addSubview(label)
+        label.snp.makeConstraints { (make) in make.edges.equalTo(self) }
+    }
+    
+}
+
 final class StyledTextField: UIView {
     
     enum Style {
@@ -16,23 +52,33 @@ final class StyledTextField: UIView {
         case underline
     }
     
+    enum InputType {
+        case regularText
+        case phoneNumber
+    }
+    
     var textField: PaddedTextField!
     var underlineView: UIView!
     var clearButton: UIButton!
+    var countryCodeButton: ButtonLabel?
     
     //MARK: Initalizer Setup
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(style: Style) {
+    init(style: Style, inputType: InputType, alignment: NSTextAlignment, padding: CGFloat) {
         super.init(frame: .zero)
-        setupSearchTextfield()
+        setupSearchTextfield(padding: padding, alignment: alignment)
         setupUnderlineView()
         setupStackView()
         setupClearButton()
         switch style {
         case .background: underlineView.isHidden = true
+        default: break
+        }
+        switch inputType {
+        case .phoneNumber: setupCountryCodeButton()
         default: break
         }
     }
@@ -41,8 +87,9 @@ final class StyledTextField: UIView {
 
 extension StyledTextField {
     
-    private func setupSearchTextfield() {
-        textField = PaddedTextField(padding: 15)
+    private func setupSearchTextfield(padding: CGFloat, alignment: NSTextAlignment) {
+        textField = PaddedTextField(padding: padding)
+        textField.textAlignment = alignment
         textField.snp.makeConstraints { $0.height.equalTo(50) }
     }
     
@@ -60,6 +107,17 @@ extension StyledTextField {
         clearButton.snp.makeConstraints { (make) in
             make.right.equalTo(textField).offset(-10)
             make.width.height.equalTo(20)
+            make.centerY.equalTo(textField)
+        }
+    }
+    
+    private func setupCountryCodeButton() {
+        textField.padding.left = 30.0
+        countryCodeButton = ButtonLabel()
+        
+        self.addSubview(countryCodeButton!)
+        countryCodeButton!.snp.makeConstraints { (make) in
+            make.left.equalTo(textField)
             make.centerY.equalTo(textField)
         }
     }

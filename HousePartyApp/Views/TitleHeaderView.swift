@@ -12,6 +12,7 @@ import UIKit
 final class TitleHeaderView: UIView {
     
     // MARK: - Properties
+    static let height: CGFloat = 60.0
     private var containerView: UIView!
     var mainLabel: UILabel!
     

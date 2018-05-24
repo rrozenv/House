@@ -76,14 +76,13 @@ class SelectCityViewController: UIViewController, BindableType, CustomNavBarView
             make.left.equalTo(navView.backButton.snp.right).offset(15)
             make.right.equalTo(view).offset(-15)
             make.centerY.equalTo(navView)
-            make.height.equalTo(50)
+            make.height.equalTo(ViewConst.rectButtonHeight)
         }
     }
     
     private func setupTableView() {
         tableView = UITableView(frame: CGRect.zero, style: .plain)
         tableView.register(TitleSelectionCell.self, forCellReuseIdentifier: TitleSelectionCell.defaultReusableId)
-        //tableView.delegate = self
         tableView.separatorStyle = .singleLine
         tableView.keyboardDismissMode = .onDrag
         
@@ -99,11 +98,11 @@ class SelectCityViewController: UIViewController, BindableType, CustomNavBarView
 extension SelectCityViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60.0
+        return TitleSelectionCell.height
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 60.0
+        return TitleHeaderView.height
     }
 
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

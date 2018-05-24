@@ -43,6 +43,10 @@
 		98A7691A20B326F0007FA2DA /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A7691920B326F0007FA2DA /* SearchBarView.swift */; };
 		98C8359320B5C90E003BB2C7 /* EnterNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C8359220B5C90E003BB2C7 /* EnterNameViewController.swift */; };
 		98C8359520B5C91B003BB2C7 /* EnterNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C8359420B5C91B003BB2C7 /* EnterNameViewModel.swift */; };
+		98C8359720B6E7EF003BB2C7 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C8359620B6E7EF003BB2C7 /* String+Ext.swift */; };
+		98C8359A20B6ED1F003BB2C7 /* PhoneVerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C8359920B6ED1F003BB2C7 /* PhoneVerificationViewModel.swift */; };
+		98C8359C20B6EE08003BB2C7 /* PhoneVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C8359B20B6EE08003BB2C7 /* PhoneVerificationViewController.swift */; };
+		98C835A020B6F439003BB2C7 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C8359F20B6F439003BB2C7 /* UIView+Ext.swift */; };
 		98EE833420AD204D00EDEBFF /* UITextView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EE833320AD204D00EDEBFF /* UITextView+Ext.swift */; };
 		98F241A620A67F78001FD887 /* CreateUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241A520A67F78001FD887 /* CreateUserViewController.swift */; };
 		98F241A820A67F85001FD887 /* CreateUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241A720A67F85001FD887 /* CreateUserViewModel.swift */; };
@@ -124,6 +128,10 @@
 		98A7691920B326F0007FA2DA /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		98C8359220B5C90E003BB2C7 /* EnterNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNameViewController.swift; sourceTree = "<group>"; };
 		98C8359420B5C91B003BB2C7 /* EnterNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNameViewModel.swift; sourceTree = "<group>"; };
+		98C8359620B6E7EF003BB2C7 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		98C8359920B6ED1F003BB2C7 /* PhoneVerificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerificationViewModel.swift; sourceTree = "<group>"; };
+		98C8359B20B6EE08003BB2C7 /* PhoneVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerificationViewController.swift; sourceTree = "<group>"; };
+		98C8359F20B6F439003BB2C7 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		98EE833320AD204D00EDEBFF /* UITextView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Ext.swift"; sourceTree = "<group>"; };
 		98F241A520A67F78001FD887 /* CreateUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserViewController.swift; sourceTree = "<group>"; };
 		98F241A720A67F85001FD887 /* CreateUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserViewModel.swift; sourceTree = "<group>"; };
@@ -207,10 +215,10 @@
 			isa = PBXGroup;
 			children = (
 				98F2419A20A67DF3001FD887 /* App Entry */,
+				98F2419E20A67E8B001FD887 /* Models */,
 				98F2419B20A67E38001FD887 /* Root Nav Controller */,
 				98F2419C20A67E5B001FD887 /* Scenes */,
 				98A7691420B3171A007FA2DA /* Table Cells */,
-				98F2419E20A67E8B001FD887 /* Models */,
 				98F2419F20A67E9D001FD887 /* API Services */,
 				98F2419D20A67E7E001FD887 /* Moya Providers */,
 				98F241A220A67F0C001FD887 /* Protocols */,
@@ -285,6 +293,28 @@
 			path = "Select Name";
 			sourceTree = "<group>";
 		};
+		98C8359820B6ECEC003BB2C7 /* Phone Verification */ = {
+			isa = PBXGroup;
+			children = (
+				98C8359B20B6EE08003BB2C7 /* PhoneVerificationViewController.swift */,
+				98C8359920B6ED1F003BB2C7 /* PhoneVerificationViewModel.swift */,
+			);
+			path = "Phone Verification";
+			sourceTree = "<group>";
+		};
+		98C8359E20B6F0BD003BB2C7 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				98F241DF20A68708001FD887 /* SignUpFlowCoordinator.swift */,
+				98F241D820A685F0001FD887 /* Inital Sign Up  */,
+				98A7690F20B314D5007FA2DA /* Select City */,
+				98C8359120B5C8E5003BB2C7 /* Select Name */,
+				98F241EE20A6AB43001FD887 /* Phone Entry */,
+				98C8359820B6ECEC003BB2C7 /* Phone Verification */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		98F2419A20A67DF3001FD887 /* App Entry */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,12 +336,7 @@
 		98F2419C20A67E5B001FD887 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				98F241D820A685F0001FD887 /* Inital Sign Up  */,
-				98F241B120A680A8001FD887 /* Onboarding */,
-				98A7690F20B314D5007FA2DA /* Select City */,
-				98C8359120B5C8E5003BB2C7 /* Select Name */,
-				98F241E120A6884B001FD887 /* User Details */,
-				98F241EE20A6AB43001FD887 /* Phone Entry */,
+				98C8359E20B6F0BD003BB2C7 /* Onboarding */,
 				98F241A320A67F3B001FD887 /* List Users */,
 				98F241A420A67F48001FD887 /* Create User */,
 			);
@@ -368,6 +393,8 @@
 				98F241E820A688E0001FD887 /* UITextField+Ext.swift */,
 				98F241F120A6AC63001FD887 /* UIDevice+Ext.swift */,
 				98EE833320AD204D00EDEBFF /* UITextView+Ext.swift */,
+				98C8359620B6E7EF003BB2C7 /* String+Ext.swift */,
+				98C8359F20B6F439003BB2C7 /* UIView+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -399,16 +426,6 @@
 			path = "Create User";
 			sourceTree = "<group>";
 		};
-		98F241B120A680A8001FD887 /* Onboarding */ = {
-			isa = PBXGroup;
-			children = (
-				98F75F6D20B2903B00B6AA7D /* InitialPagingViewController.swift */,
-				981B664120B293870089CD96 /* InitialViewController.swift */,
-				981B664320B293920089CD96 /* InitialViewModel.swift */,
-			);
-			path = Onboarding;
-			sourceTree = "<group>";
-		};
 		98F241D420A684A8001FD887 /* Custom Page Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -429,16 +446,11 @@
 		98F241D820A685F0001FD887 /* Inital Sign Up  */ = {
 			isa = PBXGroup;
 			children = (
-				98F241DF20A68708001FD887 /* SignUpFlowCoordinator.swift */,
+				98F75F6D20B2903B00B6AA7D /* InitialPagingViewController.swift */,
+				981B664120B293870089CD96 /* InitialViewController.swift */,
+				981B664320B293920089CD96 /* InitialViewModel.swift */,
 			);
 			path = "Inital Sign Up ";
-			sourceTree = "<group>";
-		};
-		98F241E120A6884B001FD887 /* User Details */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "User Details";
 			sourceTree = "<group>";
 		};
 		98F241EE20A6AB43001FD887 /* Phone Entry */ = {
@@ -652,6 +664,7 @@
 				98C8359320B5C90E003BB2C7 /* EnterNameViewController.swift in Sources */,
 				98F75F6E20B2903B00B6AA7D /* InitialPagingViewController.swift in Sources */,
 				98A50CD6209F81240090FC8E /* UserService.swift in Sources */,
+				98C8359720B6E7EF003BB2C7 /* String+Ext.swift in Sources */,
 				98A50CE6209FCD4B0090FC8E /* CustomNavViewable.swift in Sources */,
 				98A7691120B31500007FA2DA /* SelectCityViewController.swift in Sources */,
 				98F241D320A6843B001FD887 /* Palette.swift in Sources */,
@@ -660,6 +673,7 @@
 				98A7691320B3150F007FA2DA /* SelectCityViewModel.swift in Sources */,
 				98F241ED20A698AC001FD887 /* PhoneEntryViewModel.swift in Sources */,
 				98A50CE0209FCD060090FC8E /* BindableType.swift in Sources */,
+				98C8359A20B6ED1F003BB2C7 /* PhoneVerificationViewModel.swift in Sources */,
 				98F241C820A68194001FD887 /* CustomPageViewController.swift in Sources */,
 				98A50CA4209F7B7F0090FC8E /* AppDelegate.swift in Sources */,
 				98A50CE2209FCD110090FC8E /* NotificationName+Ext.swift in Sources */,
@@ -679,9 +693,11 @@
 				98A50CDC209FCBC00090FC8E /* UsersViewController.swift in Sources */,
 				98A50CF6209FCF7A0090FC8E /* Defaults.swift in Sources */,
 				98A50CE8209FCD550090FC8E /* ConstraintMaker+Ext.swift in Sources */,
+				98C835A020B6F439003BB2C7 /* UIView+Ext.swift in Sources */,
 				98A7691A20B326F0007FA2DA /* SearchBarView.swift in Sources */,
 				98A50CE4209FCD200090FC8E /* HomeNavView.swift in Sources */,
 				98A50CD8209F81840090FC8E /* User.swift in Sources */,
+				98C8359C20B6EE08003BB2C7 /* PhoneVerificationViewController.swift in Sources */,
 				98A50CDE209FCBD40090FC8E /* UsersViewModel.swift in Sources */,
 				98A50CF7209FCF7A0090FC8E /* ErrorTracker.swift in Sources */,
 				98F241F020A6AC2C001FD887 /* KeyboardAvoidable.swift in Sources */,

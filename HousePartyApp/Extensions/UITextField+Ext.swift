@@ -11,7 +11,7 @@ import UIKit
 
 final class PaddedTextField: UITextField {
     
-    var padding = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+    var padding = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     
     init(padding: CGFloat) {
         super.init(frame: .zero)
