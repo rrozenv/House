@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		981B664220B293870089CD96 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981B664120B293870089CD96 /* InitialViewController.swift */; };
 		981B664420B293920089CD96 /* InitialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981B664320B293920089CD96 /* InitialViewModel.swift */; };
+		981C4B8B20B71BE100DFFE5B /* ContactStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981C4B8A20B71BE100DFFE5B /* ContactStore.swift */; };
+		981C4B8D20B71C2700DFFE5B /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981C4B8C20B71C2700DFFE5B /* Contact.swift */; };
+		981C4B8F20B749FF00DFFE5B /* SelectSquadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981C4B8E20B749FF00DFFE5B /* SelectSquadViewController.swift */; };
+		981C4B9120B74A0E00DFFE5B /* SelectSquadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981C4B9020B74A0E00DFFE5B /* SelectSquadViewModel.swift */; };
+		981C4B9320B7506200DFFE5B /* MultipleSelectionFilterDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981C4B9220B7506200DFFE5B /* MultipleSelectionFilterDataSource.swift */; };
+		981C4B9520B7530800DFFE5B /* UserContactTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981C4B9420B7530800DFFE5B /* UserContactTableCell.swift */; };
+		981C4B9720B7539000DFFE5B /* ImageLabelSublabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981C4B9620B7539000DFFE5B /* ImageLabelSublabelView.swift */; };
+		981C4B9920B7547800DFFE5B /* LabelButtonStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981C4B9820B7547800DFFE5B /* LabelButtonStackView.swift */; };
 		987648BD20AE6094004FF205 /* ValueCellDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987648BC20AE6094004FF205 /* ValueCellDataSource.swift */; };
 		98A50CA4209F7B7F0090FC8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A50CA3209F7B7F0090FC8E /* AppDelegate.swift */; };
 		98A50CAB209F7B7F0090FC8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98A50CAA209F7B7F0090FC8E /* Assets.xcassets */; };
@@ -88,6 +96,14 @@
 /* Begin PBXFileReference section */
 		981B664120B293870089CD96 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		981B664320B293920089CD96 /* InitialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewModel.swift; sourceTree = "<group>"; };
+		981C4B8A20B71BE100DFFE5B /* ContactStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactStore.swift; sourceTree = "<group>"; };
+		981C4B8C20B71C2700DFFE5B /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		981C4B8E20B749FF00DFFE5B /* SelectSquadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSquadViewController.swift; sourceTree = "<group>"; };
+		981C4B9020B74A0E00DFFE5B /* SelectSquadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSquadViewModel.swift; sourceTree = "<group>"; };
+		981C4B9220B7506200DFFE5B /* MultipleSelectionFilterDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleSelectionFilterDataSource.swift; sourceTree = "<group>"; };
+		981C4B9420B7530800DFFE5B /* UserContactTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContactTableCell.swift; sourceTree = "<group>"; };
+		981C4B9620B7539000DFFE5B /* ImageLabelSublabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLabelSublabelView.swift; sourceTree = "<group>"; };
+		981C4B9820B7547800DFFE5B /* LabelButtonStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelButtonStackView.swift; sourceTree = "<group>"; };
 		987648BC20AE6094004FF205 /* ValueCellDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueCellDataSource.swift; sourceTree = "<group>"; };
 		98A50CA0209F7B7F0090FC8E /* HousePartyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HousePartyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98A50CA3209F7B7F0090FC8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -262,6 +278,7 @@
 				98A50CF3209FCF7A0090FC8E /* FontBook.swift */,
 				98F241D220A6843B001FD887 /* Palette.swift */,
 				987648BC20AE6094004FF205 /* ValueCellDataSource.swift */,
+				981C4B8A20B71BE100DFFE5B /* ContactStore.swift */,
 			);
 			name = Utilities;
 			path = "../../Designated Hitter/designated-hitter/DesignatedHitter/Utilities";
@@ -280,6 +297,7 @@
 			isa = PBXGroup;
 			children = (
 				98A7691520B319C0007FA2DA /* TitleSelectionCell.swift */,
+				981C4B9420B7530800DFFE5B /* UserContactTableCell.swift */,
 			);
 			path = "Table Cells";
 			sourceTree = "<group>";
@@ -339,6 +357,8 @@
 				98C8359E20B6F0BD003BB2C7 /* Onboarding */,
 				98F241A320A67F3B001FD887 /* List Users */,
 				98F241A420A67F48001FD887 /* Create User */,
+				981C4B8E20B749FF00DFFE5B /* SelectSquadViewController.swift */,
+				981C4B9020B74A0E00DFFE5B /* SelectSquadViewModel.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -356,6 +376,7 @@
 			children = (
 				98F241D620A68506001FD887 /* OnboardingInfo.swift */,
 				98A50CD7209F81840090FC8E /* User.swift */,
+				981C4B8C20B71C2700DFFE5B /* Contact.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -377,6 +398,8 @@
 				98F241D020A683D1001FD887 /* OnboardingView.swift */,
 				98A7691720B31FFB007FA2DA /* TitleHeaderView.swift */,
 				98A7691920B326F0007FA2DA /* SearchBarView.swift */,
+				981C4B9620B7539000DFFE5B /* ImageLabelSublabelView.swift */,
+				981C4B9820B7547800DFFE5B /* LabelButtonStackView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -404,6 +427,7 @@
 			children = (
 				98A50CDF209FCD060090FC8E /* BindableType.swift */,
 				98F241EF20A6AC2C001FD887 /* KeyboardAvoidable.swift */,
+				981C4B9220B7506200DFFE5B /* MultipleSelectionFilterDataSource.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -669,6 +693,7 @@
 				98A7691120B31500007FA2DA /* SelectCityViewController.swift in Sources */,
 				98F241D320A6843B001FD887 /* Palette.swift in Sources */,
 				98F241A820A67F85001FD887 /* CreateUserViewModel.swift in Sources */,
+				981C4B9320B7506200DFFE5B /* MultipleSelectionFilterDataSource.swift in Sources */,
 				98A50CEC209FCE3E0090FC8E /* UIViewController+Ext.swift in Sources */,
 				98A7691320B3150F007FA2DA /* SelectCityViewModel.swift in Sources */,
 				98F241ED20A698AC001FD887 /* PhoneEntryViewModel.swift in Sources */,
@@ -680,9 +705,13 @@
 				98C8359520B5C91B003BB2C7 /* EnterNameViewModel.swift in Sources */,
 				98A50CD4209F80DB0090FC8E /* API.swift in Sources */,
 				981B664220B293870089CD96 /* InitialViewController.swift in Sources */,
+				981C4B8B20B71BE100DFFE5B /* ContactStore.swift in Sources */,
+				981C4B8D20B71C2700DFFE5B /* Contact.swift in Sources */,
 				98F241D720A68506001FD887 /* OnboardingInfo.swift in Sources */,
+				981C4B8F20B749FF00DFFE5B /* SelectSquadViewController.swift in Sources */,
 				98F241E020A68708001FD887 /* SignUpFlowCoordinator.swift in Sources */,
 				98F241F220A6AC63001FD887 /* UIDevice+Ext.swift in Sources */,
+				981C4B9720B7539000DFFE5B /* ImageLabelSublabelView.swift in Sources */,
 				98F241D120A683D1001FD887 /* OnboardingView.swift in Sources */,
 				98A50CEE209FCF000090FC8E /* Constants.swift in Sources */,
 				98EE833420AD204D00EDEBFF /* UITextView+Ext.swift in Sources */,
@@ -690,6 +719,7 @@
 				98A50CFB209FCFFC0090FC8E /* UIButton+Ext.swift in Sources */,
 				98F241A620A67F78001FD887 /* CreateUserViewController.swift in Sources */,
 				98F241CD20A68252001FD887 /* BackButtonNavView.swift in Sources */,
+				981C4B9920B7547800DFFE5B /* LabelButtonStackView.swift in Sources */,
 				98A50CDC209FCBC00090FC8E /* UsersViewController.swift in Sources */,
 				98A50CF6209FCF7A0090FC8E /* Defaults.swift in Sources */,
 				98A50CE8209FCD550090FC8E /* ConstraintMaker+Ext.swift in Sources */,
@@ -705,9 +735,11 @@
 				98F241E920A688E0001FD887 /* UITextField+Ext.swift in Sources */,
 				98A7691820B31FFB007FA2DA /* TitleHeaderView.swift in Sources */,
 				981B664420B293920089CD96 /* InitialViewModel.swift in Sources */,
+				981C4B9120B74A0E00DFFE5B /* SelectSquadViewModel.swift in Sources */,
 				98F241CB20A681C3001FD887 /* PageReferenceView.swift in Sources */,
 				98A50CD2209F7CA90090FC8E /* AppController.swift in Sources */,
 				98A50CDA209FCB050090FC8E /* HomeViewController.swift in Sources */,
+				981C4B9520B7530800DFFE5B /* UserContactTableCell.swift in Sources */,
 				98F241C920A68194001FD887 /* CustomPageControllerDataSource.swift in Sources */,
 				987648BD20AE6094004FF205 /* ValueCellDataSource.swift in Sources */,
 				98A7691620B319C0007FA2DA /* TitleSelectionCell.swift in Sources */,

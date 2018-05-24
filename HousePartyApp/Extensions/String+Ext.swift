@@ -94,4 +94,8 @@ extension String {
         return leadingOne + areaCode + prefix + "-" + suffix
     }
     
+    var digits: String {
+        return components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+    }
+    
 }

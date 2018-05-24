@@ -66,7 +66,16 @@ extension AppController {
     }
 
     private func createHomeViewController() -> UINavigationController {
-        let navVc = UINavigationController(rootViewController: HomeViewController())
+        var navVc: UINavigationController
+        if let user = currentUser, user.events.isEmpty {
+            navVc = UINavigationController(rootViewController: HomeViewController())
+        } else {
+            var vc = SelectSquadViewController()
+            let viewModel = SelectSquadViewModel()
+            vc.setViewModelBinding(model: viewModel)
+            navVc = UINavigationController(rootViewController: vc)
+            navVc.isNavigationBarHidden = true
+        }
         return navVc
     }
     

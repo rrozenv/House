@@ -123,7 +123,7 @@ final class SignUpFlowCoordinator {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    func toNameEntry(nameType: EnterNameViewModel.NameType) {
+    private func toNameEntry(nameType: EnterNameViewModel.NameType) {
         var vc = EnterNameViewController()
         let viewModel = EnterNameViewModel(coordinator: self, nameType: nameType)
         vc.setViewModelBinding(model: viewModel)
@@ -154,6 +154,7 @@ final class SignUpFlowCoordinator {
                         phoneNumber: phone)
         userService.create(user: user.toJSON())
             .subscribe(onNext: {
+                AppController.shared.currentUser = $0
                 print("Created user: \($0.fullName)")
             })
             .disposed(by: disposeBag)

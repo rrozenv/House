@@ -19,6 +19,7 @@ struct User: Codable {
     let fullName: String
     let birthDate: String
     let phonenumber: String
+    let events: [String] = []
     //let submissons: [Submission]
 }
 
