@@ -9,23 +9,27 @@
 import Foundation
 import UIKit
 
+struct VaryingFontInfo {
+    let originalText: String
+    let fontDict: [String: UIFont]
+    let fontColor: UIColor
+}
+
 extension UILabel {
     
-    func varyingFonts(originalText: String,
-                      fontDict: [String: UIFont],
-                      fontColor: UIColor) {
+    func varyingFonts(info: VaryingFontInfo) {
         let style = NSMutableParagraphStyle()
         style.alignment = .left
-        let attributedOriginalText = NSMutableAttributedString(string: originalText)
+        let attributedOriginalText = NSMutableAttributedString(string: info.originalText)
         
-        fontDict.forEach {
+        info.fontDict.forEach {
             let linkRange = attributedOriginalText.mutableString.range(of: $0.key)
             attributedOriginalText.addAttribute(NSAttributedStringKey.font, value: $0.value, range: linkRange)
         }
         
         let fullRange = NSMakeRange(0, attributedOriginalText.length)
         attributedOriginalText.addAttribute(NSAttributedStringKey.paragraphStyle, value: style, range: fullRange)
-
+        
         self.attributedText = attributedOriginalText
     }
     

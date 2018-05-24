@@ -113,7 +113,8 @@ extension SelectCityViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = TitleHeaderView()
         headerView.configureWith(value: "What's your CITY?")
-        headerView.mainLabel.varyingFonts(originalText: "What's your CITY?", fontDict: ["CITY": FontBook.AvenirBlack.of(size: 14), "What's your": FontBook.AvenirMedium.of(size: 13)], fontColor: .black)
+        let varyingFontInfo = VaryingFontInfo(originalText: "What's your CITY?", fontDict: ["CITY?": FontBook.AvenirBlack.of(size: 14), "What's your": FontBook.AvenirMedium.of(size: 13)], fontColor: .black)
+        headerView.mainLabel.varyingFonts(info: varyingFontInfo)
         return headerView
     }
 

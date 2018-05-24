@@ -14,6 +14,7 @@ import SnapKit
 
 class EnterNameViewController: UIViewController, BindableType, CustomNavBarViewable, KeyboardAvoidable {
     
+    private var titleHeaderView: TitleHeaderView!
     private var textField: StyledTextField!
     private var nextButton: UIButton!
     private var containerStackView: UIStackView!
@@ -32,10 +33,16 @@ class EnterNameViewController: UIViewController, BindableType, CustomNavBarViewa
         setupNavBar()
         navView.containerView.backgroundColor = Palette.lightGrey.color
         navBackgroundView.backgroundColor = Palette.lightGrey.color
+        setupTitleHeaderView()
         setupTextField()
         setupNextButton()
         setupContainerStackView()
         bindKeyboardNotifications(bottomOffset: 100)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        textField.textField.becomeFirstResponder()
     }
     
     deinit { print("EnterNameViewController deinit") }
@@ -61,6 +68,24 @@ class EnterNameViewController: UIViewController, BindableType, CustomNavBarViewa
                 self.nextButton.backgroundColor = $0 ? .yellow : .gray
             })
             .disposed(by: disposeBag)
+        
+        viewModel.titleHeaderText
+            .drive(onNext: { [unowned self] in
+                self.titleHeaderView.configureWith(value: $0.originalText)
+                self.titleHeaderView.mainLabel.varyingFonts(info: $0)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func setupTitleHeaderView() {
+        titleHeaderView = TitleHeaderView()
+        
+        self.view.addSubview(titleHeaderView)
+        titleHeaderView.snp.makeConstraints { (make) in
+            make.height.equalTo(60)
+            make.left.right.equalTo(view)
+            make.top.equalTo(navView.snp.bottom)
+        }
     }
     
     private func setupTextField() {

@@ -21,11 +21,12 @@ protocol KeyboardAvoidable: class {
 extension KeyboardAvoidable where Self: UIViewController {
     func bindKeyboardNotifications(bottomOffset: CGFloat) {
         UIDevice.keyboardHeightWillChange
-            .subscribe(onNext: { height in
-                if self.latestKeyboardHeight > 0 && height != 0 { return }
-                self.bottomConstraint.update(offset: -height - bottomOffset)
-                UIView.animate(withDuration: 0.5) { self.view.layoutIfNeeded() }
-                self.latestKeyboardHeight = height
+            .subscribe(onNext: { [weak self] height in
+                guard let sSelf = self else { return }
+                if sSelf.latestKeyboardHeight > CGFloat(0.0) && height != CGFloat(0.0) { return }
+                sSelf.bottomConstraint.update(offset: -height - bottomOffset)
+                UIView.animate(withDuration: 0.5) { sSelf.view.layoutIfNeeded() }
+                sSelf.latestKeyboardHeight = height
             })
             .disposed(by: disposeBag)
     }
