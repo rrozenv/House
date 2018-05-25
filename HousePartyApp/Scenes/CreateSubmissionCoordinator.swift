@@ -42,7 +42,9 @@ extension Coordinatable {
     
     func toPreviousScreen() {
         guard screenIndex != 0 else {
-            print("This is the first screen") ; return
+            print("This is the first screen")
+            navigationController?.dismiss(animated: true, completion: nil)
+            return
         }
         screenIndex -= 1
         navigationController?.popViewController(animated: true)
@@ -66,17 +68,21 @@ final class CreateSubmissionCoordinator: Coordinatable {
          screenOrder: [Screen]) {
         self.navigationController = navVc
         self.screenOrder = screenOrder
+        navVc.isNavigationBarHidden = true
     }
     
     func navigateTo(screen: Screen) {
         switch screen {
-        case .selectSqaud: break //toOnboardingFlow()
+        case .selectSqaud: toSelectSquad()
         }
     }
     
     //MARK: - Saving Functions
     func saveSelectedContacts(_ contacts: [Contact]) {
         submissionInfo.selectedContacts = contacts
+        contacts.forEach {
+            print($0.fullName)
+        }
         toNextScreen()
     }
 //
@@ -99,12 +105,12 @@ final class CreateSubmissionCoordinator: Coordinatable {
 //    }
 //
 //    //MARK: - Navigating
-//    private func toOnboardingFlow() {
-//        let vcs = OnboardingInfo.initalOnboardingInfo.map { InitialViewController.configuredWith(info: $0)
-//        }
-//        let pageVc = InitialPagingViewController(viewControllers: vcs, coordinator: self)
-//        navigationController?.pushViewController(pageVc, animated: true)
-//    }
+    private func toSelectSquad() {
+        var vc = SelectSquadViewController()
+        let viewModel = SelectSquadViewModel(coordinator: self)
+        vc.setViewModelBinding(model: viewModel)
+        navigationController?.pushViewController(vc, animated: true)
+    }
 //
 //    private func toSelectCity() {
 //        var vc = SelectCityViewController()

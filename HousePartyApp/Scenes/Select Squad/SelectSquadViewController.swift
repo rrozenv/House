@@ -12,11 +12,14 @@ import RxSwift
 import RxCocoa
 import SnapKit
 
-class SelectSquadViewController: UIViewController, BindableType, CustomNavBarViewable {
+class SelectSquadViewController: UIViewController, BindableType, CustomNavBarViewable, KeyboardAvoidable {
     
+    var latestKeyboardHeight: CGFloat = 0
+    var adjustableConstraint: Constraint!
     private var searchBarView: SearchBarView!
     private var tableView: UITableView!
     private var contactsNotEnabledView: LabelButtonStackView!
+    private var nextButton: UIButton!
     var navView: BackButtonNavView = BackButtonNavView.blackArrow
     var navBackgroundView: UIView = UIView()
     
@@ -33,6 +36,8 @@ class SelectSquadViewController: UIViewController, BindableType, CustomNavBarVie
         setupSearchBarView()
         setupTableView()
         setupEmptyView()
+        setupNextButton()
+        bindKeyboardNotifications(bottomOffset: 0)
     }
     
     override func viewDidLoad() {
@@ -47,8 +52,13 @@ class SelectSquadViewController: UIViewController, BindableType, CustomNavBarVie
             .disposed(by: disposeBag)
         
         //MARK: - Inputs
-//        let backTapped$ = navView.backButton.rx.tap.asObservable()
-//        viewModel.bindBackButton(backTapped$)
+        let backTapped$ = navView.backButton.rx.tap.asObservable()
+        viewModel.bindBackButton(backTapped$)
+        
+        let nextTapped$ = nextButton.rx.tap
+            .asObservable()
+            .map { [unowned self] in self.dataSource.getAllSelectedItems() }
+        viewModel.bindNextButton(nextTapped$)
         
         tableView.rx.itemSelected.asObservable()
             .subscribe(onNext: { [unowned self] in
@@ -88,7 +98,14 @@ class SelectSquadViewController: UIViewController, BindableType, CustomNavBarVie
         
         viewModel.hasAccessToContacts
             .filter { $0 }
-            .subscribe(onNext: { _ in self.viewModel.fetchContacts() })
+            .subscribe(onNext: { [weak self] _ in self?.viewModel.fetchContacts() })
+            .disposed(by: disposeBag)
+        
+        dataSource.selectedCount
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [unowned self] in
+                self.nextButton.isHidden = $0 > 0 ? false : true
+            })
             .disposed(by: disposeBag)
         
         viewModel.userContacts
@@ -137,6 +154,19 @@ class SelectSquadViewController: UIViewController, BindableType, CustomNavBarVie
         view.addSubview(contactsNotEnabledView)
         contactsNotEnabledView.snp.makeConstraints { (make) in
             make.edges.equalTo(tableView)
+        }
+    }
+    
+    private func setupNextButton() {
+        nextButton = ShadowButton()
+        nextButton.style(title: "Next")
+        
+        view.addSubview(nextButton)
+        nextButton.snp.makeConstraints {
+            $0.height.equalTo(ViewConst.rectButtonHeight)
+            $0.left.equalTo(ViewConst.inset)
+            $0.right.equalTo(-ViewConst.inset)
+            self.adjustableConstraint = $0.bottom.equalTo(view).offset(-ViewConst.inset).constraint
         }
     }
     

@@ -38,7 +38,7 @@ final class ImageLabelSublabelView: UIView {
         
         self.addSubview(userImageView)
         userImageView.snp.makeConstraints { (make) in
-            make.left.bottom.top.equalTo(self)
+            make.left.centerY.equalTo(self)
             make.height.width.equalTo(36)
         }
     }
@@ -61,7 +61,7 @@ final class ImageLabelSublabelView: UIView {
         
         self.addSubview(labelsStackView)
         labelsStackView.snp.makeConstraints { (make) in
-            make.centerY.equalTo(userImageView.snp.centerY)
+            make.top.bottom.equalTo(self)
             make.left.equalTo(userImageView.snp.right).offset(10)
             make.right.equalTo(self)
         }

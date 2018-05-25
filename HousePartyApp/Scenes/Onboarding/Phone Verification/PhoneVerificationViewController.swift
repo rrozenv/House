@@ -19,7 +19,7 @@ class PhoneVerificationViewController: UIViewController, BindableType, CustomNav
     private var containerStackView: UIStackView!
     var navView: BackButtonNavView = BackButtonNavView.blackArrow
     var navBackgroundView: UIView = UIView()
-    var bottomConstraint: Constraint!
+    var adjustableConstraint: Constraint!
     var latestKeyboardHeight: CGFloat = 0
     
     let disposeBag = DisposeBag()
@@ -104,7 +104,7 @@ class PhoneVerificationViewController: UIViewController, BindableType, CustomNav
         containerStackView.snp.makeConstraints { (make) in
             make.left.equalTo(view).offset(ViewConst.inset)
             make.right.equalTo(view).offset(-ViewConst.inset)
-            self.bottomConstraint = make.bottom.equalTo(view).offset(-100).constraint
+            self.adjustableConstraint = make.bottom.equalTo(view).offset(-100).constraint
         }
     }
     

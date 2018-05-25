@@ -14,17 +14,17 @@ import RxSwift
 protocol KeyboardAvoidable: class {
     var disposeBag: DisposeBag { get }
     var latestKeyboardHeight: CGFloat { get set }
-    var bottomConstraint: Constraint! { get set }
+    var adjustableConstraint: Constraint! { get set }
     func bindKeyboardNotifications(bottomOffset: CGFloat)
 }
 
 extension KeyboardAvoidable where Self: UIViewController {
-    func bindKeyboardNotifications(bottomOffset: CGFloat) {
+    func bindKeyboardNotifications(bottomOffset: CGFloat = 0.0) {
         UIDevice.keyboardHeightWillChange
             .subscribe(onNext: { [weak self] height in
                 guard let sSelf = self else { return }
                 if sSelf.latestKeyboardHeight > CGFloat(0.0) && height != CGFloat(0.0) { return }
-                sSelf.bottomConstraint.update(offset: -height - bottomOffset)
+                sSelf.adjustableConstraint.update(offset: -height - bottomOffset)
                 UIView.animate(withDuration: 0.5) { sSelf.view.layoutIfNeeded() }
                 sSelf.latestKeyboardHeight = height
             })

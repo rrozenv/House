@@ -70,11 +70,9 @@ extension AppController {
         if let user = currentUser, user.events.isEmpty {
             navVc = UINavigationController(rootViewController: HomeViewController())
         } else {
-            var vc = SelectSquadViewController()
-            let viewModel = SelectSquadViewModel()
-            vc.setViewModelBinding(model: viewModel)
-            navVc = UINavigationController(rootViewController: vc)
-            navVc.isNavigationBarHidden = true
+            navVc = UINavigationController()
+            let coordinator = CreateSubmissionCoordinator(navVc: navVc, screenOrder: [.selectSqaud])
+            coordinator.toNextScreen()
         }
         return navVc
     }

@@ -20,7 +20,7 @@ class EnterNameViewController: UIViewController, BindableType, CustomNavBarViewa
     private var containerStackView: UIStackView!
     var navView: BackButtonNavView = BackButtonNavView.blackArrow
     var navBackgroundView: UIView = UIView()
-    var bottomConstraint: Constraint!
+    var adjustableConstraint: Constraint!
     var latestKeyboardHeight: CGFloat = 0
     
     let disposeBag = DisposeBag()
@@ -77,6 +77,27 @@ class EnterNameViewController: UIViewController, BindableType, CustomNavBarViewa
             .disposed(by: disposeBag)
     }
     
+//    func bindKeyboardNotifications(bottomOffset: CGFloat) {
+//        UIDevice.keyboardHeightWillChange
+//            .subscribe(onNext: { [weak self] height in
+//                guard let sSelf = self else { return }
+//                if sSelf.latestKeyboardHeight > CGFloat(0.0) && height != CGFloat(0.0) { return }
+//                if height == 0.0 { sSelf.adjustableConstraint.update(offset: 0) ; return }
+//                print("container height: \(sSelf.containerStackView.frame.size.height)")
+//                let bottomY = sSelf.containerStackView.frame.origin.y + sSelf.containerStackView.frame.size.height
+//                print("bottom Y: \(bottomY)")
+//                print("height: \(height)")
+//                if bottomY < height {
+//                    let centerYOffset = (height - (sSelf.navView.frame.origin.y +
+//                        sSelf.navView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height))/2
+//                    sSelf.adjustableConstraint.update(offset: -centerYOffset)
+//                }
+//                UIView.animate(withDuration: 0.5) { sSelf.view.layoutIfNeeded() }
+//                sSelf.latestKeyboardHeight = height
+//            })
+//            .disposed(by: disposeBag)
+//    }
+    
     private func setupTitleHeaderView() {
         titleHeaderView = TitleHeaderView()
         
@@ -109,7 +130,7 @@ class EnterNameViewController: UIViewController, BindableType, CustomNavBarViewa
         containerStackView.snp.makeConstraints { (make) in
             make.left.equalTo(view).offset(ViewConst.inset)
             make.right.equalTo(view).offset(-ViewConst.inset)
-            self.bottomConstraint = make.bottom.equalTo(view).offset(-100).constraint
+            self.adjustableConstraint = make.bottom.equalTo(view).offset(-100).constraint
         }
     }
     

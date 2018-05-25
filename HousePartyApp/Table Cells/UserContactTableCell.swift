@@ -65,7 +65,6 @@ extension UserContactTableCell {
         contentView.addSubview(containerView)
         containerView.snp.makeConstraints { (make) in
             make.edges.equalTo(contentView)
-            make.height.equalTo(70)
         }
     }
     
@@ -101,7 +100,8 @@ extension UserContactTableCell {
         
         containerView.addSubview(imageNameSublabelView)
         imageNameSublabelView.snp.makeConstraints { (make) in
-            make.centerY.equalTo(containerView)
+            make.top.equalTo(containerView).offset(10)
+            make.bottom.equalTo(containerView).offset(-10)
             make.left.equalTo(containerView).offset(26)
             make.right.equalTo(circleBorderView).offset(-26)
         }

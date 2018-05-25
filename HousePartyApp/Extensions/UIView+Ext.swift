@@ -20,4 +20,8 @@ extension UIView {
         self.layer.shadowRadius = 5
     }
     
+//    var bottomY: CGFloat {
+//        
+//    }
+    
 }

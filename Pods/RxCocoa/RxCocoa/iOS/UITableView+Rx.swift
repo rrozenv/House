@@ -152,11 +152,11 @@ extension Reactive where Base: UITableView {
             // Therefore it's better to set delegate proxy first, just to be sure.
             _ = self.delegate
             // Strong reference is needed because data source is in use until result subscription is disposed
-            return source.subscribeProxyDataSource(ofObject: self.base, dataSource: dataSource as UITableViewDataSource, retainDataSource: true) { [weak tableView = self.base] (_: RxTableViewDataSourceProxy, event) -> Void in
-                guard let tableView = tableView else {
+            return source.subscribeProxyDataSource(ofObject: self.base, dataSource: dataSource as UITableViewDataSource, retainDataSource: true) { [weak collectionView = self.base] (_: RxTableViewDataSourceProxy, event) -> Void in
+                guard let collectionView = collectionView else {
                     return
                 }
-                dataSource.tableView(tableView, observedEvent: event)
+                dataSource.tableView(collectionView, observedEvent: event)
             }
         }
     }

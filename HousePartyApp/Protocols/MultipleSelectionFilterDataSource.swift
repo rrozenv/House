@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import RxSwift
 
 protocol Queryable {
     var uniqueId: String { get }
@@ -17,7 +18,7 @@ protocol Queryable {
 
 final class MultipleSelectionFilterDataSource<Model: Queryable, Cell: UITableViewCell & ValueCell>: ValueCellDataSource where Cell.Value == Model {
     
-    private var selectedItems: [Model] = []
+    private var selectedItems = Variable<[Model]>([])
     private var storedItems: [Model] = []
     private var latestFilteredItems: [Model] = []
     private var isFiltering: Bool = false
@@ -53,7 +54,9 @@ final class MultipleSelectionFilterDataSource<Model: Queryable, Cell: UITableVie
                  inSection: 0)
     }
     
-    func selectedCount() -> Int { return selectedItems.count }
+    var selectedCount: Observable<Int> {
+        return selectedItems.asObservable().map { $0.count }
+    }
     
     func totalCount() -> Int { return isFiltering ? self.numberOfItems() : storedItems.count }
     
@@ -66,13 +69,13 @@ final class MultipleSelectionFilterDataSource<Model: Queryable, Cell: UITableVie
         
         // 2. Add/Remove item from selected array
         if storedItems[mainIndex].isSelected {
-            if isSingleSelection && !selectedItems.isEmpty { selectedItems.removeAll() }
-            selectedItems.append(storedItems[mainIndex])
+            if isSingleSelection && !selectedItems.value.isEmpty { selectedItems.value.removeAll() }
+            selectedItems.value.append(storedItems[mainIndex])
         } else {
-            if isSingleSelection { selectedItems.removeAll() }
+            if isSingleSelection { selectedItems.value.removeAll() }
             else {
-                if let selectedIndex = selectedItems.index(where: { $0.uniqueId == item.uniqueId }) {
-                    selectedItems.remove(at: selectedIndex)
+                if let selectedIndex = selectedItems.value.index(where: { $0.uniqueId == item.uniqueId }) {
+                    selectedItems.value.remove(at: selectedIndex)
                 }
             }
         }
@@ -97,13 +100,13 @@ final class MultipleSelectionFilterDataSource<Model: Queryable, Cell: UITableVie
     func toggleAll() {
         let shouldSelect = shouldSelectAll()
         var mutatedItems = [Model]()
-        self.selectedItems = []
+        self.selectedItems.value = []
         for var item in storedItems {
             item.isSelected = shouldSelect
             mutatedItems.append(item)
-            if shouldSelect { selectedItems.append(item) }
+            if shouldSelect { selectedItems.value.append(item) }
         }
-        if !shouldSelect { selectedItems.removeAll() }
+        if !shouldSelect { selectedItems.value.removeAll() }
         
         self.storedItems = mutatedItems
         self.set(values: storedItems,
@@ -122,11 +125,11 @@ final class MultipleSelectionFilterDataSource<Model: Queryable, Cell: UITableVie
     }
     
     func getAllSelectedItems() -> [Model] {
-        return selectedItems
+        return selectedItems.value
     }
     
     private func shouldSelectAll() -> Bool {
-        return selectedItems.count != storedItems.count
+        return selectedItems.value.count != storedItems.count
     }
     
     //MARK: - Configure Cell

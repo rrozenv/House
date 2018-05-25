@@ -30,10 +30,11 @@ struct SelectSquadViewModel {
     private var contactsAccessAuthorized = Variable(false)
     private let disposeBag = DisposeBag()
     private let contactStore: ContactsStore
-   // private let coordinator: SignUpFlowCoordinator
+    private let coordinator: CreateSubmissionCoordinator
     
-    init(contactStore: ContactsStore = ContactsStore()) {
+    init(contactStore: ContactsStore = ContactsStore(), coordinator: CreateSubmissionCoordinator) {
         self.contactStore = contactStore
+        self.coordinator = coordinator
         contactStore.isAuthorized()
             .bind(to: contactsAccessAuthorized)
             .disposed(by: disposeBag)
@@ -69,11 +70,20 @@ struct SelectSquadViewModel {
             .disposed(by: disposeBag)
     }
     
-//    func bindBackButton(_ observable: Observable<Void>) {
-//        observable
-//            .subscribe(onNext: { self.coordinator.toPreviousScreen() })
-//            .disposed(by: disposeBag)
-//    }
+    func bindNextButton(_ observable: Observable<[ContactViewModel]>) {
+        observable
+            .subscribe(onNext: {
+                self.coordinator.saveSelectedContacts($0.map { $0.contact })
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    func bindBackButton(_ observable: Observable<Void>) {
+        observable
+            .subscribe(onNext: { self.coordinator.toPreviousScreen() })
+            .disposed(by: disposeBag)
+    }
+    
 }
 
 extension SelectSquadViewModel {
