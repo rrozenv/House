@@ -16,8 +16,8 @@ struct Device {
 
 class ContactsCollViewGridLayout: UICollectionViewFlowLayout {
     
-    let itemSpacing: CGFloat = 1.0
-    let itemsPerRow: CGFloat = 4.6
+    let itemSpacing: CGFloat = 8.0
+    //let itemsPerRow: CGFloat = 4.6
     
     override init() {
         super.init()
@@ -32,15 +32,15 @@ class ContactsCollViewGridLayout: UICollectionViewFlowLayout {
     }
     
     func itemWidth() -> CGFloat {
-        return (Device.width/self.itemsPerRow) - self.itemSpacing
+        return ContactCollCell.width //(Device.width/self.itemsPerRow) - self.itemSpacing
     }
     
     override var itemSize: CGSize {
         get {
-            return CGSize(width: itemWidth(), height: itemWidth())
+            return CGSize(width: itemWidth(), height: itemWidth() * 1.4)
         }
         set {
-            self.itemSize = CGSize(width: itemWidth(), height: itemWidth())
+            self.itemSize = CGSize(width: itemWidth(), height: itemWidth() * 1.4)
         }
     }
     

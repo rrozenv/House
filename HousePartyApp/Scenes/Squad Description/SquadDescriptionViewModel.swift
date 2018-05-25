@@ -28,12 +28,16 @@ struct SquadDescriptionViewModel {
     }
     
     //MARK: - Inputs
-    func fetchContacts() {
-
+    func bindNextButton(_ observable: Observable<String>) {
+        observable
+            .subscribe(onNext: { self.coordinator.saveSquadDescription($0) })
+            .disposed(by: disposeBag)
     }
     
-    func bindDidSelectEnableContacts(_ observable: Observable<Void>) {
-
+    func bindBackButton(_ observable: Observable<Void>) {
+        observable
+            .subscribe(onNext: { self.coordinator.toPreviousScreen() })
+            .disposed(by: disposeBag)
     }
 
 }

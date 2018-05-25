@@ -18,13 +18,15 @@ class SquadDescriptionViewController: UIViewController, BindableType, CustomNavB
     var adjustableConstraint: Constraint!
     private var collectionView: UICollectionView!
     private var collectionViewGridLayout: ContactsCollViewGridLayout!
+    private var bodyTextView: UITextView!
+    private var bodyPlaceholderLabel: UILabel!
     private var nextButton: UIButton!
+    
     var navView: BackButtonNavView = BackButtonNavView.blackArrow
     var navBackgroundView: UIView = UIView()
     
     let disposeBag = DisposeBag()
-    var viewModel: SelectSquadViewModel!
-    private let dataSource = MultipleSelectionFilterDataSource<ContactViewModel, UserContactTableCell>(isSingleSelection: false)
+    var viewModel: SquadDescriptionViewModel!
     
     override func loadView() {
         super.loadView()
@@ -33,6 +35,8 @@ class SquadDescriptionViewController: UIViewController, BindableType, CustomNavB
         navView.containerView.backgroundColor = Palette.lightGrey.color
         navBackgroundView.backgroundColor = Palette.lightGrey.color
         setupCollectionView()
+        setupBodyTextView()
+        setupNextButton()
         bindKeyboardNotifications(bottomOffset: 0)
     }
     
@@ -53,13 +57,22 @@ class SquadDescriptionViewController: UIViewController, BindableType, CustomNavB
         
         let nextTapped$ = nextButton.rx.tap
             .asObservable()
-            .map { [unowned self] in self.dataSource.getAllSelectedItems() }
+            .map { [unowned self] in self.bodyTextView.text }.filterNil()
         viewModel.bindNextButton(nextTapped$)
         
-       
+        bodyTextView.rx.text.orEmpty
+            .do(onNext: { [unowned self] in self.bodyPlaceholderLabel.isHidden = $0 == "" ? false : true })
+            .do(onNext: { [unowned self] in self.nextButton.isHidden = ($0.count > 5) ? false : true })
+            .subscribe()
+            .disposed(by: disposeBag)
         
         //MARK: - Outputs
-        
+        viewModel.selectedContacts
+            .observeOn(MainScheduler.instance)
+            .bind(to: collectionView.rx.items(cellIdentifier: ContactCollCell.defaultReusableId, cellType: ContactCollCell.self)) { row, element, cell in
+                cell.configureWith(value: element)
+            }
+            .disposed(by: disposeBag)
     }
     
     private func setupCollectionView() {
@@ -69,13 +82,48 @@ class SquadDescriptionViewController: UIViewController, BindableType, CustomNavB
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.allowsMultipleSelection = false
-//        collectionView.register(CalendarDayCell.self, forCellWithReuseIdentifier: CalendarDayCell.reuseIdentifier)
+        collectionView.register(ContactCollCell.self, forCellWithReuseIdentifier: ContactCollCell.defaultReusableId)
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in
-            make.left.equalTo(navView.backButton.snp.right).offset(20)
+            make.left.equalTo(navView.backButton.snp.right).offset(15)
             make.right.equalTo(navView)
             make.centerY.equalTo(navView)
             make.height.equalTo(collectionViewGridLayout.itemSize.height)
+        }
+    }
+    
+    private func setupBodyTextView() {
+        bodyTextView = UITextView()
+        bodyTextView.font = FontBook.AvenirHeavy.of(size: 14)
+        bodyTextView.isEditable = true
+        bodyTextView.isScrollEnabled = false
+        
+        bodyPlaceholderLabel = UILabel().rxStyle(font: FontBook.AvenirMedium.of(size: 14), color: Palette.lightGrey.color, alignment: .left)
+        
+        bodyTextView.addSubview(bodyPlaceholderLabel)
+        bodyPlaceholderLabel.snp.makeConstraints { (make) in
+            make.left.top.equalTo(bodyTextView).offset(7)
+        }
+        
+        view.addSubview(bodyTextView)
+        bodyTextView.snp.makeConstraints { (make) in
+            make.left.equalTo(view).offset(20)
+            make.right.equalTo(view).offset(-20)
+            make.top.equalTo(navView.snp.bottom).offset(10)
+        }
+    }
+    
+    
+    private func setupNextButton() {
+        nextButton = ShadowButton()
+        nextButton.style(title: "Next")
+        
+        view.addSubview(nextButton)
+        nextButton.snp.makeConstraints {
+            $0.height.equalTo(ViewConst.rectButtonHeight)
+            $0.left.equalTo(ViewConst.inset)
+            $0.right.equalTo(-ViewConst.inset)
+            self.adjustableConstraint = $0.bottom.equalTo(view).offset(-ViewConst.inset).constraint
         }
     }
 }

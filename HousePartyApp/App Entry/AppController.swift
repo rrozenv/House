@@ -71,7 +71,7 @@ extension AppController {
             navVc = UINavigationController(rootViewController: HomeViewController())
         } else {
             navVc = UINavigationController()
-            let coordinator = CreateSubmissionCoordinator(navVc: navVc, screenOrder: [.selectSqaud])
+            let coordinator = CreateSubmissionCoordinator(navVc: navVc, screenOrder: [.selectSqaud, .squadDescription])
             coordinator.toNextScreen()
         }
         return navVc

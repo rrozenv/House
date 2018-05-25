@@ -13,11 +13,7 @@ import RxSwift
 final class SubmissionInfo {
     var leaderNumber: String?
     var selectedContacts: [Contact]?
-
-    init() {
-        self.leaderNumber = nil
-        self.selectedContacts = nil
-    }
+    var squadDescription: String?
 }
 
 protocol Coordinatable: class {
@@ -56,6 +52,7 @@ final class CreateSubmissionCoordinator: Coordinatable {
   
     enum Screen: Int {
         case selectSqaud
+        case squadDescription
     }
     
     private let disposeBag = DisposeBag()
@@ -74,6 +71,7 @@ final class CreateSubmissionCoordinator: Coordinatable {
     func navigateTo(screen: Screen) {
         switch screen {
         case .selectSqaud: toSelectSquad()
+        case .squadDescription: toSquadDescription()
         }
     }
     
@@ -85,75 +83,32 @@ final class CreateSubmissionCoordinator: Coordinatable {
         }
         toNextScreen()
     }
-//
-//    func didSaveName(_ name: String, nameType: EnterNameViewModel.NameType) {
-//        switch nameType {
-//        case .first: signupInfo.firstName = name
-//        case .last: signupInfo.lastName = name
-//        }
-//        toNextScreen()
-//    }
-//
-//    func didSavePhoneNumber(_ number: String) {
-//        signupInfo.phoneNumber = number
-//        toNextScreen()
-//    }
-//
-//    func didVerifyPhoneNumberCode() {
-//        NotificationCenter.default.post(name: Notification.Name.createHomeVc, object: nil)
-//        //createUser()
-//    }
-//
-//    //MARK: - Navigating
+    
+    func saveSquadDescription(_ desc: String) {
+        submissionInfo.squadDescription = desc
+        flowWillFinish()
+    }
+    
+    func flowWillFinish() {
+        let submission = Submission(leader: AppController.shared.currentUser!, registeredFriends: [], unregisteredFriends: [], allNumbers: submissionInfo.selectedContacts!.map { $0.primaryNumber! }, createdAt: Date(), status: .pending)
+        print("Submission: \(submission)")
+        //TODO: Create Submission
+    }
+
+    //MARK: - Navigating
     private func toSelectSquad() {
         var vc = SelectSquadViewController()
         let viewModel = SelectSquadViewModel(coordinator: self)
         vc.setViewModelBinding(model: viewModel)
         navigationController?.pushViewController(vc, animated: true)
     }
-//
-//    private func toSelectCity() {
-//        var vc = SelectCityViewController()
-//        let viewModel = SelectCityViewModel(coordinator: self)
-//        vc.setViewModelBinding(model: viewModel)
-//        navigationController?.pushViewController(vc, animated: true)
-//    }
-//
-//    private func toNameEntry(nameType: EnterNameViewModel.NameType) {
-//        var vc = EnterNameViewController()
-//        let viewModel = EnterNameViewModel(coordinator: self, nameType: nameType)
-//        vc.setViewModelBinding(model: viewModel)
-//        navigationController?.pushViewController(vc, animated: true)
-//    }
-//
-//    private func toPhoneEntry() {
-//        var vc = PhoneEntryViewController()
-//        let viewModel = PhoneEntryViewModel(coordinator: self)
-//        vc.setViewModelBinding(model: viewModel)
-//        navigationController?.pushViewController(vc, animated: true)
-//    }
-//
-//    private func toPhoneVerification() {
-//        var vc = PhoneVerificationViewController()
-//        let viewModel = PhoneVerificationViewModel(coordinator: self)
-//        vc.setViewModelBinding(model: viewModel)
-//        navigationController?.pushViewController(vc, animated: true)
-//    }
-//
-//    private func createUser() {
-//        guard let name = signupInfo.firstName,
-//            let phone = signupInfo.phoneNumber else {
-//                print("Missing user creds!") ; return
-//        }
-//        let user = User(fullName: name,
-//                        birthDate: "Test Birthday",
-//                        phoneNumber: phone)
-//        userService.create(user: user.toJSON())
-//            .subscribe(onNext: {
-//                AppController.shared.currentUser = $0
-//                print("Created user: \($0.fullName)")
-//            })
-//            .disposed(by: disposeBag)
-//    }
+
+    private func toSquadDescription() {
+        guard let selectedContacts = submissionInfo.selectedContacts else { fatalError("No Contacts selected!") }
+        var vc = SquadDescriptionViewController()
+        let viewModel = SquadDescriptionViewModel(selectedContacts: selectedContacts, coordinator: self)
+        vc.setViewModelBinding(model: viewModel)
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
 }

@@ -14,13 +14,13 @@ struct UserList: Codable {
     let users: [User]
 }
 
-struct User: Codable {
+struct User: Codable, Invitable {
     let _id: String
     let fullName: String
     let birthDate: String
     let phonenumber: String
     let events: [String] = []
-    //let submissons: [Submission]
+    let submissons: [Submission] = []
 }
 
 extension User {
