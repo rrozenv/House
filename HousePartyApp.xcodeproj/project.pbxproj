@@ -73,6 +73,7 @@
 		98F241F020A6AC2C001FD887 /* KeyboardAvoidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241EF20A6AC2C001FD887 /* KeyboardAvoidable.swift */; };
 		98F241F220A6AC63001FD887 /* UIDevice+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241F120A6AC63001FD887 /* UIDevice+Ext.swift */; };
 		98F75F6E20B2903B00B6AA7D /* InitialPagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F75F6D20B2903B00B6AA7D /* InitialPagingViewController.swift */; };
+		98FDF13320B7FC290094EFD6 /* CreateSubmissionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FDF13220B7FC290094EFD6 /* CreateSubmissionCoordinator.swift */; };
 		9ADD7D59C4DFAA71449DC559 /* Pods_HousePartyApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA79EDC36E0EAD4BE61BACD1 /* Pods_HousePartyApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -166,6 +167,7 @@
 		98F241EF20A6AC2C001FD887 /* KeyboardAvoidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAvoidable.swift; sourceTree = "<group>"; };
 		98F241F120A6AC63001FD887 /* UIDevice+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Ext.swift"; sourceTree = "<group>"; };
 		98F75F6D20B2903B00B6AA7D /* InitialPagingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialPagingViewController.swift; sourceTree = "<group>"; };
+		98FDF13220B7FC290094EFD6 /* CreateSubmissionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSubmissionCoordinator.swift; sourceTree = "<group>"; };
 		A226A5CED91DC43A90E55F0F /* Pods-HousePartyApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HousePartyApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HousePartyApp/Pods-HousePartyApp.debug.xcconfig"; sourceTree = "<group>"; };
 		EA79EDC36E0EAD4BE61BACD1 /* Pods_HousePartyApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HousePartyApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD3281CCEC9649C04993F9B9 /* Pods-HousePartyApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HousePartyApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-HousePartyApp/Pods-HousePartyApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -203,6 +205,15 @@
 				EA79EDC36E0EAD4BE61BACD1 /* Pods_HousePartyApp.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		981C4B9B20B75F1A00DFFE5B /* Select Squad */ = {
+			isa = PBXGroup;
+			children = (
+				981C4B8E20B749FF00DFFE5B /* SelectSquadViewController.swift */,
+				981C4B9020B74A0E00DFFE5B /* SelectSquadViewModel.swift */,
+			);
+			path = "Select Squad";
 			sourceTree = "<group>";
 		};
 		98A50C97209F7B7F0090FC8E = {
@@ -354,11 +365,11 @@
 		98F2419C20A67E5B001FD887 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				98FDF13220B7FC290094EFD6 /* CreateSubmissionCoordinator.swift */,
 				98C8359E20B6F0BD003BB2C7 /* Onboarding */,
+				981C4B9B20B75F1A00DFFE5B /* Select Squad */,
 				98F241A320A67F3B001FD887 /* List Users */,
 				98F241A420A67F48001FD887 /* Create User */,
-				981C4B8E20B749FF00DFFE5B /* SelectSquadViewController.swift */,
-				981C4B9020B74A0E00DFFE5B /* SelectSquadViewModel.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -712,6 +723,7 @@
 				98F241E020A68708001FD887 /* SignUpFlowCoordinator.swift in Sources */,
 				98F241F220A6AC63001FD887 /* UIDevice+Ext.swift in Sources */,
 				981C4B9720B7539000DFFE5B /* ImageLabelSublabelView.swift in Sources */,
+				98FDF13320B7FC290094EFD6 /* CreateSubmissionCoordinator.swift in Sources */,
 				98F241D120A683D1001FD887 /* OnboardingView.swift in Sources */,
 				98A50CEE209FCF000090FC8E /* Constants.swift in Sources */,
 				98EE833420AD204D00EDEBFF /* UITextView+Ext.swift in Sources */,
