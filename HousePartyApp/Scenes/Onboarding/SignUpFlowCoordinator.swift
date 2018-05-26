@@ -104,6 +104,8 @@ final class SignUpFlowCoordinator {
     }
     
     func didVerifyPhoneNumberCode() {
+        let user =  User(_id: "hello", fullName: signupInfo.firstName!, birthDate: Date().description, phonenumber: signupInfo.phoneNumber!, submissons: [])
+        AppController.shared.currentUser = user
         NotificationCenter.default.post(name: Notification.Name.createHomeVc, object: nil)
         //createUser()
     }

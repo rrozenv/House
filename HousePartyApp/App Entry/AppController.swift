@@ -67,8 +67,10 @@ extension AppController {
 
     private func createHomeViewController() -> UINavigationController {
         var navVc: UINavigationController
-        if let user = currentUser, user.events.isEmpty {
-            navVc = UINavigationController(rootViewController: HomeViewController())
+        if let user = currentUser, !user.submissons.isEmpty {
+            navVc = UINavigationController()
+            let coordinator = HomeCoordinator(navVc: navVc, screens: [.home, .submissionDetail])
+            coordinator.navigateTo(screen: .home)
         } else {
             navVc = UINavigationController()
             let coordinator = CreateSubmissionCoordinator(navVc: navVc, screenOrder: [.selectSqaud, .squadDescription])

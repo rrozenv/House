@@ -19,9 +19,21 @@ protocol Invitable: Codable {
 
 final class HomeViewController: UIViewController, CustomNavBarViewable {
     
+    private var homeCoordinator: HomeCoordinator!
     let disposeBag = DisposeBag()
     var navView: HomeNavView = HomeNavView(leftIcon: #imageLiteral(resourceName: "IC_UserOptions"), leftMargin: 20.0)
     var navBackgroundView: UIView = UIView()
+    
+    required init(coder aDecoder: NSCoder) { super.init(coder: aDecoder)! }
+    
+    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    init(coordinator: HomeCoordinator) {
+        super.init(nibName: nil, bundle: nil)
+        self.homeCoordinator = coordinator
+    }
     
     override func loadView() {
         super.loadView()
@@ -32,18 +44,24 @@ final class HomeViewController: UIViewController, CustomNavBarViewable {
     override func viewDidLoad() {
         super.viewDidLoad()
         //bindViewModel()
-        setupUsersVc()
+        //setupUsersVc()
+        setupTabPageController()
     }
     
     deinit { print("HomeViewController deinit") }
     
-//    func bindViewModel() {
-//        navView.leftButton.rx.tap.asObservable()
-//            .subscribe(onNext: { [unowned self] in
-//                self.userProfileDisplayed = !self.userProfileDisplayed
-//            })
-//            .disposed(by: disposeBag)
-//    }
+    private func setupTabPageController() {
+        var submissionVc = SubmissionListViewController()
+        let submissionVm = SubmissionListViewModel(user: AppController.shared.currentUser!)
+        submissionVc.setViewModelBinding(model: submissionVm)
+        let vc = TabPageViewController(viewControllers: [submissionVc, submissionVc])
+        self.addChild(vc, frame: nil, animated: false)
+        
+        vc.view.snp.makeConstraints { (make) in
+            make.bottom.left.right.equalTo(view)
+            make.top.equalTo(navView.snp.bottom)
+        }
+    }
     
     private func setupUsersVc() {
         var vc = UsersViewController()

@@ -20,7 +20,7 @@ struct User: Codable, Invitable {
     let birthDate: String
     let phonenumber: String
     let events: [String] = []
-    let submissons: [Submission] = []
+    var submissons: [Submission] = []
 }
 
 extension User {

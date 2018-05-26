@@ -90,7 +90,13 @@ final class CreateSubmissionCoordinator: Coordinatable {
     }
     
     func flowWillFinish() {
-        let submission = Submission(leader: AppController.shared.currentUser!, registeredFriends: [], unregisteredFriends: [], allNumbers: submissionInfo.selectedContacts!.map { $0.primaryNumber! }, createdAt: Date(), status: .pending)
+        print(AppController.shared.currentUser ?? "No user")
+        let submission = Submission(leader: AppController.shared.currentUser!,
+                                    registeredFriends: [],
+                                    unregisteredFriends: [],
+                                    allNumbers: submissionInfo.selectedContacts!.map { $0.primaryNumber ?? $0.numbers.first! }, createdAt: Date(), status: .pending)
+        AppController.shared.currentUser!.submissons.append(submission)
+        NotificationCenter.default.post(name: Notification.Name.createHomeVc, object: nil)
         print("Submission: \(submission)")
         //TODO: Create Submission
     }

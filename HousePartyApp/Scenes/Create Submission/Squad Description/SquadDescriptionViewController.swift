@@ -21,6 +21,7 @@ class SquadDescriptionViewController: UIViewController, BindableType, CustomNavB
     private var bodyTextView: UITextView!
     private var bodyPlaceholderLabel: UILabel!
     private var nextButton: UIButton!
+    private var titleHeaderView: TitleHeaderView!
     
     var navView: BackButtonNavView = BackButtonNavView.blackArrow
     var navBackgroundView: UIView = UIView()
@@ -35,6 +36,7 @@ class SquadDescriptionViewController: UIViewController, BindableType, CustomNavB
         navView.containerView.backgroundColor = Palette.lightGrey.color
         navBackgroundView.backgroundColor = Palette.lightGrey.color
         setupCollectionView()
+        setupTitleHeaderView()
         setupBodyTextView()
         setupNextButton()
         bindKeyboardNotifications(bottomOffset: 0)
@@ -92,6 +94,19 @@ class SquadDescriptionViewController: UIViewController, BindableType, CustomNavB
         }
     }
     
+    private func setupTitleHeaderView() {
+        titleHeaderView = TitleHeaderView()
+        let fontInfo = VaryingFontInfo(originalText: "What makes your squad UNIQUE?", fontDict: ["What makes your squad": FontBook.AvenirMedium.of(size: 14), "UNIQUE?": FontBook.AvenirBlack.of(size: 15)], fontColor: .black)
+        titleHeaderView.mainLabel.varyingFonts(info: fontInfo)
+        
+        self.view.addSubview(titleHeaderView)
+        titleHeaderView.snp.makeConstraints { (make) in
+            make.height.equalTo(TitleHeaderView.height)
+            make.left.right.equalTo(view)
+            make.top.equalTo(navView.snp.bottom)
+        }
+    }
+    
     private func setupBodyTextView() {
         bodyTextView = UITextView()
         bodyTextView.font = FontBook.AvenirHeavy.of(size: 14)
@@ -99,6 +114,7 @@ class SquadDescriptionViewController: UIViewController, BindableType, CustomNavB
         bodyTextView.isScrollEnabled = false
         
         bodyPlaceholderLabel = UILabel().rxStyle(font: FontBook.AvenirMedium.of(size: 14), color: Palette.lightGrey.color, alignment: .left)
+        bodyPlaceholderLabel.text = "Be clever..."
         
         bodyTextView.addSubview(bodyPlaceholderLabel)
         bodyPlaceholderLabel.snp.makeConstraints { (make) in
@@ -109,7 +125,7 @@ class SquadDescriptionViewController: UIViewController, BindableType, CustomNavB
         bodyTextView.snp.makeConstraints { (make) in
             make.left.equalTo(view).offset(20)
             make.right.equalTo(view).offset(-20)
-            make.top.equalTo(navView.snp.bottom).offset(10)
+            make.top.equalTo(titleHeaderView.snp.bottom).offset(10)
         }
     }
     
