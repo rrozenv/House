@@ -23,6 +23,7 @@ final class HomeViewController: UIViewController, CustomNavBarViewable {
     let disposeBag = DisposeBag()
     var navView: HomeNavView = HomeNavView(leftIcon: #imageLiteral(resourceName: "IC_UserOptions"), leftMargin: 20.0)
     var navBackgroundView: UIView = UIView()
+    private var createSubmissionButton: UIButton!
     
     required init(coder aDecoder: NSCoder) { super.init(coder: aDecoder)! }
     
@@ -39,13 +40,24 @@ final class HomeViewController: UIViewController, CustomNavBarViewable {
         super.loadView()
         self.view.backgroundColor = UIColor.white
         setupNavBar()
+        setupTabPageController()
+        setupSubmissionButton()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //bindViewModel()
         //setupUsersVc()
-        setupTabPageController()
+        
+        
+        createSubmissionButton.rx.tap.asObservable()
+            .subscribe(onNext: { [unowned self] in
+                let navVc = UINavigationController()
+                let coordinator = CreateSubmissionCoordinator(navVc: navVc, screenOrder: [.selectSqaud, .squadDescription])
+                coordinator.toNextScreen()
+                self.present(navVc, animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
     }
     
     deinit { print("HomeViewController deinit") }
@@ -60,6 +72,17 @@ final class HomeViewController: UIViewController, CustomNavBarViewable {
         vc.view.snp.makeConstraints { (make) in
             make.bottom.left.right.equalTo(view)
             make.top.equalTo(navView.snp.bottom)
+        }
+    }
+    
+    private func setupSubmissionButton() {
+        createSubmissionButton = UIButton()
+        createSubmissionButton.style(title: "Create", font: FontBook.AvenirMedium.of(size: 15), backColor: .blue, titleColor: .white)
+        
+        view.addSubview(createSubmissionButton)
+        createSubmissionButton.snp.makeConstraints { (make) in
+            make.bottom.left.right.equalTo(view)
+            make.height.equalTo(50)
         }
     }
     

@@ -72,7 +72,7 @@ class SquadDescriptionViewController: UIViewController, BindableType, CustomNavB
         viewModel.selectedContacts
             .observeOn(MainScheduler.instance)
             .bind(to: collectionView.rx.items(cellIdentifier: ContactCollCell.defaultReusableId, cellType: ContactCollCell.self)) { row, element, cell in
-                cell.configureWith(value: element)
+                cell.configureWithContact(value: element)
             }
             .disposed(by: disposeBag)
     }

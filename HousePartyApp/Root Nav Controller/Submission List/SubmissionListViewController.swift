@@ -38,15 +38,17 @@ class SubmissionListViewController: UIViewController, BindableType {
         //MARK: - Outputs
         viewModel.displayedSubmissions
             .observeOn(MainScheduler.instance)
-            .bind(to: tableView.rx.items(cellIdentifier: TitleSelectionCell.defaultReusableId, cellType: TitleSelectionCell.self)) { row, element, cell in
-                cell.configureWith(value: element.createdAt.description)
+            .bind(to: tableView.rx.items(cellIdentifier: SubmissionTableCell.defaultReusableId, cellType: SubmissionTableCell.self)) { row, element, cell in
+                cell.configureWith(value: element)
             }
             .disposed(by: disposeBag)
     }
     
     private func setupTableView() {
         tableView = UITableView(frame: CGRect.zero, style: .plain)
-        tableView.register(TitleSelectionCell.self, forCellReuseIdentifier: TitleSelectionCell.defaultReusableId)
+        tableView.register(SubmissionTableCell.self, forCellReuseIdentifier: SubmissionTableCell.defaultReusableId)
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 150
         tableView.separatorStyle = .singleLine
         tableView.keyboardDismissMode = .onDrag
         

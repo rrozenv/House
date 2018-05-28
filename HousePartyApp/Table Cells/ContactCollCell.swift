@@ -34,8 +34,16 @@ final class ContactCollCell: UICollectionViewCell {
     }
     
     // MARK: - Configuration
-    func configureWith(value: Contact) {
+    func configureWithContact(value: Contact) {
         mainLabel.text = value.fullName
+    }
+    
+    func configureWithUser(value: User) {
+        mainLabel.text = value.fullName
+    }
+    
+    func configureWithNumber(value: String) {
+        mainLabel.text = value
     }
     
 }
