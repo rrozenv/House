@@ -70,9 +70,16 @@ extension AppController {
     }
 
     private func createHomeViewController() -> UINavigationController {
+        guard let user = currentUser else { fatalError("No user when trying to create home vc!") }
         let navVc = UINavigationController()
-        let coordinator = HomeCoordinator(navVc: navVc, screens: [.home, .createSubmission, .submissionDetail])
-        coordinator.navigateTo(screen: .home)
+        switch user.isAdmin {
+        case true:
+            let coordinator = AdminHomeCoordinator(navVc: navVc, screens: [.home, .createEvent])
+            coordinator.navigateTo(screen: .home)
+        case false:
+            let coordinator = HomeCoordinator(navVc: navVc, screens: [.home, .createSubmission, .submissionDetail])
+            coordinator.navigateTo(screen: .home)
+        }
         return navVc
     }
     

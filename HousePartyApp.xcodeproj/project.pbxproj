@@ -58,6 +58,14 @@
 		98C8359A20B6ED1F003BB2C7 /* PhoneVerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C8359920B6ED1F003BB2C7 /* PhoneVerificationViewModel.swift */; };
 		98C8359C20B6EE08003BB2C7 /* PhoneVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C8359B20B6EE08003BB2C7 /* PhoneVerificationViewController.swift */; };
 		98C835A020B6F439003BB2C7 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C8359F20B6F439003BB2C7 /* UIView+Ext.swift */; };
+		98D5B36420BC9210009EEF57 /* SelectEventLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D5B36320BC9210009EEF57 /* SelectEventLocationViewModel.swift */; };
+		98D5B36620BC924F009EEF57 /* CreateEventCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D5B36520BC924F009EEF57 /* CreateEventCoordinator.swift */; };
+		98D5B36A20BC9673009EEF57 /* AdminHomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D5B36920BC9673009EEF57 /* AdminHomeCoordinator.swift */; };
+		98D5B36C20BC96F1009EEF57 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D5B36B20BC96F1009EEF57 /* HomeViewModel.swift */; };
+		98D5B36E20BC9C77009EEF57 /* AdminHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D5B36D20BC9C77009EEF57 /* AdminHomeViewModel.swift */; };
+		98D5B37020BC9D99009EEF57 /* EventListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D5B36F20BC9D99009EEF57 /* EventListViewModel.swift */; };
+		98D5B37220BC9E00009EEF57 /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D5B37120BC9E00009EEF57 /* EventListViewController.swift */; };
+		98D5B37420BC9E87009EEF57 /* EventTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D5B37320BC9E87009EEF57 /* EventTableCell.swift */; };
 		98EB1C5920B9C6F900A90B62 /* SubmissionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EB1C5820B9C6F900A90B62 /* SubmissionListViewController.swift */; };
 		98EB1C5B20B9C74300A90B62 /* TabPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EB1C5A20B9C74300A90B62 /* TabPageViewController.swift */; };
 		98EB1C5D20B9C76C00A90B62 /* TabOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EB1C5C20B9C76C00A90B62 /* TabOptionsView.swift */; };
@@ -163,6 +171,14 @@
 		98C8359920B6ED1F003BB2C7 /* PhoneVerificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerificationViewModel.swift; sourceTree = "<group>"; };
 		98C8359B20B6EE08003BB2C7 /* PhoneVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerificationViewController.swift; sourceTree = "<group>"; };
 		98C8359F20B6F439003BB2C7 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		98D5B36320BC9210009EEF57 /* SelectEventLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectEventLocationViewModel.swift; sourceTree = "<group>"; };
+		98D5B36520BC924F009EEF57 /* CreateEventCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventCoordinator.swift; sourceTree = "<group>"; };
+		98D5B36920BC9673009EEF57 /* AdminHomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHomeCoordinator.swift; sourceTree = "<group>"; };
+		98D5B36B20BC96F1009EEF57 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		98D5B36D20BC9C77009EEF57 /* AdminHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHomeViewModel.swift; sourceTree = "<group>"; };
+		98D5B36F20BC9D99009EEF57 /* EventListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewModel.swift; sourceTree = "<group>"; };
+		98D5B37120BC9E00009EEF57 /* EventListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewController.swift; sourceTree = "<group>"; };
+		98D5B37320BC9E87009EEF57 /* EventTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableCell.swift; sourceTree = "<group>"; };
 		98EB1C5820B9C6F900A90B62 /* SubmissionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmissionListViewController.swift; sourceTree = "<group>"; };
 		98EB1C5A20B9C74300A90B62 /* TabPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabPageViewController.swift; sourceTree = "<group>"; };
 		98EB1C5C20B9C76C00A90B62 /* TabOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabOptionsView.swift; sourceTree = "<group>"; };
@@ -333,6 +349,7 @@
 				981C4B9420B7530800DFFE5B /* UserContactTableCell.swift */,
 				981FA90D20B88A4C00227B39 /* ContactCollCell.swift */,
 				9857D77820BC157B0071C806 /* SubmissionTableCell.swift */,
+				98D5B37320BC9E87009EEF57 /* EventTableCell.swift */,
 			);
 			path = "Table Cells";
 			sourceTree = "<group>";
@@ -368,6 +385,47 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
+		98D5B35920BC8FA8009EEF57 /* Regular User Home */ = {
+			isa = PBXGroup;
+			children = (
+				98A50CD9209FCB050090FC8E /* HomeViewController.swift */,
+				98D5B36B20BC96F1009EEF57 /* HomeViewModel.swift */,
+				98EB1C6020B9CB4B00A90B62 /* HomeCoordinator.swift */,
+				98EB1C5A20B9C74300A90B62 /* TabPageViewController.swift */,
+				98EB1C6220B9D0F000A90B62 /* Submission List */,
+			);
+			path = "Regular User Home";
+			sourceTree = "<group>";
+		};
+		98D5B35A20BC8FC8009EEF57 /* Admin User Home */ = {
+			isa = PBXGroup;
+			children = (
+				98D5B36520BC924F009EEF57 /* CreateEventCoordinator.swift */,
+				98D5B35E20BC90C7009EEF57 /* Create Event */,
+				98D5B35D20BC907D009EEF57 /* Event List */,
+				98D5B36920BC9673009EEF57 /* AdminHomeCoordinator.swift */,
+				98D5B36D20BC9C77009EEF57 /* AdminHomeViewModel.swift */,
+			);
+			path = "Admin User Home";
+			sourceTree = "<group>";
+		};
+		98D5B35D20BC907D009EEF57 /* Event List */ = {
+			isa = PBXGroup;
+			children = (
+				98D5B36F20BC9D99009EEF57 /* EventListViewModel.swift */,
+				98D5B37120BC9E00009EEF57 /* EventListViewController.swift */,
+			);
+			path = "Event List";
+			sourceTree = "<group>";
+		};
+		98D5B35E20BC90C7009EEF57 /* Create Event */ = {
+			isa = PBXGroup;
+			children = (
+				98D5B36320BC9210009EEF57 /* SelectEventLocationViewModel.swift */,
+			);
+			path = "Create Event";
+			sourceTree = "<group>";
+		};
 		98EB1C6220B9D0F000A90B62 /* Submission List */ = {
 			isa = PBXGroup;
 			children = (
@@ -380,6 +438,7 @@
 		98EB1C6320B9D10900A90B62 /* Create Submission */ = {
 			isa = PBXGroup;
 			children = (
+				98FDF13220B7FC290094EFD6 /* CreateSubmissionCoordinator.swift */,
 				981C4B9B20B75F1A00DFFE5B /* Select Squad */,
 				98FDF13420B8354D0094EFD6 /* Squad Description */,
 			);
@@ -399,10 +458,8 @@
 		98F2419B20A67E38001FD887 /* Root Nav Controller */ = {
 			isa = PBXGroup;
 			children = (
-				98A50CD9209FCB050090FC8E /* HomeViewController.swift */,
-				98EB1C6020B9CB4B00A90B62 /* HomeCoordinator.swift */,
-				98EB1C5A20B9C74300A90B62 /* TabPageViewController.swift */,
-				98EB1C6220B9D0F000A90B62 /* Submission List */,
+				98D5B35A20BC8FC8009EEF57 /* Admin User Home */,
+				98D5B35920BC8FA8009EEF57 /* Regular User Home */,
 			);
 			path = "Root Nav Controller";
 			sourceTree = "<group>";
@@ -410,7 +467,6 @@
 		98F2419C20A67E5B001FD887 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				98FDF13220B7FC290094EFD6 /* CreateSubmissionCoordinator.swift */,
 				98C8359E20B6F0BD003BB2C7 /* Onboarding */,
 				98EB1C6320B9D10900A90B62 /* Create Submission */,
 				98F241A320A67F3B001FD887 /* List Users */,
@@ -753,6 +809,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98D5B36420BC9210009EEF57 /* SelectEventLocationViewModel.swift in Sources */,
 				98FDF13620B835980094EFD6 /* SquadDescriptionViewController.swift in Sources */,
 				98C8359320B5C90E003BB2C7 /* EnterNameViewController.swift in Sources */,
 				98F75F6E20B2903B00B6AA7D /* InitialPagingViewController.swift in Sources */,
@@ -762,9 +819,12 @@
 				98A7691120B31500007FA2DA /* SelectCityViewController.swift in Sources */,
 				98F241D320A6843B001FD887 /* Palette.swift in Sources */,
 				98F241A820A67F85001FD887 /* CreateUserViewModel.swift in Sources */,
+				98D5B36E20BC9C77009EEF57 /* AdminHomeViewModel.swift in Sources */,
 				981C4B9320B7506200DFFE5B /* MultipleSelectionFilterDataSource.swift in Sources */,
 				98A50CEC209FCE3E0090FC8E /* UIViewController+Ext.swift in Sources */,
+				98D5B36C20BC96F1009EEF57 /* HomeViewModel.swift in Sources */,
 				98A7691320B3150F007FA2DA /* SelectCityViewModel.swift in Sources */,
+				98D5B37420BC9E87009EEF57 /* EventTableCell.swift in Sources */,
 				98F241ED20A698AC001FD887 /* PhoneEntryViewModel.swift in Sources */,
 				98A50CE0209FCD060090FC8E /* BindableType.swift in Sources */,
 				98C8359A20B6ED1F003BB2C7 /* PhoneVerificationViewModel.swift in Sources */,
@@ -781,10 +841,12 @@
 				98F241D720A68506001FD887 /* OnboardingInfo.swift in Sources */,
 				981C4B8F20B749FF00DFFE5B /* SelectSquadViewController.swift in Sources */,
 				98F241E020A68708001FD887 /* SignUpFlowCoordinator.swift in Sources */,
+				98D5B37220BC9E00009EEF57 /* EventListViewController.swift in Sources */,
 				98F241F220A6AC63001FD887 /* UIDevice+Ext.swift in Sources */,
 				98EB1C5F20B9C99100A90B62 /* SubmissionListViewModel.swift in Sources */,
 				981C4B9720B7539000DFFE5B /* ImageLabelSublabelView.swift in Sources */,
 				98FDF13320B7FC290094EFD6 /* CreateSubmissionCoordinator.swift in Sources */,
+				98D5B36620BC924F009EEF57 /* CreateEventCoordinator.swift in Sources */,
 				98F241D120A683D1001FD887 /* OnboardingView.swift in Sources */,
 				98EB1C5920B9C6F900A90B62 /* SubmissionListViewController.swift in Sources */,
 				98A50CEE209FCF000090FC8E /* Constants.swift in Sources */,
@@ -813,6 +875,7 @@
 				98F241E920A688E0001FD887 /* UITextField+Ext.swift in Sources */,
 				98A7691820B31FFB007FA2DA /* TitleHeaderView.swift in Sources */,
 				98FDF13A20B8423B0094EFD6 /* ContactsCollViewGridLayout.swift in Sources */,
+				98D5B36A20BC9673009EEF57 /* AdminHomeCoordinator.swift in Sources */,
 				981B664420B293920089CD96 /* InitialViewModel.swift in Sources */,
 				981C4B9120B74A0E00DFFE5B /* SelectSquadViewModel.swift in Sources */,
 				98F241CB20A681C3001FD887 /* PageReferenceView.swift in Sources */,
@@ -825,6 +888,7 @@
 				98A50CEA209FCDA70090FC8E /* LineupPlayerCell.swift in Sources */,
 				9857D77920BC157B0071C806 /* SubmissionTableCell.swift in Sources */,
 				98A50CF5209FCF7A0090FC8E /* ActivityIndicator.swift in Sources */,
+				98D5B37020BC9D99009EEF57 /* EventListViewModel.swift in Sources */,
 				98A50CF8209FCF7A0090FC8E /* FontBook.swift in Sources */,
 				98F241CF20A682FA001FD887 /* UIStackView+Ext.swift in Sources */,
 			);

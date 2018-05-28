@@ -21,9 +21,9 @@ struct Submission: Codable {
     let status: SubmissonStatus
 }
 
-struct Event {
-    let _id: Int
+struct Event: Codable {
+    let _id: String
     let venueName: String
     let date: Date
-    let attendees: [Submission]
+    let submissions: [Submission]
 }

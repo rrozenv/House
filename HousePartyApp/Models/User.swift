@@ -16,10 +16,11 @@ struct UserList: Codable {
 
 struct User: Codable, Invitable {
     let _id: String
+    var isAdmin: Bool = false
     let fullName: String
     let birthDate: String
     let phonenumber: String
-    let events: [String] = []
+    var events: [Event] = []
     var submissons: [Submission] = []
 }
 

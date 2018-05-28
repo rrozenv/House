@@ -85,6 +85,18 @@ final class SignUpFlowCoordinator {
     }
     
     //MARK: - Saving Functions
+    func createAdminUser() {
+        let user = User(_id: UUID().uuidString,
+                        isAdmin: true,
+                        fullName: "Admin",
+                        birthDate: Date().description,
+                        phonenumber: "2018354011",
+                        events: [],
+                        submissons: [])
+        AppController.shared.currentUser = user
+        NotificationCenter.default.post(name: Notification.Name.createHomeVc, object: nil)
+    }
+    
     func saveCity(_ city: String) {
         signupInfo.city = city
         toNextScreen()
@@ -104,10 +116,7 @@ final class SignUpFlowCoordinator {
     }
     
     func didVerifyPhoneNumberCode() {
-        let user =  User(_id: "hello", fullName: signupInfo.firstName!, birthDate: Date().description, phonenumber: signupInfo.phoneNumber!, submissons: [])
-        AppController.shared.currentUser = user
-        NotificationCenter.default.post(name: Notification.Name.createHomeVc, object: nil)
-        //createUser()
+        signupUser()
     }
     
     //MARK: - Navigating
@@ -126,7 +135,7 @@ final class SignUpFlowCoordinator {
     }
     
     private func toNameEntry(nameType: EnterNameViewModel.NameType) {
-        var vc = EnterNameViewController()
+        var vc = EnterNameViewController<EnterNameViewModel>()
         let viewModel = EnterNameViewModel(coordinator: self, nameType: nameType)
         vc.setViewModelBinding(model: viewModel)
         navigationController?.pushViewController(vc, animated: true)
@@ -145,6 +154,20 @@ final class SignUpFlowCoordinator {
         vc.setViewModelBinding(model: viewModel)
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    private func signupUser() {
+        let user = User(_id: UUID().uuidString,
+                        isAdmin: false,
+                        fullName: signupInfo.firstName!,
+                        birthDate: Date().description,
+                        phonenumber: signupInfo.phoneNumber!,
+                        events: [],
+                        submissons: [])
+        AppController.shared.currentUser = user
+        NotificationCenter.default.post(name: Notification.Name.createHomeVc, object: nil)
+    }
+    
+
     
     private func createUser() {
         guard let name = signupInfo.firstName,

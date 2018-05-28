@@ -10,7 +10,16 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-struct EnterNameViewModel {
+protocol TextEntryable {
+    var isNextButtonEnabled: Driver<Bool> { get }
+    var titleHeaderText: Driver<VaryingFontInfo> { get }
+    func bindTextEntry(_ observable: Observable<String>)
+    func bindContinueButton(_ observable: Observable<Void>)
+    func bindClearButton(_ observable: Observable<Void>)
+    func bindBackButton(_ observable: Observable<Void>)
+}
+
+struct EnterNameViewModel: TextEntryable {
     
     enum NameType {
         case first, last

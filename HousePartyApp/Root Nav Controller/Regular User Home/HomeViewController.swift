@@ -17,13 +17,14 @@ protocol Invitable: Codable {
     var phonenumber: String { get }
 }
 
-final class HomeViewController: UIViewController, CustomNavBarViewable {
-    
+final class HomeViewController<ViewModel: HomeViewControllable>: UIViewController, BindableType, CustomNavBarViewable {
+
     private var coordinator: HomeCoordinator!
+    var viewModel: ViewModel!
     let disposeBag = DisposeBag()
     var navView: HomeNavView = HomeNavView(leftIcon: #imageLiteral(resourceName: "IC_UserOptions"), leftMargin: 20.0)
     var navBackgroundView: UIView = UIView()
-    private var createSubmissionButton: UIButton!
+    private var createSubmissionButton = UIButton()
     
     required init(coder aDecoder: NSCoder) { super.init(coder: aDecoder)! }
     
@@ -40,44 +41,29 @@ final class HomeViewController: UIViewController, CustomNavBarViewable {
         super.loadView()
         self.view.backgroundColor = UIColor.white
         setupNavBar()
-        setupTabPageController()
         setupSubmissionButton()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        //bindViewModel()
-        //setupUsersVc()
-        createSubmissionButton.rx.tap.asObservable()
-            .subscribe(onNext: { [unowned self] in self.coordinator.navigateTo(screen: .createSubmission) })
+    func bindViewModel() {
+        let createTapped$ = createSubmissionButton.rx.tap.asObservable()
+        viewModel.bindCreateButton(createTapped$)
+        
+        viewModel.tabInfo
+            .drive(onNext: { [unowned self] in
+                let vc = TabPageViewController(viewControllers: $0.vcs, tabAppearence: $0.appearance)
+                self.addChild(vc, frame: nil, animated: false)
+                vc.view.snp.makeConstraints { (make) in
+                    make.left.right.equalTo(self.view)
+                    make.bottom.equalTo(self.createSubmissionButton.snp.top)
+                    make.top.equalTo(self.navView.snp.bottom)
+                }
+            })
             .disposed(by: disposeBag)
     }
     
     deinit { print("HomeViewController deinit") }
     
-    private func setupTabPageController() {
-        var submissionVc = SubmissionListViewController()
-        let submissionVm = SubmissionListViewModel(user: AppController.shared.currentUser!)
-        submissionVc.setViewModelBinding(model: submissionVm)
-        
-        let apperence = TabAppearence(type: .underline,
-                                      itemTitles: ["Submissions", "Events"],
-                                      height: 50.0,
-                                      selectedBkgColor: .white,
-                                      selectedTitleColor: .black,
-                                      notSelectedBkgColor: .white,
-                                      notSelectedTitleColor: .black)
-        let vc = TabPageViewController(viewControllers: [submissionVc, UIViewController()], tabAppearence: apperence)
-        self.addChild(vc, frame: nil, animated: false)
-        
-        vc.view.snp.makeConstraints { (make) in
-            make.bottom.left.right.equalTo(view)
-            make.top.equalTo(navView.snp.bottom)
-        }
-    }
-    
     private func setupSubmissionButton() {
-        createSubmissionButton = UIButton()
         createSubmissionButton.style(title: "Create", font: FontBook.AvenirMedium.of(size: 15), backColor: .blue, titleColor: .white)
         
         view.addSubview(createSubmissionButton)

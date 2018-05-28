@@ -23,11 +23,13 @@ final class InitialPagingViewController: CustomPageViewController {
     private let disposeBag = DisposeBag()
     private var pageIndicatorView: PageIndicatorView!
     private var continueButton: ShadowButton!
+    private var loginButton: UIButton!
     private var coordinator: SignUpFlowCoordinator!
     
     override func loadView() {
         super.loadView()
         view.backgroundColor = UIColor.white
+        setupLoginButton()
         setupContinueButton()
         setupPageIndicator(total: OnboardingInfo.initalOnboardingInfo.count)
     }
@@ -48,6 +50,13 @@ final class InitialPagingViewController: CustomPageViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         configurePagerDataSource()
+        
+        loginButton.rx.tap.asObservable()
+            .subscribe(onNext: { [unowned self] in
+                self.coordinator.createAdminUser()
+            })
+            .disposed(by: disposeBag)
+        
         continueButton.rx.tap.asObservable()
             .subscribe(onNext: { [unowned self] in
                 self.coordinator.toNextScreen()
@@ -71,13 +80,26 @@ final class InitialPagingViewController: CustomPageViewController {
 
 extension InitialPagingViewController {
     
+    private func setupLoginButton() {
+        loginButton = UIButton()
+        loginButton.style(title: "Login Admin", font: FontBook.AvenirHeavy.of(size: 14), backColor: .clear, titleColor: Palette.darkGrey.color)
+        
+        view.addSubview(loginButton)
+        loginButton.snp.makeConstraints { (make) in
+            make.bottom.equalTo(view).offset(-100)
+            make.width.equalTo(view).multipliedBy(0.8)
+            make.centerX.equalTo(view)
+            make.height.height.equalTo(56)
+        }
+    }
+    
     private func setupContinueButton() {
         continueButton = ShadowButton()
         continueButton.style(title: "Create Account")
         
         view.addSubview(continueButton)
         continueButton.snp.makeConstraints { (make) in
-            make.bottom.equalTo(view).offset(-100)
+            make.bottom.equalTo(loginButton.snp.top).offset(-15)
             make.width.equalTo(view).multipliedBy(0.8)
             make.centerX.equalTo(view)
             make.height.height.equalTo(56)

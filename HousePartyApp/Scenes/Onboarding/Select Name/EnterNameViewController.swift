@@ -12,7 +12,7 @@ import RxSwift
 import RxCocoa
 import SnapKit
 
-class EnterNameViewController: UIViewController, BindableType, CustomNavBarViewable, KeyboardAvoidable {
+class EnterNameViewController<ViewModel: TextEntryable>: UIViewController, BindableType, CustomNavBarViewable, KeyboardAvoidable {
     
     private var titleHeaderView: TitleHeaderView!
     private var textField: StyledTextField!
@@ -24,7 +24,7 @@ class EnterNameViewController: UIViewController, BindableType, CustomNavBarViewa
     var latestKeyboardHeight: CGFloat = 0
     
     let disposeBag = DisposeBag()
-    var viewModel: EnterNameViewModel!
+    var viewModel: ViewModel!
     
     override func loadView() {
         super.loadView()
