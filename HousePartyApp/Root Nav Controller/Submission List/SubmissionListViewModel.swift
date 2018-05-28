@@ -18,6 +18,7 @@ struct SubmissionListViewModel {
     
     init(user: User) {
         _submissions.value = user.submissons
+        bindUserDidUpdateNotification()
     }
     
     //MARK: - Outputs
@@ -29,6 +30,15 @@ struct SubmissionListViewModel {
     func bindDidSelectSubmission(_ observable: Observable<Submission>) {
         observable
             .subscribe(onNext: { print("Submission selected: \($0.createdAt)") })
+            .disposed(by: disposeBag)
+    }
+    
+    //MARK: - Helper Methods
+    private func bindUserDidUpdateNotification() {
+        NotificationCenter.default.rx.notification(.userDidUpdate)
+            .subscribe(onNext: { _ in
+                self._submissions.value = AppController.shared.currentUser!.submissons
+            })
             .disposed(by: disposeBag)
     }
 }

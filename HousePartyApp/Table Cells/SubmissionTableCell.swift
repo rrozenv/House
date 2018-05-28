@@ -15,7 +15,6 @@ final class SubmissionTableCell: UITableViewCell {
     
     // MARK: - Properties
     static let defaultReusableId: String = "SubmissionTableCell"
-    static let height: CGFloat = 60.0
     private var disposeBag = DisposeBag()
     private var containerView: UIView!
     private var mainLabel: UILabel!
@@ -35,6 +34,9 @@ final class SubmissionTableCell: UITableViewCell {
     
     private func commonInit() {
         self.contentView.backgroundColor = UIColor.white
+        self.separatorInset = .zero
+        self.preservesSuperviewLayoutMargins = false
+        self.layoutMargins = .zero
         self.selectionStyle = .none
         setupContainerView()
         setupCollectionView()
@@ -63,8 +65,9 @@ extension SubmissionTableCell {
     
     //MARK: View Setup
     private func setupContainerView() {
+        collectionViewGridLayout = ContactsCollViewGridLayout()
         containerView = UIView()
-        containerView.backgroundColor = UIColor.white
+        containerView.backgroundColor = UIColor.green
         
         contentView.addSubview(containerView)
         containerView.snp.makeConstraints { (make) in
@@ -73,18 +76,17 @@ extension SubmissionTableCell {
     }
     
     private func setupMainLabel() {
-        mainLabel = UILabel().rxStyle(font: FontBook.AvenirMedium.of(size: 14), color: .black, alignment: .left)
+        mainLabel = UILabel().rxStyle(font: FontBook.AvenirMedium.of(size: 20), color: .black, alignment: .left)
         
         containerView.addSubview(mainLabel)
         mainLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(containerView).offset(10)
+            make.top.equalTo(containerView)
             make.left.equalTo(containerView).offset(20)
-            make.bottom.equalTo(collectionView.snp.top).offset(10)
+            make.bottom.equalTo(collectionView.snp.top)
         }
     }
     
     private func setupCollectionView() {
-        collectionViewGridLayout = ContactsCollViewGridLayout()
         collectionView = UICollectionView.init(frame: CGRect.zero, collectionViewLayout: collectionViewGridLayout)
         collectionView.backgroundColor = UIColor.orange
         collectionView.showsVerticalScrollIndicator = false
@@ -95,7 +97,7 @@ extension SubmissionTableCell {
         containerView.addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in
             make.left.bottom.right.equalTo(containerView)
-            make.height.equalTo(collectionViewGridLayout.itemSize.height)
+            make.height.equalTo(collectionViewGridLayout.itemSize.height + 1.0)
         }
     }
     

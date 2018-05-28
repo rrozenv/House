@@ -24,12 +24,16 @@ class SubmissionListViewController: UIViewController, BindableType {
         self.view.backgroundColor = .white
         setupTableView()
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 
     deinit { print("SubmissionListViewController deinit") }
     
     func bindViewModel() {
-        tableView.rx.setDelegate(self)
-            .disposed(by: disposeBag)
+//        tableView.rx.setDelegate(self)
+//            .disposed(by: disposeBag)
         
         //MARK: - Inputs
         let submissionTapped$ = tableView.rx.modelSelected(Submission.self).asObservable()
@@ -47,10 +51,11 @@ class SubmissionListViewController: UIViewController, BindableType {
     private func setupTableView() {
         tableView = UITableView(frame: CGRect.zero, style: .plain)
         tableView.register(SubmissionTableCell.self, forCellReuseIdentifier: SubmissionTableCell.defaultReusableId)
+        tableView.estimatedRowHeight = 80
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 150
         tableView.separatorStyle = .singleLine
         tableView.keyboardDismissMode = .onDrag
+        tableView.contentInset = UIEdgeInsetsMake(80, 0, 0, 0)
         
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (make) in
@@ -60,19 +65,15 @@ class SubmissionListViewController: UIViewController, BindableType {
     
 }
 
-extension SubmissionListViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return TitleSelectionCell.height
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return CGFloat.leastNonzeroMagnitude
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return CGFloat.leastNonzeroMagnitude
-    }
-
-}
+//extension SubmissionListViewController: UITableViewDelegate {
+//
+//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        return CGFloat.leastNonzeroMagnitude
+//    }
+//
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return CGFloat.leastNonzeroMagnitude
+//    }
+//
+//}
 

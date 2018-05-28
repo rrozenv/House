@@ -94,9 +94,11 @@ final class CreateSubmissionCoordinator: Coordinatable {
         let submission = Submission(leader: AppController.shared.currentUser!,
                                     registeredFriends: [],
                                     unregisteredFriends: [],
-                                    allNumbers: submissionInfo.selectedContacts!.map { $0.primaryNumber ?? $0.numbers.first! }, createdAt: Date(), status: .pending)
+                                    allNumbers: submissionInfo.selectedContacts!.map { $0.primaryNumber ?? $0.numbers.first! },
+                                    createdAt: Date(),
+                                    status: .pending)
         AppController.shared.currentUser!.submissons.append(submission)
-        NotificationCenter.default.post(name: Notification.Name.createHomeVc, object: nil)
+        navigationController?.dismiss(animated: true, completion: nil)
         print("Submission: \(submission)")
         //TODO: Create Submission
     }

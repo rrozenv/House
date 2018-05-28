@@ -14,8 +14,7 @@ import RxSwift
 extension Notification.Name {
     static let createHomeVc = Notification.Name("createHomeVc")
     static let logout = Notification.Name("logout")
-    static let atBatResultSelected = Notification.Name("atBatResultSelected")
-    static let startGame = Notification.Name("startGame")
+    static let userDidUpdate = Notification.Name("userDidUpdate")
 }
 
 extension Notification {

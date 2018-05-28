@@ -19,7 +19,7 @@ protocol Invitable: Codable {
 
 final class HomeViewController: UIViewController, CustomNavBarViewable {
     
-    private var homeCoordinator: HomeCoordinator!
+    private var coordinator: HomeCoordinator!
     let disposeBag = DisposeBag()
     var navView: HomeNavView = HomeNavView(leftIcon: #imageLiteral(resourceName: "IC_UserOptions"), leftMargin: 20.0)
     var navBackgroundView: UIView = UIView()
@@ -33,7 +33,7 @@ final class HomeViewController: UIViewController, CustomNavBarViewable {
     
     init(coordinator: HomeCoordinator) {
         super.init(nibName: nil, bundle: nil)
-        self.homeCoordinator = coordinator
+        self.coordinator = coordinator
     }
     
     override func loadView() {
@@ -48,15 +48,8 @@ final class HomeViewController: UIViewController, CustomNavBarViewable {
         super.viewDidLoad()
         //bindViewModel()
         //setupUsersVc()
-        
-        
         createSubmissionButton.rx.tap.asObservable()
-            .subscribe(onNext: { [unowned self] in
-                let navVc = UINavigationController()
-                let coordinator = CreateSubmissionCoordinator(navVc: navVc, screenOrder: [.selectSqaud, .squadDescription])
-                coordinator.toNextScreen()
-                self.present(navVc, animated: true, completion: nil)
-            })
+            .subscribe(onNext: { [unowned self] in self.coordinator.navigateTo(screen: .createSubmission) })
             .disposed(by: disposeBag)
     }
     
@@ -66,7 +59,15 @@ final class HomeViewController: UIViewController, CustomNavBarViewable {
         var submissionVc = SubmissionListViewController()
         let submissionVm = SubmissionListViewModel(user: AppController.shared.currentUser!)
         submissionVc.setViewModelBinding(model: submissionVm)
-        let vc = TabPageViewController(viewControllers: [submissionVc, submissionVc])
+        
+        let apperence = TabAppearence(type: .underline,
+                                      itemTitles: ["Submissions", "Events"],
+                                      height: 50.0,
+                                      selectedBkgColor: .white,
+                                      selectedTitleColor: .black,
+                                      notSelectedBkgColor: .white,
+                                      notSelectedTitleColor: .black)
+        let vc = TabPageViewController(viewControllers: [submissionVc, UIViewController()], tabAppearence: apperence)
         self.addChild(vc, frame: nil, animated: false)
         
         vc.view.snp.makeConstraints { (make) in

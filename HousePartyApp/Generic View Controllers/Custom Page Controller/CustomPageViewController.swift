@@ -7,6 +7,7 @@ class CustomPageViewController: UIViewController {
     var pageViewController: UIPageViewController!
     var dataSource: CustomPageControllerDataSource!
     var currentPageIndex = 0
+    var didFinishTransition: ((Int) -> Void)?
     
     override func loadView() {
         super.loadView()
@@ -38,6 +39,7 @@ class CustomPageViewController: UIViewController {
             animated: true,
             completion: nil
         )
+        self.didFinishTransition?(currentPageIndex)
     }
     
 }

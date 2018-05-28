@@ -15,6 +15,10 @@ enum TabOptionType {
     case underline
 }
 
+struct TabItem {
+    let title: String
+}
+
 struct TabAppearence {
     let type: TabOptionType
     let itemTitles: [String]

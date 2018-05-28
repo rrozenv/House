@@ -16,7 +16,11 @@ final class AppController: UIViewController {
     static let shared = AppController(userService: UserService())
     private let userService: UserService
     private var actingVC: UIViewController!
-    var currentUser: User?
+    var currentUser: User? {
+        didSet {
+            NotificationCenter.default.post(name: .userDidUpdate, object: nil)
+        }
+    }
     var signupFlowCoordinator: SignUpFlowCoordinator!
     
     private init(userService: UserService) {
@@ -66,16 +70,9 @@ extension AppController {
     }
 
     private func createHomeViewController() -> UINavigationController {
-        var navVc: UINavigationController
-        if let user = currentUser, !user.submissons.isEmpty {
-            navVc = UINavigationController()
-            let coordinator = HomeCoordinator(navVc: navVc, screens: [.home, .submissionDetail])
-            coordinator.navigateTo(screen: .home)
-        } else {
-            navVc = UINavigationController()
-            let coordinator = CreateSubmissionCoordinator(navVc: navVc, screenOrder: [.selectSqaud, .squadDescription])
-            coordinator.toNextScreen()
-        }
+        let navVc = UINavigationController()
+        let coordinator = HomeCoordinator(navVc: navVc, screens: [.home, .createSubmission, .submissionDetail])
+        coordinator.navigateTo(screen: .home)
         return navVc
     }
     

@@ -25,6 +25,7 @@ class ContactsCollViewGridLayout: UICollectionViewFlowLayout {
         self.minimumInteritemSpacing = itemSpacing
         self.scrollDirection = .horizontal
         self.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        //self.estimatedItemSize = CGSize(width: 1, height: 1)
     }
     
     required init?(coder aDecoder: NSCoder) {
