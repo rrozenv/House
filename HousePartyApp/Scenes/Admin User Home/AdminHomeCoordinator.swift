@@ -11,9 +11,10 @@ import UIKit
 
 final class AdminHomeCoordinator {
     
-    enum Screen: Int {
+    enum Screen {
         case home
         case createEvent
+        case submissionDetail(Submission)
     }
     
     weak var navigationController: UINavigationController?
@@ -30,12 +31,20 @@ final class AdminHomeCoordinator {
         switch screen {
         case .home: toHome()
         case .createEvent: toCreateSubmission()
+        case .submissionDetail(let submission): toSubmissionDetail(submission)
         }
     }
     
+    func toPreviousScreen() {
+        navigationController?.popViewController(animated: true)
+    }
+    
     //MARK: - Navigating
-    private func toSubmissionDetail() {
-        print("Going to submission detail screen!")
+    private func toSubmissionDetail(_ submission: Submission) {
+        var vc = SubmissionDetailViewController()
+        let vm = SubmissionDetailViewModel(submission: submission, coordinator: self)
+        vc.setViewModelBinding(model: vm)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     private func toHome() {

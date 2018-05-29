@@ -73,6 +73,7 @@
 		98EB1C5D20B9C76C00A90B62 /* TabOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EB1C5C20B9C76C00A90B62 /* TabOptionsView.swift */; };
 		98EB1C5F20B9C99100A90B62 /* SubmissionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EB1C5E20B9C99100A90B62 /* SubmissionListViewModel.swift */; };
 		98EB1C6120B9CB4B00A90B62 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EB1C6020B9CB4B00A90B62 /* HomeCoordinator.swift */; };
+		98EBEF9220BD509800E6014B /* SubmissionDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EBEF9120BD509800E6014B /* SubmissionDetailCoordinator.swift */; };
 		98EE833420AD204D00EDEBFF /* UITextView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EE833320AD204D00EDEBFF /* UITextView+Ext.swift */; };
 		98F241C820A68194001FD887 /* CustomPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241C620A68193001FD887 /* CustomPageViewController.swift */; };
 		98F241C920A68194001FD887 /* CustomPageControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241C720A68193001FD887 /* CustomPageControllerDataSource.swift */; };
@@ -88,6 +89,7 @@
 		98F241ED20A698AC001FD887 /* PhoneEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241EC20A698AB001FD887 /* PhoneEntryViewModel.swift */; };
 		98F241F020A6AC2C001FD887 /* KeyboardAvoidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241EF20A6AC2C001FD887 /* KeyboardAvoidable.swift */; };
 		98F241F220A6AC63001FD887 /* UIDevice+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241F120A6AC63001FD887 /* UIDevice+Ext.swift */; };
+		98F5673220BD5A2A0061F6DA /* SubmissionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F5673120BD5A2A0061F6DA /* SubmissionDetailViewController.swift */; };
 		98F75F6E20B2903B00B6AA7D /* InitialPagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F75F6D20B2903B00B6AA7D /* InitialPagingViewController.swift */; };
 		98FDF13320B7FC290094EFD6 /* CreateSubmissionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FDF13220B7FC290094EFD6 /* CreateSubmissionCoordinator.swift */; };
 		98FDF13620B835980094EFD6 /* SquadDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FDF13520B835980094EFD6 /* SquadDescriptionViewController.swift */; };
@@ -186,6 +188,7 @@
 		98EB1C5C20B9C76C00A90B62 /* TabOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabOptionsView.swift; sourceTree = "<group>"; };
 		98EB1C5E20B9C99100A90B62 /* SubmissionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmissionListViewModel.swift; sourceTree = "<group>"; };
 		98EB1C6020B9CB4B00A90B62 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		98EBEF9120BD509800E6014B /* SubmissionDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmissionDetailCoordinator.swift; sourceTree = "<group>"; };
 		98EE833320AD204D00EDEBFF /* UITextView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Ext.swift"; sourceTree = "<group>"; };
 		98F241C620A68193001FD887 /* CustomPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPageViewController.swift; sourceTree = "<group>"; };
 		98F241C720A68193001FD887 /* CustomPageControllerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPageControllerDataSource.swift; sourceTree = "<group>"; };
@@ -201,6 +204,7 @@
 		98F241EC20A698AB001FD887 /* PhoneEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneEntryViewModel.swift; sourceTree = "<group>"; };
 		98F241EF20A6AC2C001FD887 /* KeyboardAvoidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAvoidable.swift; sourceTree = "<group>"; };
 		98F241F120A6AC63001FD887 /* UIDevice+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Ext.swift"; sourceTree = "<group>"; };
+		98F5673120BD5A2A0061F6DA /* SubmissionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmissionDetailViewController.swift; sourceTree = "<group>"; };
 		98F75F6D20B2903B00B6AA7D /* InitialPagingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialPagingViewController.swift; sourceTree = "<group>"; };
 		98FDF13220B7FC290094EFD6 /* CreateSubmissionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSubmissionCoordinator.swift; sourceTree = "<group>"; };
 		98FDF13520B835980094EFD6 /* SquadDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadDescriptionViewController.swift; sourceTree = "<group>"; };
@@ -286,6 +290,8 @@
 			isa = PBXGroup;
 			children = (
 				9802D2FC20BD43A40042B2FF /* SubmissionDetailViewModel.swift */,
+				98F5673120BD5A2A0061F6DA /* SubmissionDetailViewController.swift */,
+				98EBEF9120BD509800E6014B /* SubmissionDetailCoordinator.swift */,
 			);
 			path = "Admin Submission Detail";
 			sourceTree = "<group>";
@@ -847,6 +853,7 @@
 				98A50CA4209F7B7F0090FC8E /* AppDelegate.swift in Sources */,
 				98A50CE2209FCD110090FC8E /* NotificationName+Ext.swift in Sources */,
 				98C8359520B5C91B003BB2C7 /* EnterNameViewModel.swift in Sources */,
+				98EBEF9220BD509800E6014B /* SubmissionDetailCoordinator.swift in Sources */,
 				98A50CD4209F80DB0090FC8E /* API.swift in Sources */,
 				981B664220B293870089CD96 /* InitialViewController.swift in Sources */,
 				981C4B8B20B71BE100DFFE5B /* ContactStore.swift in Sources */,
@@ -885,6 +892,7 @@
 				98A50CDE209FCBD40090FC8E /* UsersViewModel.swift in Sources */,
 				98A50CF7209FCF7A0090FC8E /* ErrorTracker.swift in Sources */,
 				98F241F020A6AC2C001FD887 /* KeyboardAvoidable.swift in Sources */,
+				98F5673220BD5A2A0061F6DA /* SubmissionDetailViewController.swift in Sources */,
 				98F241EB20A698A1001FD887 /* PhoneEntryViewController.swift in Sources */,
 				98EB1C5B20B9C74300A90B62 /* TabPageViewController.swift in Sources */,
 				98F241E920A688E0001FD887 /* UITextField+Ext.swift in Sources */,

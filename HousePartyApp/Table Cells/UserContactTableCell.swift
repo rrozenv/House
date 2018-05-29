@@ -53,6 +53,11 @@ final class UserContactTableCell: UITableViewCell, ValueCell {
         isSelect = value.isSelected
     }
     
+    func configureWith(value: Invitable) {
+        imageNameSublabelView.nameLabel.text = value.fullName
+        imageNameSublabelView.nameSubLabel.text = value.phonenumber
+    }
+    
 }
 
 extension UserContactTableCell {

@@ -43,7 +43,7 @@ extension AdminHomeViewModel {
         eventsVc.setViewModelBinding(model: submissionVm)
         
         var adminSubListVc = SubmissionListViewController<AdminSubmissionListViewModel>()
-        let adminSubmVm = AdminSubmissionListViewModel(submissionService: globalSubService)
+        let adminSubmVm = AdminSubmissionListViewModel(submissionService: globalSubService, coordinator: coordinator)
         adminSubListVc.setViewModelBinding(model: adminSubmVm)
         
         let apperence = TabAppearence(type: .underline,

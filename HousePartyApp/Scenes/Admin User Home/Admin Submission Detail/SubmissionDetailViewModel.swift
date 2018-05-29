@@ -13,22 +13,41 @@ import RxCocoa
 struct SubmissionDetailViewModel {
     
     //MARK: - Properties
-    private let _usersGroup = Variable<[Invitable]>([])
+    private let _submission: Variable<Submission>
     private let disposeBag = DisposeBag()
+    private let coordinator: AdminHomeCoordinator
     
-    init(submission: Submission) {
-        _usersGroup.value = createInvitableUsersFrom(submission: submission)
+    init(submission: Submission, coordinator: AdminHomeCoordinator) {
+        self.coordinator = coordinator
+        _submission = Variable(submission)
     }
     
     //MARK: - Outputs
     var displayedUsers: Observable<[Invitable]> {
-        return _usersGroup.asObservable()
+        return _submission.asObservable().map { self.createInvitableUsersFrom(submission: $0) }
+    }
+    
+    var shouldHideAddToEventButton: Observable<Bool> {
+        return .just(!AppController.shared.currentUser!.isAdmin)
     }
     
     //MARK: - Inputs
-    func bindDidSelectEvent(_ observable: Observable<Event>) {
+    func bindSelectedEvent(_ observable: Observable<Event>) {
         observable
-            .subscribe(onNext: { print("Submission selected: \($0.date)") })
+            .subscribe(onNext: { event in
+                print("Event was selected: \(event.venueName)")
+                let idx = AppController.shared.currentUser!.events.index(where: { $0._id == event._id })
+                var subCopy = self._submission.value
+                subCopy.status = .invited
+                AppController.shared.currentUser!.events[idx!].submissions.append(subCopy)
+                self.coordinator.toPreviousScreen()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    func bindBackButton(_ observable: Observable<Void>) {
+        observable
+            .subscribe(onNext: { self.coordinator.toPreviousScreen() })
             .disposed(by: disposeBag)
     }
     

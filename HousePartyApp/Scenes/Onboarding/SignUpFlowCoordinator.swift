@@ -167,8 +167,6 @@ final class SignUpFlowCoordinator {
         NotificationCenter.default.post(name: Notification.Name.createHomeVc, object: nil)
     }
     
-
-    
     private func createUser() {
         guard let name = signupInfo.firstName,
              let phone = signupInfo.phoneNumber else {

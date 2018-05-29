@@ -24,12 +24,12 @@ struct Submission: Codable {
     let unregisteredFriends: [InvitableUser]
     let allNumbers: [String]
     let createdAt: Date
-    let status: SubmissonStatus
+    var status: SubmissonStatus
 }
 
 struct Event: Codable {
     let _id: String
     let venueName: String
     let date: Date
-    let submissions: [Submission]
+    var submissions: [Submission]
 }

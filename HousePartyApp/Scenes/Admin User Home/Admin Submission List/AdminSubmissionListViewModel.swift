@@ -42,8 +42,10 @@ struct AdminSubmissionListViewModel: SubmissionListInputsOutputs {
     //MARK: - Properties
     private let _submissions = Variable<[Submission]>([])
     private let disposeBag = DisposeBag()
+    private let coordinator: AdminHomeCoordinator
     
-    init(submissionService: SubmissionService = SubmissionService()) {
+    init(submissionService: SubmissionService = SubmissionService(), coordinator: AdminHomeCoordinator) {
+        self.coordinator = coordinator
         submissionService.submissionsFor(status: .pending)
             .bind(to: _submissions)
             .disposed(by: disposeBag)
@@ -57,7 +59,7 @@ struct AdminSubmissionListViewModel: SubmissionListInputsOutputs {
     //MARK: - Inputs
     func bindDidSelectSubmission(_ observable: Observable<Submission>) {
         observable
-            .subscribe(onNext: { print("Submission selected: \($0.createdAt)") })
+            .subscribe(onNext: { self.coordinator.navigateTo(screen: .submissionDetail($0)) })
             .disposed(by: disposeBag)
     }
     
