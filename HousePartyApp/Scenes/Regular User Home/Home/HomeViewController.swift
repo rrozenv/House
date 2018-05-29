@@ -13,6 +13,7 @@ import RxSwift
 import SnapKit
 
 protocol Invitable: Codable {
+    var _id: String { get }
     var fullName: String { get }
     var phonenumber: String { get }
 }

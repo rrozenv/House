@@ -1,5 +1,5 @@
 //
-//  HomeViewModel.swift
+//  AdminHomeViewModel.swift
 //  HousePartyApp
 //
 //  Created by Robert Rozenvasser on 5/28/18.
@@ -10,20 +10,13 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-typealias TabInfo = (vcs: [UIViewController], appearance: TabAppearence)
-
-protocol HomeViewControllable {
-    var tabInfo: Driver<TabInfo> { get }
-    func bindCreateButton(_ observable: Observable<Void>)
-}
-
-struct HomeViewModel: HomeViewControllable {
+struct AdminHomeViewModel: HomeViewControllable {
     
     //MARK: - Properties
     private let disposeBag = DisposeBag()
-    private let coordinator: HomeCoordinator
+    private let coordinator: AdminHomeCoordinator
     
-    init(coordinator: HomeCoordinator) {
+    init(coordinator: AdminHomeCoordinator) {
         self.coordinator = coordinator
     }
     
@@ -36,25 +29,31 @@ struct HomeViewModel: HomeViewControllable {
     func bindCreateButton(_ observable: Observable<Void>) {
         observable
             .subscribe(onNext: {
-                self.coordinator.navigateTo(screen: .createSubmission)
+                self.coordinator.navigateTo(screen: .createEvent)
             })
             .disposed(by: disposeBag)
     }
     
 }
 
-extension HomeViewModel {
+extension AdminHomeViewModel {
     private func createTabInfo() -> TabInfo {
-        var submissionVc = SubmissionListViewController()
-        let submissionVm = SubmissionListViewModel(user: AppController.shared.currentUser!)
-        submissionVc.setViewModelBinding(model: submissionVm)
+        var eventsVc = EventListViewController()
+        let submissionVm = EventListViewModel(user: AppController.shared.currentUser!)
+        eventsVc.setViewModelBinding(model: submissionVm)
+        
+        var adminSubListVc = SubmissionListViewController<AdminSubmissionListViewModel>()
+        let adminSubmVm = AdminSubmissionListViewModel(submissionService: globalSubService)
+        adminSubListVc.setViewModelBinding(model: adminSubmVm)
+        
         let apperence = TabAppearence(type: .underline,
-                                      itemTitles: ["Submissions", "Events"],
+                                      itemTitles: ["Events", "Submissions"],
                                       height: 50.0,
                                       selectedBkgColor: .white,
                                       selectedTitleColor: .black,
                                       notSelectedBkgColor: .white,
                                       notSelectedTitleColor: .black)
-        return TabInfo(vcs: [submissionVc, UIViewController()], appearance: apperence)
+        
+        return TabInfo(vcs: [eventsVc, adminSubListVc], appearance: apperence)
     }
 }

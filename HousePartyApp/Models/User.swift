@@ -66,5 +66,9 @@ extension User {
             "phoneNumber": phoneNumber
         ]
     }
+    
+    static func defaultUser() -> User {
+        return User(_id: UUID().uuidString, isAdmin: false, fullName: "Default User", birthDate: Date().description, phonenumber: "2012640842", events: [], submissons: [])
+    }
 }
 

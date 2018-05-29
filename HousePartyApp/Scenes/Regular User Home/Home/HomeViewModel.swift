@@ -1,5 +1,5 @@
 //
-//  AdminHomeViewModel.swift
+//  HomeViewModel.swift
 //  HousePartyApp
 //
 //  Created by Robert Rozenvasser on 5/28/18.
@@ -10,13 +10,20 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-struct AdminHomeViewModel: HomeViewControllable {
+typealias TabInfo = (vcs: [UIViewController], appearance: TabAppearence)
+
+protocol HomeViewControllable {
+    var tabInfo: Driver<TabInfo> { get }
+    func bindCreateButton(_ observable: Observable<Void>)
+}
+
+struct HomeViewModel: HomeViewControllable {
     
     //MARK: - Properties
     private let disposeBag = DisposeBag()
-    private let coordinator: AdminHomeCoordinator
+    private let coordinator: HomeCoordinator
     
-    init(coordinator: AdminHomeCoordinator) {
+    init(coordinator: HomeCoordinator) {
         self.coordinator = coordinator
     }
     
@@ -29,25 +36,25 @@ struct AdminHomeViewModel: HomeViewControllable {
     func bindCreateButton(_ observable: Observable<Void>) {
         observable
             .subscribe(onNext: {
-                self.coordinator.navigateTo(screen: .createEvent)
+                self.coordinator.navigateTo(screen: .createSubmission)
             })
             .disposed(by: disposeBag)
     }
     
 }
 
-extension AdminHomeViewModel {
+extension HomeViewModel {
     private func createTabInfo() -> TabInfo {
-        var eventsVc = EventListViewController()
-        let submissionVm = EventListViewModel(user: AppController.shared.currentUser!)
-        eventsVc.setViewModelBinding(model: submissionVm)
+        var submissionVc = SubmissionListViewController<SubmissionListViewModel>()
+        let submissionVm = SubmissionListViewModel(user: AppController.shared.currentUser!)
+        submissionVc.setViewModelBinding(model: submissionVm)
         let apperence = TabAppearence(type: .underline,
-                                      itemTitles: ["Events", "Submissions"],
+                                      itemTitles: ["Submissions", "Events"],
                                       height: 50.0,
                                       selectedBkgColor: .white,
                                       selectedTitleColor: .black,
                                       notSelectedBkgColor: .white,
                                       notSelectedTitleColor: .black)
-        return TabInfo(vcs: [eventsVc, UIViewController()], appearance: apperence)
+        return TabInfo(vcs: [submissionVc, UIViewController()], appearance: apperence)
     }
 }

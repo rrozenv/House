@@ -98,6 +98,7 @@ final class CreateSubmissionCoordinator: Coordinatable {
                                     createdAt: Date(),
                                     status: .pending)
         AppController.shared.currentUser!.submissons.append(submission)
+        globalSubService._submissions.value.append(submission)
         navigationController?.dismiss(animated: true, completion: nil)
         print("Submission: \(submission)")
         //TODO: Create Submission

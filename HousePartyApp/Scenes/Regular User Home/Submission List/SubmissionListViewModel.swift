@@ -10,7 +10,12 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-struct SubmissionListViewModel {
+protocol SubmissionListInputsOutputs {
+    var displayedSubmissions: Observable<[Submission]> { get }
+    func bindDidSelectSubmission(_ observable: Observable<Submission>)
+}
+
+struct SubmissionListViewModel: SubmissionListInputsOutputs {
     
     //MARK: - Properties
     private let _submissions = Variable<[Submission]>([])

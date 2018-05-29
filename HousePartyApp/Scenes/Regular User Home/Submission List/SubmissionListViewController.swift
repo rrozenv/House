@@ -12,12 +12,12 @@ import RxSwift
 import RxCocoa
 import SnapKit
 
-class SubmissionListViewController: UIViewController, BindableType {
+class SubmissionListViewController<ViewModel: SubmissionListInputsOutputs>: UIViewController, BindableType {
     
     private var tableView: UITableView!
     
     let disposeBag = DisposeBag()
-    var viewModel: SubmissionListViewModel!
+    var viewModel: ViewModel!
     
     override func loadView() {
         super.loadView()

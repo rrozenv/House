@@ -9,13 +9,19 @@
 import Foundation
 
 enum SubmissonStatus: String, Codable {
-    case pending, accepted, expired
+    case pending, invited, accepted, declined, expired
+}
+
+struct InvitableUser: Codable, Invitable {
+    let _id: String
+    let fullName: String
+    let phonenumber: String
 }
 
 struct Submission: Codable {
     let leader: User
     let registeredFriends: [User]
-    let unregisteredFriends: [User]
+    let unregisteredFriends: [InvitableUser]
     let allNumbers: [String]
     let createdAt: Date
     let status: SubmissonStatus
