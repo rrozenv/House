@@ -19,10 +19,16 @@
 		981C4B9520B7530800DFFE5B /* UserContactTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981C4B9420B7530800DFFE5B /* UserContactTableCell.swift */; };
 		981C4B9720B7539000DFFE5B /* ImageLabelSublabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981C4B9620B7539000DFFE5B /* ImageLabelSublabelView.swift */; };
 		981C4B9920B7547800DFFE5B /* LabelButtonStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981C4B9820B7547800DFFE5B /* LabelButtonStackView.swift */; };
+		981D29AE20BDA399000E355A /* EventDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981D29AD20BDA399000E355A /* EventDetailViewModel.swift */; };
 		981FA90E20B88A4C00227B39 /* ContactCollCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981FA90D20B88A4C00227B39 /* ContactCollCell.swift */; };
 		981FA91020B893EF00227B39 /* Submission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981FA90F20B893EF00227B39 /* Submission.swift */; };
+		983CE83A20CC5CE2003601E4 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983CE83920CC5CE2003601E4 /* AlertViewController.swift */; };
+		983CE83C20CC6BE6003601E4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983CE83B20CC6BE6003601E4 /* SettingsViewController.swift */; };
+		983CE83E20CC71DF003601E4 /* SettingsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983CE83D20CC71DF003601E4 /* SettingsTableCell.swift */; };
 		9857D77920BC157B0071C806 /* SubmissionTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9857D77820BC157B0071C806 /* SubmissionTableCell.swift */; };
+		9859CDFB20C1F07700E1D8F8 /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9859CDFA20C1F07700E1D8F8 /* Gradient.swift */; };
 		987648BD20AE6094004FF205 /* ValueCellDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987648BC20AE6094004FF205 /* ValueCellDataSource.swift */; };
+		988B88DE20C09F0200ECD9FB /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988B88DD20C09F0200ECD9FB /* CustomNavigationController.swift */; };
 		98A50CA4209F7B7F0090FC8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A50CA3209F7B7F0090FC8E /* AppDelegate.swift */; };
 		98A50CAB209F7B7F0090FC8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98A50CAA209F7B7F0090FC8E /* Assets.xcassets */; };
 		98A50CAE209F7B7F0090FC8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98A50CAC209F7B7F0090FC8E /* LaunchScreen.storyboard */; };
@@ -68,12 +74,13 @@
 		98D5B37020BC9D99009EEF57 /* EventListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D5B36F20BC9D99009EEF57 /* EventListViewModel.swift */; };
 		98D5B37220BC9E00009EEF57 /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D5B37120BC9E00009EEF57 /* EventListViewController.swift */; };
 		98D5B37420BC9E87009EEF57 /* EventTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D5B37320BC9E87009EEF57 /* EventTableCell.swift */; };
+		98E2444D20D153B9005F6A74 /* InitialPagingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E2444C20D153B9005F6A74 /* InitialPagingViewModel.swift */; };
+		98E2445020D15522005F6A74 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E2444F20D15522005F6A74 /* Secrets.swift */; };
 		98EB1C5920B9C6F900A90B62 /* SubmissionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EB1C5820B9C6F900A90B62 /* SubmissionListViewController.swift */; };
 		98EB1C5B20B9C74300A90B62 /* TabPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EB1C5A20B9C74300A90B62 /* TabPageViewController.swift */; };
 		98EB1C5D20B9C76C00A90B62 /* TabOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EB1C5C20B9C76C00A90B62 /* TabOptionsView.swift */; };
 		98EB1C5F20B9C99100A90B62 /* SubmissionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EB1C5E20B9C99100A90B62 /* SubmissionListViewModel.swift */; };
 		98EB1C6120B9CB4B00A90B62 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EB1C6020B9CB4B00A90B62 /* HomeCoordinator.swift */; };
-		98EBEF9220BD509800E6014B /* SubmissionDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EBEF9120BD509800E6014B /* SubmissionDetailCoordinator.swift */; };
 		98EE833420AD204D00EDEBFF /* UITextView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EE833320AD204D00EDEBFF /* UITextView+Ext.swift */; };
 		98F241C820A68194001FD887 /* CustomPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241C620A68193001FD887 /* CustomPageViewController.swift */; };
 		98F241C920A68194001FD887 /* CustomPageControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F241C720A68193001FD887 /* CustomPageControllerDataSource.swift */; };
@@ -128,10 +135,16 @@
 		981C4B9420B7530800DFFE5B /* UserContactTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContactTableCell.swift; sourceTree = "<group>"; };
 		981C4B9620B7539000DFFE5B /* ImageLabelSublabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLabelSublabelView.swift; sourceTree = "<group>"; };
 		981C4B9820B7547800DFFE5B /* LabelButtonStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelButtonStackView.swift; sourceTree = "<group>"; };
+		981D29AD20BDA399000E355A /* EventDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewModel.swift; sourceTree = "<group>"; };
 		981FA90D20B88A4C00227B39 /* ContactCollCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCollCell.swift; sourceTree = "<group>"; };
 		981FA90F20B893EF00227B39 /* Submission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Submission.swift; sourceTree = "<group>"; };
+		983CE83920CC5CE2003601E4 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		983CE83B20CC6BE6003601E4 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		983CE83D20CC71DF003601E4 /* SettingsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableCell.swift; sourceTree = "<group>"; };
 		9857D77820BC157B0071C806 /* SubmissionTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmissionTableCell.swift; sourceTree = "<group>"; };
+		9859CDFA20C1F07700E1D8F8 /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
 		987648BC20AE6094004FF205 /* ValueCellDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueCellDataSource.swift; sourceTree = "<group>"; };
+		988B88DD20C09F0200ECD9FB /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		98A50CA0209F7B7F0090FC8E /* HousePartyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HousePartyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98A50CA3209F7B7F0090FC8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		98A50CAA209F7B7F0090FC8E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -183,12 +196,13 @@
 		98D5B36F20BC9D99009EEF57 /* EventListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewModel.swift; sourceTree = "<group>"; };
 		98D5B37120BC9E00009EEF57 /* EventListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewController.swift; sourceTree = "<group>"; };
 		98D5B37320BC9E87009EEF57 /* EventTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableCell.swift; sourceTree = "<group>"; };
+		98E2444C20D153B9005F6A74 /* InitialPagingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialPagingViewModel.swift; sourceTree = "<group>"; };
+		98E2444F20D15522005F6A74 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		98EB1C5820B9C6F900A90B62 /* SubmissionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmissionListViewController.swift; sourceTree = "<group>"; };
 		98EB1C5A20B9C74300A90B62 /* TabPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabPageViewController.swift; sourceTree = "<group>"; };
 		98EB1C5C20B9C76C00A90B62 /* TabOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabOptionsView.swift; sourceTree = "<group>"; };
 		98EB1C5E20B9C99100A90B62 /* SubmissionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmissionListViewModel.swift; sourceTree = "<group>"; };
 		98EB1C6020B9CB4B00A90B62 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
-		98EBEF9120BD509800E6014B /* SubmissionDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmissionDetailCoordinator.swift; sourceTree = "<group>"; };
 		98EE833320AD204D00EDEBFF /* UITextView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Ext.swift"; sourceTree = "<group>"; };
 		98F241C620A68193001FD887 /* CustomPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPageViewController.swift; sourceTree = "<group>"; };
 		98F241C720A68193001FD887 /* CustomPageControllerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPageControllerDataSource.swift; sourceTree = "<group>"; };
@@ -252,6 +266,7 @@
 		9802D2F320BD3A850042B2FF /* Extras */ = {
 			isa = PBXGroup;
 			children = (
+				98D5B36920BC9673009EEF57 /* AdminHomeCoordinator.swift */,
 				98F241A320A67F3B001FD887 /* List Users */,
 			);
 			path = Extras;
@@ -269,10 +284,10 @@
 		9802D2F520BD3B5A0042B2FF /* Admin User Home */ = {
 			isa = PBXGroup;
 			children = (
-				98D5B36920BC9673009EEF57 /* AdminHomeCoordinator.swift */,
 				98D5B36D20BC9C77009EEF57 /* AdminHomeViewModel.swift */,
 				9802D2F820BD43280042B2FF /* Admin Submission List */,
 				9802D2F920BD43390042B2FF /* Admin Submission Detail */,
+				981D29AC20BDA318000E355A /* Event Detail */,
 				98D5B35D20BC907D009EEF57 /* Event List */,
 			);
 			path = "Admin User Home";
@@ -291,7 +306,6 @@
 			children = (
 				9802D2FC20BD43A40042B2FF /* SubmissionDetailViewModel.swift */,
 				98F5673120BD5A2A0061F6DA /* SubmissionDetailViewController.swift */,
-				98EBEF9120BD509800E6014B /* SubmissionDetailCoordinator.swift */,
 			);
 			path = "Admin Submission Detail";
 			sourceTree = "<group>";
@@ -303,6 +317,14 @@
 				981C4B9020B74A0E00DFFE5B /* SelectSquadViewModel.swift */,
 			);
 			path = "Select Squad";
+			sourceTree = "<group>";
+		};
+		981D29AC20BDA318000E355A /* Event Detail */ = {
+			isa = PBXGroup;
+			children = (
+				981D29AD20BDA399000E355A /* EventDetailViewModel.swift */,
+			);
+			path = "Event Detail";
 			sourceTree = "<group>";
 		};
 		98A50C97209F7B7F0090FC8E = {
@@ -330,6 +352,7 @@
 		98A50CA2209F7B7F0090FC8E /* HousePartyApp */ = {
 			isa = PBXGroup;
 			children = (
+				98E2444E20D15511005F6A74 /* Secrets */,
 				98F2419A20A67DF3001FD887 /* App Entry */,
 				98F2419E20A67E8B001FD887 /* Models */,
 				98F2419C20A67E5B001FD887 /* Scenes */,
@@ -379,6 +402,7 @@
 				98F241D220A6843B001FD887 /* Palette.swift */,
 				987648BC20AE6094004FF205 /* ValueCellDataSource.swift */,
 				981C4B8A20B71BE100DFFE5B /* ContactStore.swift */,
+				9859CDFA20C1F07700E1D8F8 /* Gradient.swift */,
 			);
 			name = Utilities;
 			path = "../../Designated Hitter/designated-hitter/DesignatedHitter/Utilities";
@@ -401,6 +425,7 @@
 				981FA90D20B88A4C00227B39 /* ContactCollCell.swift */,
 				9857D77820BC157B0071C806 /* SubmissionTableCell.swift */,
 				98D5B37320BC9E87009EEF57 /* EventTableCell.swift */,
+				983CE83D20CC71DF003601E4 /* SettingsTableCell.swift */,
 			);
 			path = "Table Cells";
 			sourceTree = "<group>";
@@ -464,6 +489,21 @@
 			path = "Create Event";
 			sourceTree = "<group>";
 		};
+		98E2444B20D152E4005F6A74 /* Google Sign In */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Google Sign In";
+			sourceTree = "<group>";
+		};
+		98E2444E20D15511005F6A74 /* Secrets */ = {
+			isa = PBXGroup;
+			children = (
+				98E2444F20D15522005F6A74 /* Secrets.swift */,
+			);
+			path = Secrets;
+			sourceTree = "<group>";
+		};
 		98EB1C6220B9D0F000A90B62 /* Submission List */ = {
 			isa = PBXGroup;
 			children = (
@@ -496,11 +536,13 @@
 		98F2419C20A67E5B001FD887 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				98E2444B20D152E4005F6A74 /* Google Sign In */,
 				9802D2F520BD3B5A0042B2FF /* Admin User Home */,
 				98D5B35920BC8FA8009EEF57 /* Regular User Home */,
 				98C8359E20B6F0BD003BB2C7 /* Onboarding */,
 				98D5B35E20BC90C7009EEF57 /* Create Event */,
 				98EB1C6320B9D10900A90B62 /* Create Submission */,
+				983CE83B20CC6BE6003601E4 /* SettingsViewController.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -599,6 +641,8 @@
 			isa = PBXGroup;
 			children = (
 				98F241D420A684A8001FD887 /* Custom Page Controller */,
+				988B88DD20C09F0200ECD9FB /* CustomNavigationController.swift */,
+				983CE83920CC5CE2003601E4 /* AlertViewController.swift */,
 			);
 			path = "Generic View Controllers";
 			sourceTree = "<group>";
@@ -607,6 +651,7 @@
 			isa = PBXGroup;
 			children = (
 				98F75F6D20B2903B00B6AA7D /* InitialPagingViewController.swift */,
+				98E2444C20D153B9005F6A74 /* InitialPagingViewModel.swift */,
 				981B664120B293870089CD96 /* InitialViewController.swift */,
 				981B664320B293920089CD96 /* InitialViewModel.swift */,
 			);
@@ -653,6 +698,7 @@
 				98A50C9D209F7B7F0090FC8E /* Frameworks */,
 				98A50C9E209F7B7F0090FC8E /* Resources */,
 				DB895FA155AFF87491AA8746 /* [CP] Embed Pods Frameworks */,
+				D7BD689948760AFE6CD7C83A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -790,6 +836,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D7BD689948760AFE6CD7C83A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-HousePartyApp/Pods-HousePartyApp-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HousePartyApp/Pods-HousePartyApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		DB895FA155AFF87491AA8746 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -798,6 +862,9 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HousePartyApp/Pods-HousePartyApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
@@ -810,6 +877,9 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
@@ -838,6 +908,7 @@
 				98A50CD6209F81240090FC8E /* UserService.swift in Sources */,
 				98C8359720B6E7EF003BB2C7 /* String+Ext.swift in Sources */,
 				98A50CE6209FCD4B0090FC8E /* CustomNavViewable.swift in Sources */,
+				9859CDFB20C1F07700E1D8F8 /* Gradient.swift in Sources */,
 				98A7691120B31500007FA2DA /* SelectCityViewController.swift in Sources */,
 				98F241D320A6843B001FD887 /* Palette.swift in Sources */,
 				98D5B36E20BC9C77009EEF57 /* AdminHomeViewModel.swift in Sources */,
@@ -846,6 +917,7 @@
 				98D5B36C20BC96F1009EEF57 /* HomeViewModel.swift in Sources */,
 				98A7691320B3150F007FA2DA /* SelectCityViewModel.swift in Sources */,
 				98D5B37420BC9E87009EEF57 /* EventTableCell.swift in Sources */,
+				983CE83A20CC5CE2003601E4 /* AlertViewController.swift in Sources */,
 				98F241ED20A698AC001FD887 /* PhoneEntryViewModel.swift in Sources */,
 				98A50CE0209FCD060090FC8E /* BindableType.swift in Sources */,
 				98C8359A20B6ED1F003BB2C7 /* PhoneVerificationViewModel.swift in Sources */,
@@ -853,7 +925,6 @@
 				98A50CA4209F7B7F0090FC8E /* AppDelegate.swift in Sources */,
 				98A50CE2209FCD110090FC8E /* NotificationName+Ext.swift in Sources */,
 				98C8359520B5C91B003BB2C7 /* EnterNameViewModel.swift in Sources */,
-				98EBEF9220BD509800E6014B /* SubmissionDetailCoordinator.swift in Sources */,
 				98A50CD4209F80DB0090FC8E /* API.swift in Sources */,
 				981B664220B293870089CD96 /* InitialViewController.swift in Sources */,
 				981C4B8B20B71BE100DFFE5B /* ContactStore.swift in Sources */,
@@ -862,10 +933,12 @@
 				98EB1C5D20B9C76C00A90B62 /* TabOptionsView.swift in Sources */,
 				98F241D720A68506001FD887 /* OnboardingInfo.swift in Sources */,
 				981C4B8F20B749FF00DFFE5B /* SelectSquadViewController.swift in Sources */,
+				983CE83E20CC71DF003601E4 /* SettingsTableCell.swift in Sources */,
 				98F241E020A68708001FD887 /* SignUpFlowCoordinator.swift in Sources */,
 				9802D2F720BD3CEC0042B2FF /* AdminSubmissionListViewModel.swift in Sources */,
 				98D5B37220BC9E00009EEF57 /* EventListViewController.swift in Sources */,
 				98F241F220A6AC63001FD887 /* UIDevice+Ext.swift in Sources */,
+				98E2445020D15522005F6A74 /* Secrets.swift in Sources */,
 				98EB1C5F20B9C99100A90B62 /* SubmissionListViewModel.swift in Sources */,
 				981C4B9720B7539000DFFE5B /* ImageLabelSublabelView.swift in Sources */,
 				98FDF13320B7FC290094EFD6 /* CreateSubmissionCoordinator.swift in Sources */,
@@ -896,8 +969,10 @@
 				98F241EB20A698A1001FD887 /* PhoneEntryViewController.swift in Sources */,
 				98EB1C5B20B9C74300A90B62 /* TabPageViewController.swift in Sources */,
 				98F241E920A688E0001FD887 /* UITextField+Ext.swift in Sources */,
+				98E2444D20D153B9005F6A74 /* InitialPagingViewModel.swift in Sources */,
 				98A7691820B31FFB007FA2DA /* TitleHeaderView.swift in Sources */,
 				98FDF13A20B8423B0094EFD6 /* ContactsCollViewGridLayout.swift in Sources */,
+				988B88DE20C09F0200ECD9FB /* CustomNavigationController.swift in Sources */,
 				98D5B36A20BC9673009EEF57 /* AdminHomeCoordinator.swift in Sources */,
 				981B664420B293920089CD96 /* InitialViewModel.swift in Sources */,
 				981C4B9120B74A0E00DFFE5B /* SelectSquadViewModel.swift in Sources */,
@@ -906,7 +981,9 @@
 				98A50CDA209FCB050090FC8E /* HomeViewController.swift in Sources */,
 				981C4B9520B7530800DFFE5B /* UserContactTableCell.swift in Sources */,
 				98F241C920A68194001FD887 /* CustomPageControllerDataSource.swift in Sources */,
+				981D29AE20BDA399000E355A /* EventDetailViewModel.swift in Sources */,
 				987648BD20AE6094004FF205 /* ValueCellDataSource.swift in Sources */,
+				983CE83C20CC6BE6003601E4 /* SettingsViewController.swift in Sources */,
 				98A7691620B319C0007FA2DA /* TitleSelectionCell.swift in Sources */,
 				98A50CEA209FCDA70090FC8E /* LineupPlayerCell.swift in Sources */,
 				9857D77920BC157B0071C806 /* SubmissionTableCell.swift in Sources */,

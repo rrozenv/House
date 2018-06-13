@@ -9,4 +9,5 @@ target 'HousePartyApp' do
   pod 'RxSwiftExt'
   pod 'Moya/RxSwift'
   pod 'RxOptional'
+  pod 'GoogleSignIn'
 end

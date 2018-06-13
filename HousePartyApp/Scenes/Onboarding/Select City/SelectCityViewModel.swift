@@ -15,7 +15,7 @@ struct SelectCityViewModel {
     //MARK: - Properties
     private let cities = Variable<[String]>(Constants.availableCities)
     private let disposeBag = DisposeBag()
-    private let coordinator: SignUpFlowCoordinator
+    let coordinator: SignUpFlowCoordinator
     
     init(coordinator: SignUpFlowCoordinator) {
         self.coordinator = coordinator

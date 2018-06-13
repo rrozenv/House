@@ -12,18 +12,22 @@ import RxCocoa
 
 protocol SubmissionListInputsOutputs {
     var displayedSubmissions: Observable<[Submission]> { get }
-    func bindDidSelectSubmission(_ observable: Observable<Submission>)
+    func bindSelectedSubmissionIndex(_ observable: Observable<Int>)
 }
 
 struct SubmissionListViewModel: SubmissionListInputsOutputs {
     
     //MARK: - Properties
     private let _submissions = Variable<[Submission]>([])
-    private let disposeBag = DisposeBag()
+    let disposeBag = DisposeBag()
+    private weak var coordinator: HomeCoordinator?
+    var updatedSubmission = Variable<(Submission, Int)?>(nil)
     
-    init(user: User) {
-        _submissions.value = user.submissons
-        bindUserDidUpdateNotification()
+    init(user: User, coordinator: HomeCoordinator) {
+        self.coordinator = coordinator
+        self._submissions.value = user.submissons
+        self.bindUserDidUpdateNotification()
+        self.bindUpdatedSubmission()
     }
     
     //MARK: - Outputs
@@ -32,9 +36,21 @@ struct SubmissionListViewModel: SubmissionListInputsOutputs {
     }
     
     //MARK: - Inputs
-    func bindDidSelectSubmission(_ observable: Observable<Submission>) {
+    func bindSelectedSubmissionIndex(_ observable: Observable<Int>) {
         observable
-            .subscribe(onNext: { print("Submission selected: \($0.createdAt)") })
+            .subscribe(onNext: { index in
+                self.coordinator?
+                .navigateTo(screen: .submissionDetail(self._submissions.value[index], index, self))
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindUpdatedSubmission() {
+        updatedSubmission.asObservable().filterNil()
+            .subscribe(onNext: { sub, index in
+                print("sub id:\(sub.createdAt) updated at: \(index)")
+                self._submissions.value[index] = sub
+            })
             .disposed(by: disposeBag)
     }
     

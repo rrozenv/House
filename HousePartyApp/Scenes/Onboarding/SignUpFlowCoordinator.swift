@@ -33,7 +33,7 @@ final class SignupInfo {
 
 final class SignUpFlowCoordinator {
     
-    enum Screen: Int {
+    enum Screen {
         case inital
         case selectCity
         case firstName
@@ -43,7 +43,7 @@ final class SignUpFlowCoordinator {
     }
     
     private let disposeBag = DisposeBag()
-    private weak var navigationController: UINavigationController?
+    weak var navigationController: UINavigationController?
     private var signupInfo = SignupInfo()
     private var userService: UserService
     private let screenOrder: [Screen]
@@ -124,6 +124,8 @@ final class SignUpFlowCoordinator {
         let vcs = OnboardingInfo.initalOnboardingInfo.map { InitialViewController.configuredWith(info: $0)
         }
         let pageVc = InitialPagingViewController(viewControllers: vcs, coordinator: self)
+        navigationController?.isNavigationBarHidden = true
+        //navigationController?.navBarIsHidden = true
         navigationController?.pushViewController(pageVc, animated: true)
     }
     
@@ -131,6 +133,7 @@ final class SignUpFlowCoordinator {
         var vc = SelectCityViewController()
         let viewModel = SelectCityViewModel(coordinator: self)
         vc.setViewModelBinding(model: viewModel)
+        //navigationController?.navBarIsHidden = false
         navigationController?.pushViewController(vc, animated: true)
     }
     

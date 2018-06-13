@@ -21,18 +21,22 @@ struct SubmissionService {
     }
     
     static func createDefaultSubs() -> [Submission] {
-        let sub1 = Submission(leader: User.defaultUser(),
+        let sub1 = Submission(eventId: nil,
+                              leader: User.defaultUser(),
                               registeredFriends: [],
                               unregisteredFriends: [],
                               allNumbers: ["2016023215"],
                               createdAt: Date(),
-                              status: .pending)
-        let sub2 = Submission(leader: User.defaultUser(),
+                              status: .pending,
+                              purchasedTickets: 0)
+        let sub2 = Submission(eventId: nil,
+                              leader: User.defaultUser(),
                               registeredFriends: [],
                               unregisteredFriends: [],
                               allNumbers: ["2013023215"],
                               createdAt: Date(),
-                              status: .pending)
+                              status: .pending,
+                              purchasedTickets: 0)
         return [sub1, sub2]
     }
  }
@@ -42,13 +46,15 @@ struct AdminSubmissionListViewModel: SubmissionListInputsOutputs {
     //MARK: - Properties
     private let _submissions = Variable<[Submission]>([])
     private let disposeBag = DisposeBag()
-    private let coordinator: AdminHomeCoordinator
+    private weak var coordinator: HomeCoordinator?
+    private let selectedIndex = Variable(0)
     
-    init(submissionService: SubmissionService = SubmissionService(), coordinator: AdminHomeCoordinator) {
+    init(submissionService: SubmissionService = SubmissionService(), coordinator: HomeCoordinator) {
         self.coordinator = coordinator
         submissionService.submissionsFor(status: .pending)
             .bind(to: _submissions)
             .disposed(by: disposeBag)
+        bindShouldRemoveSubmissionNotification()
     }
     
     //MARK: - Outputs
@@ -57,9 +63,23 @@ struct AdminSubmissionListViewModel: SubmissionListInputsOutputs {
     }
     
     //MARK: - Inputs
-    func bindDidSelectSubmission(_ observable: Observable<Submission>) {
+    func bindSelectedSubmissionIndex(_ observable: Observable<Int>) {
         observable
-            .subscribe(onNext: { self.coordinator.navigateTo(screen: .submissionDetail($0)) })
+            .do(onNext: { self.selectedIndex.value = $0 })
+            .mapToVoid()
+            .subscribe()
+            .disposed(by: disposeBag)
+//        observable
+//            .do(onNext: { self.selectedIndex.value = $0 })
+//            .subscribe(onNext: { index in
+//                self.coordinator?.navigateTo(screen: .submissionDetail(self._submissions.value[], <#T##Int#>, <#T##SubmissionListViewModel#>))
+//            })
+//            .disposed(by: disposeBag)
+    }
+    
+    private func bindShouldRemoveSubmissionNotification() {
+        NotificationCenter.default.rx.notification(.changedSubmissionStatusInDetail)
+            .subscribe(onNext: { _ in self._submissions.value.remove(at: self.selectedIndex.value) })
             .disposed(by: disposeBag)
     }
     

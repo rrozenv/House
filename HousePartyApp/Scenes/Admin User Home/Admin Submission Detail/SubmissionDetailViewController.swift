@@ -51,6 +51,13 @@ class SubmissionDetailViewController: UIViewController, BindableType, CustomNavB
                 cell.configureWith(value: element)
             }
             .disposed(by: disposeBag)
+        
+        viewModel.shouldDismiss.filter { $0 }
+            .drive(onNext: { [unowned self] _ in
+                self.dismiss(animated: true, completion: nil)
+                self.viewModel.coordinator?.toPreviousScreen()
+            })
+            .disposed(by: disposeBag)
     }
     
     private func setupTableView() {
@@ -81,11 +88,13 @@ class SubmissionDetailViewController: UIViewController, BindableType, CustomNavB
     }
     
     private func displaySelectEventVC() {
-        var vc = EventListViewController()
+        var vc = EventListViewController(style: .modal)
+        vc.modalPresentationStyle = .overCurrentContext
         let vm = EventListViewModel(user: AppController.shared.currentUser!)
         vc.setViewModelBinding(model: vm)
-        vm.selectedEvent.asObservable().filterNil()
-            .do(onNext: { [weak vc] _ in vc?.dismiss(animated: true, completion: nil) })
+        vm.selectedEvent.asObservable()
+            .observeOn(ConcurrentDispatchQueueScheduler(qos: .userInitiated))
+            .filterNil()
             .bind(to: viewModel.bindSelectedEvent)
         self.present(vc, animated: true, completion: nil)
     }

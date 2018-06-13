@@ -48,7 +48,6 @@ final class InitialPagingViewController: CustomPageViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.isHidden = true
         configurePagerDataSource()
         
         loginButton.rx.tap.asObservable()

@@ -19,6 +19,7 @@ final class EventTableCell: UITableViewCell {
     private var containerView: UIView!
     private var mainLabel: UILabel!
     private var dateLabel: UILabel!
+    private var countLabel: UILabel!
     
     // MARK: - Initialization
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -45,6 +46,7 @@ final class EventTableCell: UITableViewCell {
     func configureWith(value: Event) {
         mainLabel.text = value.venueName
         dateLabel.text = value.date.description
+        countLabel.text = "Added: \(value.submissions.count) submissions"
     }
     
 }
@@ -68,8 +70,12 @@ extension EventTableCell {
         
         dateLabel = UILabel().rxStyle(font: FontBook.AvenirMedium.of(size: 13), color: .black, alignment: .left)
         dateLabel.numberOfLines = 0
+        
+        countLabel = UILabel().rxStyle(font: FontBook.AvenirMedium.of(size: 13), color: .black, alignment: .left)
+        countLabel.numberOfLines = 0
 
-        let views: [UILabel] = [mainLabel, dateLabel]
+
+        let views: [UILabel] = [mainLabel, dateLabel, countLabel]
         let labelsStackView = UIStackView(arrangedSubviews: views)
         labelsStackView.spacing = 2.0
         labelsStackView.axis = .vertical

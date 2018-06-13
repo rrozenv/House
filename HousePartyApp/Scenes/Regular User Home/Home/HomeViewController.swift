@@ -20,26 +20,28 @@ protocol Invitable: Codable {
 
 final class HomeViewController<ViewModel: HomeViewControllable>: UIViewController, BindableType, CustomNavBarViewable {
 
-    private var coordinator: HomeCoordinator!
     var viewModel: ViewModel!
     let disposeBag = DisposeBag()
     var navView: HomeNavView = HomeNavView(leftIcon: #imageLiteral(resourceName: "IC_UserOptions"), leftMargin: 20.0)
     var navBackgroundView: UIView = UIView()
     private var createSubmissionButton = UIButton()
     
-    required init(coder aDecoder: NSCoder) { super.init(coder: aDecoder)! }
+    var userProfileDisplayed = false { didSet { self.toggleUserProfileVc() } }
     
-    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
+    private lazy var userProfileViewController: UserProfileViewController = { [unowned self] in
+        var vc = UserProfileViewController()
+        let vm = UserProfileViewModel(coordinator: viewModel.coordinator)
+        vc.setViewModelBinding(model: vm)
+        vm.didDismiss.asObservable()
+            .subscribe(onNext: { [weak self] in
+                self?.userProfileDisplayed = false
+            })
+            .disposed(by: vm.disposeBag)
+        return vc
+    }()
     
-    init(coordinator: HomeCoordinator) {
-        super.init(nibName: nil, bundle: nil)
-        self.coordinator = coordinator
-    }
-    
-    override func loadView() {
-        super.loadView()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
         setupNavBar()
         setupSubmissionButton()
@@ -49,6 +51,10 @@ final class HomeViewController<ViewModel: HomeViewControllable>: UIViewControlle
         let createTapped$ = createSubmissionButton.rx.tap.asObservable()
         viewModel.bindCreateButton(createTapped$)
         
+        navView.leftButton.rx.tap.asObservable()
+            .subscribe(onNext: { [unowned self] in self.userProfileDisplayed = !self.userProfileDisplayed })
+            .disposed(by: disposeBag)
+       
         viewModel.tabInfo
             .drive(onNext: { [unowned self] in
                 let vc = TabPageViewController(viewControllers: $0.vcs, tabAppearence: $0.appearance)
@@ -63,6 +69,18 @@ final class HomeViewController<ViewModel: HomeViewControllable>: UIViewControlle
     }
     
     deinit { print("HomeViewController deinit") }
+    
+    private func toggleUserProfileVc() {
+        if userProfileDisplayed {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.addChild(self.userProfileViewController, frame: self.view.frame, animated: false)
+            })
+        } else {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.removeChild(self.userProfileViewController, completion: nil)
+            })
+        }
+    }
     
     private func setupSubmissionButton() {
         createSubmissionButton.style(title: "Create", font: FontBook.AvenirMedium.of(size: 15), backColor: .blue, titleColor: .white)

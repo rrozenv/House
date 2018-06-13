@@ -47,8 +47,8 @@ class SelectCityViewController: UIViewController, BindableType, CustomNavBarView
         let cityTapped$ = tableView.rx.modelSelected(String.self).asObservable()
         viewModel.bindDidSelectCity(cityTapped$)
         
-        let backTapped$ = navView.backButton.rx.tap.asObservable()
-        viewModel.bindBackButton(backTapped$)
+//        let backTapped$ = navView.backButton.rx.tap.asObservable()
+//        viewModel.bindBackButton(backTapped$)
         
         let searchText$ = searchBarView.searchTextField.rx.text.orEmpty.asObservable()
             .filter { [unowned self] _ in self.searchBarView.searchTextField.isFirstResponder }
@@ -70,7 +70,7 @@ class SelectCityViewController: UIViewController, BindableType, CustomNavBarView
     private func setupSearchBarView() {
         searchBarView = SearchBarView()
         searchBarView.style(placeHolder: "Search city...", backColor: Palette.lightGrey.color, searchIcon: #imageLiteral(resourceName: "IC_Search"), clearIcon: #imageLiteral(resourceName: "IC_ClearSearch"))
-        
+    
         view.addSubview(searchBarView)
         searchBarView.snp.makeConstraints { (make) in
             make.left.equalTo(navView.backButton.snp.right).offset(15)

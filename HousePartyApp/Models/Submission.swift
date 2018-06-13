@@ -19,12 +19,14 @@ struct InvitableUser: Codable, Invitable {
 }
 
 struct Submission: Codable {
+    var eventId: String?
     let leader: User
     let registeredFriends: [User]
     let unregisteredFriends: [InvitableUser]
     let allNumbers: [String]
-    let createdAt: Date
+    var createdAt: Date
     var status: SubmissonStatus
+    var purchasedTickets: Int = 0
 }
 
 struct Event: Codable {
@@ -32,4 +34,10 @@ struct Event: Codable {
     let venueName: String
     let date: Date
     var submissions: [Submission]
+}
+
+extension Event {
+    var isCurrentUserAttending: Bool {
+        return AppController.shared.currentUser!.events.contains(where: { $0._id == self._id })
+    }
 }

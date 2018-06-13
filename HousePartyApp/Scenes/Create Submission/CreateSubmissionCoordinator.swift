@@ -18,15 +18,22 @@ final class SubmissionInfo {
 
 protocol Coordinatable: class {
     associatedtype Screen
-    var screenOrder: [Screen] { get }
-    var screenIndex: Int { get set }
     weak var navigationController: UINavigationController? { get }
-    func toNextScreen()
     func toPreviousScreen()
     func navigateTo(screen: Screen)
 }
 
-extension Coordinatable {
+protocol FlowCoordinatable: Coordinatable {
+    //associatedtype Screen
+    var screenOrder: [Screen] { get }
+    var screenIndex: Int { get set }
+    //weak var navigationController: UINavigationController? { get }
+    func toNextScreen()
+//    func toPreviousScreen()
+//    func navigateTo(screen: Screen)
+}
+
+extension FlowCoordinatable {
     
     func toNextScreen() {
         guard screenIndex < screenOrder.count - 1 else {
@@ -48,7 +55,7 @@ extension Coordinatable {
     
 }
 
-final class CreateSubmissionCoordinator: Coordinatable {
+final class CreateSubmissionCoordinator: FlowCoordinatable {
   
     enum Screen: Int {
         case selectSqaud
@@ -91,12 +98,14 @@ final class CreateSubmissionCoordinator: Coordinatable {
     
     func flowWillFinish() {
         print(AppController.shared.currentUser ?? "No user")
-        let submission = Submission(leader: AppController.shared.currentUser!,
+        let submission = Submission(eventId: nil,
+                                    leader: AppController.shared.currentUser!,
                                     registeredFriends: [],
                                     unregisteredFriends: [],
                                     allNumbers: submissionInfo.selectedContacts!.map { $0.primaryNumber ?? $0.numbers.first! },
                                     createdAt: Date(),
-                                    status: .pending)
+                                    status: .pending,
+                                    purchasedTickets: 0)
         AppController.shared.currentUser!.submissons.append(submission)
         globalSubService._submissions.value.append(submission)
         navigationController?.dismiss(animated: true, completion: nil)

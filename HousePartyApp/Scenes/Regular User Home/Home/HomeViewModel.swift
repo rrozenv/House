@@ -13,6 +13,7 @@ import RxCocoa
 typealias TabInfo = (vcs: [UIViewController], appearance: TabAppearence)
 
 protocol HomeViewControllable {
+    var coordinator: HomeCoordinator { get }
     var tabInfo: Driver<TabInfo> { get }
     func bindCreateButton(_ observable: Observable<Void>)
 }
@@ -21,7 +22,7 @@ struct HomeViewModel: HomeViewControllable {
     
     //MARK: - Properties
     private let disposeBag = DisposeBag()
-    private let coordinator: HomeCoordinator
+    let coordinator: HomeCoordinator
     
     init(coordinator: HomeCoordinator) {
         self.coordinator = coordinator
@@ -46,8 +47,9 @@ struct HomeViewModel: HomeViewControllable {
 extension HomeViewModel {
     private func createTabInfo() -> TabInfo {
         var submissionVc = SubmissionListViewController<SubmissionListViewModel>()
-        let submissionVm = SubmissionListViewModel(user: AppController.shared.currentUser!)
+        let submissionVm = SubmissionListViewModel(user: AppController.shared.currentUser!, coordinator: self.coordinator)
         submissionVc.setViewModelBinding(model: submissionVm)
+        
         let apperence = TabAppearence(type: .underline,
                                       itemTitles: ["Submissions", "Events"],
                                       height: 50.0,

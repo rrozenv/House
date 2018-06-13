@@ -14,21 +14,31 @@ struct SubmissionDetailViewModel {
     
     //MARK: - Properties
     private let _submission: Variable<Submission>
-    private let disposeBag = DisposeBag()
-    private let coordinator: AdminHomeCoordinator
+    let disposeBag = DisposeBag()
+    weak var coordinator: HomeCoordinator?
+    private let _shouldDismiss: Variable<Bool>
     
-    init(submission: Submission, coordinator: AdminHomeCoordinator) {
+    init(submission: Submission, coordinator: HomeCoordinator) {
         self.coordinator = coordinator
-        _submission = Variable(submission)
+        self._shouldDismiss = Variable(false)
+        self._submission = Variable(submission)
     }
     
     //MARK: - Outputs
+    var displayedSubmission: Observable<Submission> {
+        return _submission.asObservable().skip(1)
+    }
+    
     var displayedUsers: Observable<[Invitable]> {
         return _submission.asObservable().map { self.createInvitableUsersFrom(submission: $0) }
     }
     
     var shouldHideAddToEventButton: Observable<Bool> {
         return .just(!AppController.shared.currentUser!.isAdmin)
+    }
+    
+    var shouldDismiss: Driver<Bool> {
+        return _shouldDismiss.asDriver()
     }
     
     //MARK: - Inputs
@@ -40,14 +50,16 @@ struct SubmissionDetailViewModel {
                 var subCopy = self._submission.value
                 subCopy.status = .invited
                 AppController.shared.currentUser!.events[idx!].submissions.append(subCopy)
-                self.coordinator.toPreviousScreen()
+                NotificationCenter.default.post(name: .changedSubmissionStatusInDetail, object: nil)
+                self._shouldDismiss.value = true
             })
             .disposed(by: disposeBag)
     }
     
     func bindBackButton(_ observable: Observable<Void>) {
         observable
-            .subscribe(onNext: { self.coordinator.toPreviousScreen() })
+            .do(onNext: { self._submission.value.createdAt = Date() })
+            .subscribe(onNext: { self.coordinator?.toPreviousScreen() })
             .disposed(by: disposeBag)
     }
     

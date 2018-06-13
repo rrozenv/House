@@ -19,12 +19,12 @@ struct EventListViewModel: EventListInputsOutputs {
     
     //MARK: - Properties
     private let _events = Variable<[Event]>([])
-    private let disposeBag = DisposeBag()
+    let disposeBag = DisposeBag()
     var selectedEvent = Variable<Event?>(nil)
     
     init(user: User) {
         _events.value = user.events
-        bindUserDidUpdateNotification()
+        //bindUserDidUpdateNotification()
     }
     
     //MARK: - Outputs
@@ -39,14 +39,18 @@ struct EventListViewModel: EventListInputsOutputs {
             .disposed(by: disposeBag)
     }
     
-    //MARK: - Helper Methods
-    private func bindUserDidUpdateNotification() {
-        NotificationCenter.default.rx.notification(.userDidUpdate)
-            .subscribe(onNext: { _ in
-                self._events.value = AppController.shared.currentUser!.events
-            })
-            .disposed(by: disposeBag)
+    func addEvent(_ event: Event) {
+        _events.value.insert(event, at: 0)
     }
+    
+    //MARK: - Helper Methods
+//    private func bindUserDidUpdateNotification() {
+//        NotificationCenter.default.rx.notification(.userDidUpdate)
+//            .subscribe(onNext: { _ in
+//                self._events.value = AppController.shared.currentUser!.events
+//            })
+//            .disposed(by: disposeBag)
+//    }
 }
 
 struct AdminEventListViewModel: EventListInputsOutputs {

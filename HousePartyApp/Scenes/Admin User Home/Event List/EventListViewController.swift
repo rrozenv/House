@@ -14,13 +14,36 @@ import SnapKit
 
 class EventListViewController: UIViewController, BindableType {
     
+    enum Style {
+        case fullScreen
+        case modal
+    }
+    
+    private var style: Style = .fullScreen
     private var tableView: UITableView!
     let disposeBag = DisposeBag()
     var viewModel: EventListViewModel!
     
-    override func loadView() {
-        super.loadView()
-        self.view.backgroundColor = .white
+//    override func loadView() {
+//        super.loadView()
+//        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+//        setupTableView()
+//    }
+    
+    required init(coder aDecoder: NSCoder) { super.init(coder: aDecoder)! }
+    
+    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    init(style: Style) {
+        super.init(nibName: nil, bundle: nil)
+        self.style = style
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         setupTableView()
     }
 
@@ -42,6 +65,7 @@ class EventListViewController: UIViewController, BindableType {
     
     private func setupTableView() {
         tableView = UITableView(frame: CGRect.zero, style: .plain)
+        tableView.backgroundColor = .white
         tableView.register(EventTableCell.self, forCellReuseIdentifier: EventTableCell.defaultReusableId)
         tableView.estimatedRowHeight = 80
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -51,7 +75,10 @@ class EventListViewController: UIViewController, BindableType {
         
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (make) in
-            make.edges.equalTo(view)
+            switch self.style {
+            case .fullScreen: make.edges.equalTo(view)
+            case .modal: make.edges.equalTo(view).inset(40)
+            }
         }
     }
     

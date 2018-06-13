@@ -46,3 +46,21 @@ extension UIViewController {
     }
     
 }
+
+extension UIViewController {
+    
+    var customNavVc: CustomNavigationController? {
+        return self.navigationController as? CustomNavigationController
+    }
+    
+    private func getCustomNavFor(vc: UIViewController) -> CustomNavigationController? {
+        if let nav = self.parent as? CustomNavigationController {
+            return nav
+        } else if let parent = self.parent {
+            return getCustomNavFor(vc: parent)
+        } else {
+            return nil
+        }
+    }
+    
+}

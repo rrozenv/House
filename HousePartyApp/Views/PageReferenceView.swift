@@ -47,11 +47,15 @@ extension PageIndicatorView {
         stackView = UIStackView(arrangedSubviews: views)
         stackView.spacing = 10.0
         stackView.axis = .horizontal
-        stackView.distribution = .fillEqually
+        stackView.distribution = .equalSpacing
+        stackView.alignment = .leading
         
         self.addSubview(stackView)
         stackView.snp.makeConstraints { (make) in
-            make.edges.equalTo(self)
+            //make.edges.equalTo(self)
+            make.leading.equalTo(0)
+            make.top.equalTo(0)
+            make.height.equalTo(widthHeight)
         }
     }
     

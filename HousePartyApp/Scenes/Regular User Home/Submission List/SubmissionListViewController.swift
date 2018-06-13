@@ -36,8 +36,8 @@ class SubmissionListViewController<ViewModel: SubmissionListInputsOutputs>: UIVi
 //            .disposed(by: disposeBag)
         
         //MARK: - Inputs
-        let submissionTapped$ = tableView.rx.modelSelected(Submission.self).asObservable()
-        viewModel.bindDidSelectSubmission(submissionTapped$)
+        let submissionTapped$ = tableView.rx.itemSelected.asObservable().map { $0.row }
+        viewModel.bindSelectedSubmissionIndex(submissionTapped$)
         
         //MARK: - Outputs
         viewModel.displayedSubmissions
