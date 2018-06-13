@@ -75,7 +75,6 @@
 		98D5B37220BC9E00009EEF57 /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D5B37120BC9E00009EEF57 /* EventListViewController.swift */; };
 		98D5B37420BC9E87009EEF57 /* EventTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D5B37320BC9E87009EEF57 /* EventTableCell.swift */; };
 		98E2444D20D153B9005F6A74 /* InitialPagingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E2444C20D153B9005F6A74 /* InitialPagingViewModel.swift */; };
-		98E2445020D15522005F6A74 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E2444F20D15522005F6A74 /* Secrets.swift */; };
 		98EB1C5920B9C6F900A90B62 /* SubmissionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EB1C5820B9C6F900A90B62 /* SubmissionListViewController.swift */; };
 		98EB1C5B20B9C74300A90B62 /* TabPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EB1C5A20B9C74300A90B62 /* TabPageViewController.swift */; };
 		98EB1C5D20B9C76C00A90B62 /* TabOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EB1C5C20B9C76C00A90B62 /* TabOptionsView.swift */; };
@@ -197,7 +196,6 @@
 		98D5B37120BC9E00009EEF57 /* EventListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewController.swift; sourceTree = "<group>"; };
 		98D5B37320BC9E87009EEF57 /* EventTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableCell.swift; sourceTree = "<group>"; };
 		98E2444C20D153B9005F6A74 /* InitialPagingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialPagingViewModel.swift; sourceTree = "<group>"; };
-		98E2444F20D15522005F6A74 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		98EB1C5820B9C6F900A90B62 /* SubmissionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmissionListViewController.swift; sourceTree = "<group>"; };
 		98EB1C5A20B9C74300A90B62 /* TabPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabPageViewController.swift; sourceTree = "<group>"; };
 		98EB1C5C20B9C76C00A90B62 /* TabOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabOptionsView.swift; sourceTree = "<group>"; };
@@ -330,7 +328,6 @@
 		98A50C97209F7B7F0090FC8E = {
 			isa = PBXGroup;
 			children = (
-				98E2444F20D15522005F6A74 /* Secrets.swift */,
 				98A50CA2209F7B7F0090FC8E /* HousePartyApp */,
 				98A50CB7209F7B7F0090FC8E /* HousePartyAppTests */,
 				98A50CC2209F7B7F0090FC8E /* HousePartyAppUITests */,
@@ -353,7 +350,6 @@
 		98A50CA2209F7B7F0090FC8E /* HousePartyApp */ = {
 			isa = PBXGroup;
 			children = (
-				98E2444E20D15511005F6A74 /* Secrets */,
 				98F2419A20A67DF3001FD887 /* App Entry */,
 				98F2419E20A67E8B001FD887 /* Models */,
 				98F2419C20A67E5B001FD887 /* Scenes */,
@@ -495,13 +491,6 @@
 			children = (
 			);
 			path = "Google Sign In";
-			sourceTree = "<group>";
-		};
-		98E2444E20D15511005F6A74 /* Secrets */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Secrets;
 			sourceTree = "<group>";
 		};
 		98EB1C6220B9D0F000A90B62 /* Submission List */ = {
@@ -938,7 +927,6 @@
 				9802D2F720BD3CEC0042B2FF /* AdminSubmissionListViewModel.swift in Sources */,
 				98D5B37220BC9E00009EEF57 /* EventListViewController.swift in Sources */,
 				98F241F220A6AC63001FD887 /* UIDevice+Ext.swift in Sources */,
-				98E2445020D15522005F6A74 /* Secrets.swift in Sources */,
 				98EB1C5F20B9C99100A90B62 /* SubmissionListViewModel.swift in Sources */,
 				981C4B9720B7539000DFFE5B /* ImageLabelSublabelView.swift in Sources */,
 				98FDF13320B7FC290094EFD6 /* CreateSubmissionCoordinator.swift in Sources */,
