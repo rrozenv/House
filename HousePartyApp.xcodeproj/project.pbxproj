@@ -330,6 +330,7 @@
 		98A50C97209F7B7F0090FC8E = {
 			isa = PBXGroup;
 			children = (
+				98E2444F20D15522005F6A74 /* Secrets.swift */,
 				98A50CA2209F7B7F0090FC8E /* HousePartyApp */,
 				98A50CB7209F7B7F0090FC8E /* HousePartyAppTests */,
 				98A50CC2209F7B7F0090FC8E /* HousePartyAppUITests */,
@@ -499,7 +500,6 @@
 		98E2444E20D15511005F6A74 /* Secrets */ = {
 			isa = PBXGroup;
 			children = (
-				98E2444F20D15522005F6A74 /* Secrets.swift */,
 			);
 			path = Secrets;
 			sourceTree = "<group>";
